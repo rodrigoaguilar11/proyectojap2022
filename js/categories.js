@@ -1,7 +1,7 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
-let currentCategoriesArray = [];
+let currentCategoriesArray = []; //array con las categorias encontradas filtradas
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
@@ -39,7 +39,7 @@ function setCatID(id) {
     localStorage.setItem("catID", id);
     window.location = "products.html"
 }
-
+//Crea el string htmlContentToAppend y lo agrega como codigo en elemento del DOM #cat-list-container
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
@@ -72,12 +72,13 @@ function showCategoriesList(){
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
-    currentSortCriteria = sortCriteria;
-
+//currentSortCriteria = sortCriteria    
+    currentSortCriteria = sortCriteria; //actualmente son undefined
+//currentCategoriesArray = categoriesArray solo si el mismo tiene datos.
     if(categoriesArray != undefined){
         currentCategoriesArray = categoriesArray;
     }
-
+//currentCategoriesArray se reasigna aplicando el filtro sortCategories
     currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
 
     //Muestro las categorías ordenadas
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
-
+//Ejecuta sortAndShowCategories con atributo ORDER_ASC_BY_NAME al clickear sortAsc
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });
