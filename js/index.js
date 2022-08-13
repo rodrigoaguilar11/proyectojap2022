@@ -20,8 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //Detectar Sesion
     if (localStorage.getItem("username")==undefined || localStorage.getItem("password")==undefined) {
         location.href = "/login.html";
-        alert("Debe Iniciar Sesion.")
-
     } else {
         document.getElementById("usernameNav").innerHTML = localStorage.getItem("username");
     }

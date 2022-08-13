@@ -1,35 +1,40 @@
    document.addEventListener("DOMContentLoaded", () => {
        //Inicio del DOMContentLoaded
-       //Boton para logearse
        localStorage.clear();
+       //Boton para logearse
        document.getElementById("loginButton").addEventListener("click", () => {
-        login();
+           login();
        })
-       
+
        //Fin del DOMContenLoaded
    });
 
-
-
-   //validacion de usuario ingresado
-
-
-   /*
-       document.getElementById("loginButton").addEventListener("click"), () => {
-           alert("aa");
-      
-       if (localStorage.setItem("user") === null) {
-           location.href = "login.html";
-       } };
-*/
+   reirse();
+function reirse (){
+console.log("jajajaj");
+}
+   //Funcion para intentar logear
    function login() {
+       //informacion de campos
        let username = document.getElementById("username").value;
        let password = document.getElementById("password").value;
+       //Parrafos de errores
+       let usernameError = document.getElementById("usernameError");
+       let passwordError = document.getElementById("passwordError");
+       //verificacion de correo
        if (username === "") {
-           document.getElementById("usernameError").innerHTML = "Ingrese Usuario";
-       } else if (password === "") {
-           document.getElementById("passwordError").innerHTML = "Ingrese Contraseña";
+           usernameError.innerHTML = "Ingresa tu e-mail";
        } else {
+           usernameError.innerHTML = "";
+       }
+       //verificacion de contraseña
+       if (password === "") {
+           passwordError.innerHTML = "Ingresa tu contraseña";
+       } else {
+           passwordError.innerHTML = "";
+       }
+       //verificacion general
+       if (username !== "" && password !== "") {
            localStorage.setItem("username", username);
            localStorage.setItem("password", password);
            location.href = "/index.html";
