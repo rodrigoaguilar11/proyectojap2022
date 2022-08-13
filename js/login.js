@@ -9,10 +9,6 @@
        //Fin del DOMContenLoaded
    });
 
-   reirse();
-function reirse (){
-console.log("jajajaj");
-}
    //Funcion para intentar logear
    function login() {
        //informacion de campos
