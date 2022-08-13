@@ -42,3 +42,13 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  //Detectar Sesion
+  if (localStorage.getItem("username")==undefined || localStorage.getItem("password")==undefined) {
+      location.href = "/login.html";
+  } else {
+      document.getElementById("profile").innerHTML +='<span style= color:lightblue; font-size:30px; font-weight:bold;>'+localStorage.getItem("username") +'</span>' ;
+  }
+  //Fin de DOMContentLoaded
+});

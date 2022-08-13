@@ -12,16 +12,5 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location = "products.html"
     });
 
-    //Boton para Cerrar Sesion
-    document.getElementById("closeSesion").addEventListener("click", () => {
-        location.href = "/login.html";
-        localStorage.clear();
-    })
-    //Detectar Sesion
-    if (localStorage.getItem("username")==undefined || localStorage.getItem("password")==undefined) {
-        location.href = "/login.html";
-    } else {
-        document.getElementById("usernameNav").innerHTML = localStorage.getItem("username");
-    }
     //Fin de DOMContentLoaded
 });
