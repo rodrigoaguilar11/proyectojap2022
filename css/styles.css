@@ -1,3 +1,24 @@
+/*mis estilos*/
+/* Muestra lista y elementos*/
+
+.contenedor:hover .products_list{
+  display: block;
+
+}
+/*Div de la Lista*/
+.products_list {  
+  display: none;  
+  flex-direction: column;
+
+}
+
+
+
+
+
+
+
+/*Fin de mis estilos*/
 .jumbotron,
 .card-body,
 .container,
