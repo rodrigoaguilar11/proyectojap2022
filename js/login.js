@@ -37,7 +37,7 @@
        if (username.value !== "" && password.value !== "") {
            localStorage.setItem("username", username.value);
            localStorage.setItem("password", password.value);
-           location.href = "/index.html";
+           location.href = "index.html";
        }
    }
 

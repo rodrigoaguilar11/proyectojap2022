@@ -9,15 +9,17 @@
 .products_list {  
   display: none;  
   flex-direction: column;
-
+  width: 35em;
 }
-
-
-
-
-
-
-
+.list_element {
+  background-color: #535252;
+  float: left;
+  color: rgba(255,255,255,.55);
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
 /*Fin de mis estilos*/
 .jumbotron,
 .card-body,
