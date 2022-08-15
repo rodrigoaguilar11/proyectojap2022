@@ -1,7 +1,6 @@
    document.addEventListener("DOMContentLoaded", () => {
        //Inicio del DOMContentLoaded
-       localStorage.clear();
-       //Boton para logearse
+2-       //Boton para logearse
        document.getElementById("loginButton").addEventListener("click", () => {
            login();
        })
