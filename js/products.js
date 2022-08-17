@@ -1,7 +1,5 @@
-//array donde se cargarán los datos recibidos:
 let categoriesArray = [];
 
-//función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showCategoriesList(array) {
     for (let i = 0; i < array.length; i++) {
         document.getElementById("cat-list-container").innerHTML += `

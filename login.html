@@ -29,6 +29,7 @@
       <p>Contraseña</p>
       <input id="password" type="password" class="form-control" placeholder="Contraseña">
       <div class="invalid-feedback" id="passwordError"></div>
+      <br>
       <button id="loginButton" class="btn btn-primary btn-lg">Ingresar</button>
     </div>
   </main>
@@ -43,6 +44,15 @@
     </div>
   </footer>
   <script src="js/login.js"></script>
+  <script>
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: '518606529706-ffieeft9dm0b57bflr1dbkp6ip2v9rn8.apps.googleusercontent.com',
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.prompt();
+    };
+  </script>
 </body>
 
 </html>

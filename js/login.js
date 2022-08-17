@@ -7,6 +7,9 @@
 
        //Fin del DOMContenLoaded
    });
+//login google
+
+
 
    //Funcion para intentar logear
    function login() {
