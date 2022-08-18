@@ -10,48 +10,51 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id" content="518606529706-6v48q9k3l67p3mvgvnm1b5n8fj73r14k.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="518606529706-6v48q9k3l67p3mvgvnm1b5n8fj73r14k.apps.googleusercontent.com">
   <style>
     body {
       background-color: rgb(248, 249, 250);
       background-image: url('img/blanco.jpg');
     }
   </style>
-   <script>
+  <script>
     function onSignIn(googleUser) {
       alert("logeo");
-        var profile = googleUser.getBasicProfile();//Obtiene perfil de usuario básico.
-        var perfil="<h2> Perfil del usuario </h2><div class='row'> ";
-        perfil+="<div class='col-1'><img src=" + profile.getImageUrl() +"></div> " +
-         "<div class='col-12'> ID:"+ profile.getId() +
-          "</div>" + "<div class='col-sm'> Nombre: " + profile.getName() +
-          "</div> <div class='col-sm'> Email: "+ profile.getEmail() + "</div> </div>";
+      var profile = googleUser.getBasicProfile(); //Obtiene perfil de usuario básico.
+      var perfil = "<h2> Perfil del usuario </h2><div class='row'> ";
+      perfil += "<div class='col-1'><img src=" + profile.getImageUrl() + "></div> " +
+        "<div class='col-12'> ID:" + profile.getId() +
+        "</div>" + "<div class='col-sm'> Nombre: " + profile.getName() +
+        "</div> <div class='col-sm'> Email: " + profile.getEmail() + "</div> </div>";
 
-        document.getElementById('datos').innerHTML=perfil; 
+      document.getElementById('datos').innerHTML = perfil;
     }
-</script>
+  </script>
 </head>
 
 <body>
   <div class="container">
     <h1>Ejemplo de uso de OAuth</h1>
-    <div class = "container">
-    <div class="g-signin2" data-onsuccess="onSignIn"></div><br> <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
+    <div class="container">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <br>
+      <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
     </div>
     <div id="datos" class="container"></div><br>
-    </div>
-    
-    
-<script>
-function signOut() {
-var auth2 = gapi.auth2.getAuthInstance();
-auth2.signOut().then(function () {
-  alert("Usuario desconectado");
-  location.reload();
-});
+  </div>
 
-}
-</script>
+
+  <script>
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        alert("Usuario desconectado");
+        location.reload();
+      });
+
+    }
+  </script>
 
   <main class="mt-5">
     <div class="container text-center" style="width: 25em;">
@@ -68,7 +71,7 @@ auth2.signOut().then(function () {
       <button id="loginButton" class="btn btn-primary btn-lg">Ingresar</button>
       <h2>Iniciar sesion con google</h2>
       <div class="g-signin2" data-onsuccess="Google_signIn" style="padding-left:8em;"></div>
-      <br>  
+      <br>
 
     </div>
   </main>
