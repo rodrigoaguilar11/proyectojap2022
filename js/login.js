@@ -50,13 +50,13 @@ let client_secret = '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';
    //localStorage.removeItem("user");
    function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
-    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail());
+    let usuario_google = googleUser.getBasicProfile();
+    console.log("ID: " + usuario_google.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + usuario_google.getName());
+    console.log('Given Name: ' + usuario_google.getGivenName());
+    console.log('Family Name: ' + usuario_google.getFamilyName());
+    console.log("Image URL: " + usuario_google.getImageUrl());
+    console.log("Email: " + usuario_google.getEmail());
   }
  function logout() {
     this.ref.unauth();
