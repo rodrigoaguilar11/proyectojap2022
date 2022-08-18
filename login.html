@@ -35,8 +35,6 @@
 </head>
 
 <body>
-<div id="signInId" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" type="hidden"></div>
-<a id="signOutId" href="#" onclick="signOut();" type="hidden">Sign out</a>
 
   <main class="mt-5">
     <div class="container text-center" style="width: 25em;">
@@ -66,6 +64,14 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
 
+    <div class="container">
+      <h1>Ejemplo de uso de OAuth</h1>
+      <div class = "container">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div><br> <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
+      </div>
+      <div id="datos" class="container"></div><br>
+      </div>
+      
   </footer>
   <script src="js/login.js"></script>
   <script>
