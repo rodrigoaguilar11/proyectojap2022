@@ -1,61 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
+<html> 
+    <head> 
+        <meta name="google-signin-client_id" content="518606529706-6v48q9k3l67p3mvgvnm1b5n8fj73r14k.apps.googleusercontent.com"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            img {
+                 border-radius: 50%; /*Hace la imagen circular*/
+                }
+        </style>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();//Obtiene perfil de usuario básico.
+                var perfil="<h2> Perfil del usuario </h2><div class='row'> ";
+                perfil+="<div class='col-1'><img src=" + profile.getImageUrl() +"></div> " +
+                 "<div class='col-12'> ID:"+ profile.getId() +
+                  "</div>" + "<div class='col-sm'> Nombre: " + profile.getName() +
+                  "</div> <div class='col-sm'> Email: "+ profile.getEmail() + "</div> </div>";
 
-<head>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <!--Google Sign in-->  
-  <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="518606529706-6v48q9k3l67p3mvgvnm1b5n8fj73r14k.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>  
-  <style>
-    body {
-      background-color: rgb(248, 249, 250);
-      background-image: url('img/blanco.jpg');
-    }
-  </style>
-</head>
-
-<body>
-<div id="signInId" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" type="hidden"></div>
-<a id="signOutId" href="#" onclick="signOut();" type="hidden">Sign out</a>
-
-  <main class="mt-5">
-    <div class="container text-center" style="width: 25em;">
-      <h1>Rodrigo Aguilar e_Commerce</h1>
-      <img src="img/login.png" class="img-responsive" width="100%">
-      <h2 class="">Inicio de sesión</h2>
-      <p>Email</p>
-      <input id="username" type="text" class="form-control" placeholder="Email">
-      <div class="invalid-feedback" id="usernameError"></div>
-      <p>Contraseña</p>
-      <input id="password" type="password" class="form-control" placeholder="Contraseña">
-      <div class="invalid-feedback" id="passwordError"></div>
-      <br>
-      <button id="loginButton" class="btn btn-primary btn-lg">Ingresar</button>
-      <h2>Iniciar sesion con google</h2>
-      <div class="g-signin2" data-onsuccess="Google_signIn" style="padding-left:8em;"></div>
-      <br>
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-
-  </footer>
-  <script src="js/login.js"></script>
-</body>
-
-</html>
+                document.getElementById('datos').innerHTML=perfil;
+               
+                
+            }
+        </script>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Ejemplo de uso de OAuth</h1>
+        <div class = "container">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div><br> <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
+        </div>
+        <div id="datos" class="container"></div><br>
+        </div>
+        
+        
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      alert("Usuario desconectado");
+      location.reload();
+    });
+    
+  }
+</script>
+    </body>
+</html> 
