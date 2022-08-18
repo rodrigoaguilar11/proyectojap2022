@@ -24,12 +24,12 @@
   <script>
     function onSignIn(googleUser) {
       alert("logeo");
-      let googleUser = googleUser.getBasicProfile(); //Obtiene perfil de usuario básico.
+      let usergoogle = googleUser.getBasicProfile(); //Obtiene perfil de usuario básico.
       let perfil = "<h2> Perfil del usuario </h2><div class='row'> ";
-      perfil += "<div class='col-1'><img src=" + googleUser.getImageUrl() + "></div> " +
-        "<div class='col-12'> ID:" + googleUser.getId() +
-        "</div>" + "<div class='col-sm'> Nombre: " + googleUser.getName() +
-        "</div> <div class='col-sm'> Email: " + googleUser.getEmail() + "</div> </div>";
+      perfil += "<div class='col-1'><img src=" + usergoogle.getImageUrl() + "></div> " +
+        "<div class='col-12'> ID:" + usergoogle.getId() +
+        "</div>" + "<div class='col-sm'> Nombre: " + usergoogle.getName() +
+        "</div> <div class='col-sm'> Email: " + usergoogle.getEmail() + "</div> </div>";
 
       document.getElementById('datos').innerHTML = perfil;
     }
