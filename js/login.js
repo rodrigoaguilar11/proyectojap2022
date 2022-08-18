@@ -8,7 +8,9 @@
        //Fin del DOMContenLoaded
    });
 //login google
-
+// Credenciales de cliente
+let client_id = '518606529706-ffieeft9dm0b57bflr1dbkp6ip2v9rn8.apps.googleusercontent.com';
+let client_secret = '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';
 
 
    //Funcion para intentar logear
