@@ -5,6 +5,17 @@
            login();
        })
 
+       window.gapi.load('client:auth2', () => {
+        window.gapi.client.init({
+            clientId: '518606529706-6v48q9k3l67p3mvgvnm1b5n8fj73r14k.apps.googleusercontent.com',
+            scope: 'email',
+            plugin_name: 'streamy'
+        }).then(() => {
+            this.auth = window.gapi.auth2.getAuthInstance();
+            this.setState({isSignedIn: this.auth.isSignedIn.get()})
+        });
+    });
+
        //Fin del DOMContenLoaded
    });
 //login google
