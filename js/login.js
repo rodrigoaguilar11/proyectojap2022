@@ -48,23 +48,3 @@ let client_secret = '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';
    //localStorage.clear;
    //sessionStorage.clear;
    //localStorage.removeItem("user");
-   function onSignIn(googleUser) {
-    alert("SE LOGEO");
-    var profile = googleUser.getBasicProfile();//Obtiene perfil de usuario básico.
-    var perfil="<h2> Perfil del usuario </h2><div class='row'> ";
-    perfil+="<div class='col-1'><img src=" + profile.getImageUrl() +"></div> " +
-     "<div class='col-12'> ID:"+ profile.getId() +
-      "</div>" + "<div class='col-sm'> Nombre: " + profile.getName() +
-      "</div> <div class='col-sm'> Email: "+ profile.getEmail() + "</div> </div>";
-
-    document.getElementById('datos').innerHTML=perfil;
-}
-function signOut() {
-    alert("SE CERRO LA SESIONS");
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      alert("Usuario desconectado");
-      location.reload();
-    });
-    
-  }
