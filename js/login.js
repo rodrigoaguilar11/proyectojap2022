@@ -96,7 +96,7 @@ function signOut() {
   $("#signInId").show();
 }
 
-$(document).ready(function() {
+(document).ready(function() {
   console.log('ready');
   console.log(googleUser);
   if (googleUser && googleUser.isSignedIn()) {
