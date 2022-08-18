@@ -57,12 +57,15 @@ let client_secret = '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';
       "</div> <div class='col-sm'> Email: "+ profile.getEmail() + "</div> </div>";
 
     document.getElementById('datos').innerHTML=perfil;
+    alert("SE LOGEO");
 }
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       alert("Usuario desconectado");
       location.reload();
+      alert("SE CERRO LA SESIONS");
+
     });
     
   }
