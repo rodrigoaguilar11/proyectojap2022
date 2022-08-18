@@ -130,12 +130,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 //Si la publicación fue exitosa, devolverá mensaje de éxito,
                 //de lo contrario, devolverá mensaje de error.
                 //FUNCIONALIDAD NO IMPLEMENTADA
-                if (resultObj.status === 'ok')
-                {
-                    msgToShow = MSG;
-                    document.getElementById("alertResult").classList.add('alert-primary');
-                }
-                else if (resultObj.status === 'error')
+                if (resultObj.status === 'error' || resultObj.status === 'ok')
                 {
                     msgToShow = MSG;
                     document.getElementById("alertResult").classList.add('alert-primary');
