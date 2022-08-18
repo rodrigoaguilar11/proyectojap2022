@@ -10,8 +10,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id"
-    content="518606529706-6v48q9k3l67p3mvgvnm1b5n8fj73r14k.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="518606529706-6v48q9k3l67p3mvgvnm1b5n8fj73r14k.apps.googleusercontent.com">
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -34,6 +33,26 @@
 </head>
 
 <body>
+  <div class="container">
+    <h1>Ejemplo de uso de OAuth</h1>
+    <div class = "container">
+    <div class="g-signin2" data-onsuccess="onSignIn"></div><br> <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
+    </div>
+    <div id="datos" class="container"></div><br>
+    </div>
+    
+    
+<script>
+function signOut() {
+var auth2 = gapi.auth2.getAuthInstance();
+auth2.signOut().then(function () {
+  alert("Usuario desconectado");
+  location.reload();
+});
+
+}
+</script>
+
   <main class="mt-5">
     <div class="container text-center" style="width: 25em;">
       <h1>Rodrigo Aguilar e_Commerce</h1>
@@ -50,8 +69,6 @@
       <h2>Iniciar sesion con google</h2>
       <div class="g-signin2" data-onsuccess="Google_signIn" style="padding-left:8em;"></div>
       <br>  
-      <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button>
-      <div id="datos" class="container"></div><br>
 
     </div>
   </main>
@@ -67,16 +84,6 @@
 
   </footer>
   <script src="js/login.js"></script>
-  <script>
-    function signOut() {
-      alert("deslogeo");
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        alert("Usuario desconectado");
-        location.reload();
-      });
-    }
-  </script>
 </body>
 
 </html>
