@@ -20,19 +20,9 @@
       background-image: url('img/blanco.jpg');
     }
   </style>
-  <script>
-    function onSignIn(googleUser) {
-      console.log("OnSignIn function called");
-        var profile = googleUser.getBasicProfile();//Obtiene perfil de usuario básico.
-        var perfil="<h2> Perfil del usuario </h2><div class='row'> ";
-        perfil+="<div class='col-1'><img src=" + profile.getImageUrl() +"></div> " +
-         "<div class='col-12'> ID:"+ profile.getId() +
-          "</div>" + "<div class='col-sm'> Nombre: " + profile.getName() +
-          "</div> <div class='col-sm'> Email: "+ profile.getEmail() + "</div> </div>";
+   <!--Jquiery-->  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        document.getElementById('datos').innerHTML=perfil;  
-    }
-</script>
 </head>
 
 <body>
@@ -68,7 +58,8 @@
     <div class="container">
       <h1>Ejemplo de uso de OAuth</h1>
       <div class = "container">
-      <div class="g-signin2" data-onsuccess="onSignIn"></div><br> <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div><br> 
+      <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
       </div>
       <div id="datos" class="container"></div><br>
       </div>
