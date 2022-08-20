@@ -10,18 +10,19 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <!--Google Sign in-->  
+  <!--Google Sign in-->
   <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>  
+  <meta name="google-signin-client_id"
+    content="789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <style>
     body {
       background-color: rgb(248, 249, 250);
       background-image: url('img/blanco.jpg');
     }
   </style>
-   <!--Jquiery-->  
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--Jquiery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -43,6 +44,8 @@
       <h2>Iniciar sesion con google</h2>
       <div class="g-signin2" data-onsuccess="Google_signIn" style="padding-left:8em;"></div>
       <br>
+      <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
+
     </div>
   </main>
   <footer class="text-muted">
@@ -55,26 +58,12 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
 
-    <div class="container">
-      <h1>Ejemplo de uso de OAuth</h1>
-      <div class = "container">
-      <div class="g-signin2" data-onsuccess="onSignIn"></div><br> 
-      <button class="btn btn-danger" onclick="signOut();"> Desconectarse</button><br>
-      </div>
-      <div id="datos" class="container"></div><br>
-      </div>
-      
+
+
+
+
   </footer>
   <script src="js/login.js"></script>
-  <script>
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        alert("Usuario desconectado");
-        location.reload();
-      });
-    }
-  </script>
 </body>
 
 </html>
