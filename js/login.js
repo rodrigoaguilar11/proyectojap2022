@@ -41,7 +41,7 @@ let client_secret = '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';
        if (username.value !== "" && password.value !== "") {
             ("username", username.value);
            localStorage.setItem("password", password.value);
-           location.href = "index.html";
+           location.href = "home.html";
        }
    }
 
@@ -49,4 +49,30 @@ let client_secret = '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';
    //sessionStorage.clear;
    //localStorage.removeItem("user");
 
-   
+//Google Oauth
+   function onGoogleSignIn(googleUser) {
+    alert("onGoogleSignIn called");
+        const gProfile = googleUser.getBasicProfile();
+        const perfil = `
+          <h2> Perfil del usuario </h2>
+          <div class='row'>
+            <div class='col-1'>
+              <img src="${gProfile.getImageUrl()}">
+            </div>
+            <div class='col-12'>
+              ID: ${gProfile.getId()}
+            </div>
+            <div class='col-sm'>
+              Nombre: ${gProfile.getName()}
+            </div>
+            <div class='col-sm'>
+              Email: ${gProfile.getEmail()}
+            </div>
+          </div>
+        `;
+        document.getElementById("datos").innerHTML = perfil;
+      }
+
+      function onGoogleSignInFailure(res) {
+        console.error('onFail', res);
+      }

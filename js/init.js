@@ -42,7 +42,7 @@ let getJSONData = function(url){
         return result;
     });
 }
-/*
+
 document.addEventListener("DOMContentLoaded", function () {
   //Detectar Sesion
   if (localStorage.getItem("username")==undefined || localStorage.getItem("password")==undefined) {
@@ -53,4 +53,4 @@ document.addEventListener("DOMContentLoaded", function () {
   //Fin de DOMContentLoaded
 });
 
-*/
+
