@@ -1,6 +1,6 @@
    document.addEventListener("DOMContentLoaded", () => {
        //Inicio del DOMContentLoaded
-2-       //Boton para logearse
+       //Boton para logearse
        document.getElementById("loginButton").addEventListener("click", () => {
            login();
        })
@@ -39,7 +39,7 @@ let client_secret = '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';
        }
        //verificacion general
        if (username.value !== "" && password.value !== "") {
-           localStorage.setItem("username", username.value);
+            ("username", username.value);
            localStorage.setItem("password", password.value);
            location.href = "index.html";
        }
