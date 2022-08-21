@@ -4,14 +4,8 @@
        document.getElementById("loginButton").addEventListener("click", () => {
            login();
        })
-
        //Fin del DOMContenLoaded
    });
-   //login google
-   // Credenciales de cliente
-   let client_id = '518606529706-ffieeft9dm0b57bflr1dbkp6ip2v9rn8.apps.googleusercontent.com';
-   let client_secret = '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';
-
 
    //Funcion para intentar logear
    function login() {
@@ -53,7 +47,8 @@
    function onGoogleSignIn(googleUser) {
        alert("onGoogleSignIn called");
        const gProfile = googleUser.getBasicProfile();
-       const perfil = `
+       document.getElementById("datos").innerHTML =
+           `
           <h2> Perfil del usuario </h2>
           <div class='row'>
             <div class='col-1'>
@@ -70,7 +65,6 @@
             </div>
           </div>
         `;
-       document.getElementById("datos").innerHTML = perfil;
    }
 
    function onGoogleSignInFailure(res) {
