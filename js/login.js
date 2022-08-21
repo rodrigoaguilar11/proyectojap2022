@@ -7,10 +7,10 @@
 
        //Fin del DOMContenLoaded
    });
-//login google
-// Credenciales de cliente
-let client_id = '518606529706-ffieeft9dm0b57bflr1dbkp6ip2v9rn8.apps.googleusercontent.com';
-let client_secret = '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';
+   //login google
+   // Credenciales de cliente
+   let client_id = '518606529706-ffieeft9dm0b57bflr1dbkp6ip2v9rn8.apps.googleusercontent.com';
+   let client_secret = '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';
 
 
    //Funcion para intentar logear
@@ -39,8 +39,8 @@ let client_secret = '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';
        }
        //verificacion general
        if (username.value !== "" && password.value !== "") {
-            ("username", username.value);
            localStorage.setItem("password", password.value);
+           localStorage.setItem("username", username.value);
            location.href = "home.html";
        }
    }
@@ -49,11 +49,11 @@ let client_secret = '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';
    //sessionStorage.clear;
    //localStorage.removeItem("user");
 
-//Google Oauth
+   //Google Oauth
    function onGoogleSignIn(googleUser) {
-    alert("onGoogleSignIn called");
-        const gProfile = googleUser.getBasicProfile();
-        const perfil = `
+       alert("onGoogleSignIn called");
+       const gProfile = googleUser.getBasicProfile();
+       const perfil = `
           <h2> Perfil del usuario </h2>
           <div class='row'>
             <div class='col-1'>
@@ -70,9 +70,9 @@ let client_secret = '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';
             </div>
           </div>
         `;
-        document.getElementById("datos").innerHTML = perfil;
-      }
+       document.getElementById("datos").innerHTML = perfil;
+   }
 
-      function onGoogleSignInFailure(res) {
-        console.error('onFail', res);
-      }
+   function onGoogleSignInFailure(res) {
+       console.error('onFail', res);
+   }
