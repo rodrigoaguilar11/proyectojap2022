@@ -22,6 +22,7 @@
   </style>
   <script>
     function onSignIn(googleUser) {
+      alert("Function OnSignIn called");
         var profile = googleUser.getBasicProfile();//Obtiene perfil de usuario básico.
         var perfil="<h2> Perfil del usuario </h2><div class='row'> ";
         perfil+="<div class='col-1'><img src=" + profile.getImageUrl() +"></div> " +
@@ -76,6 +77,7 @@
   <script src="js/login.js"></script>
   <script>
     function signOut() {
+      alert("function signOut called");
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
         alert("Usuario desconectado");
