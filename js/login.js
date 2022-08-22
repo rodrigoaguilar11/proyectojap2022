@@ -39,54 +39,15 @@
        }
    }
 
-   //localStorage.clear;
-   //sessionStorage.clear;
-   //localStorage.removeItem("user");
-
    //Google Oauth
    function onGoogleSignIn(googleUser) {
        alert("onGoogleSignIn called");
        const gProfile = googleUser.getBasicProfile();
-       document.getElementById("datos").innerHTML =
-           `
-          <h2> Perfil del usuario </h2>
-          <div class='row'>
-            <div class='col-1'>
-              <img src="${gProfile.getImageUrl()}">
-            </div>
-            <div class='col-12'>
-              ID: ${gProfile.getId()}
-            </div>
-            <div class='col-sm'>
-              Nombre: ${gProfile.getName()}
-            </div>
-            <div class='col-sm'>
-              Email: ${gProfile.getEmail()}
-            </div>
-          </div>
-        `;
+       localStorage.setItem("username", gProfile.getName());
+       localStorage.setItem("password", ".");
+       location.href = "home.html";
    }
 
    function onGoogleSignInFailure(res) {
        console.error('onFail', res);
    }
-//testing
-window.gapi.load('client:auth2', () => {
-    window.gapi.client.init({
-        clientId: '789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com',
-        plugin_name: "chat"
-    })
-})
-
-
-
-
-   google.accounts.id.initialize(IdConfiguration)
-
-  window.onload = function () {
-    google.accounts.id.initialize({
-      client_id: '789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com',
-      callback: handleCredentialResponse
-    });
-    google.accounts.id.prompt();
-  };
