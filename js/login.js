@@ -59,14 +59,13 @@
    function handleCredentialResponse(response) {
     // decodeJwtResponse() is a custom function defined by you
     // to decode the credential response.
-    const responsePayload = decodeJwtResponse(response.credential);
 
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
+    console.log("ID: " + response.sub);
+    console.log('Full Name: ' + response.name);
+    console.log('Given Name: ' + response.given_name);
+    console.log('Family Name: ' + response.family_name);
+    console.log("Image URL: " + response.picture);
+    console.log("Email: " + response.email);
  }
  function decodeJwtResponse(){
     alert("Invalid");
