@@ -42,8 +42,9 @@
    //Google Oauth
    function onGoogleSignIn(googleUser) {
        alert("onGoogleSignIn called");
-       const gProfile = googleUser.getBasicProfile();
-       localStorage.setItem("username", gProfile.getName());
+       let gProfile = googleUser.getBasicProfile();
+       let gName = gProfile.getName();
+       localStorage.setItem("username",gName);
        localStorage.setItem("password", ".");
        location.href = "home.html";
    }
