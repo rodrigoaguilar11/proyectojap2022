@@ -71,6 +71,16 @@
        console.error('onFail', res);
    }
 //testing
+window.gapi.load('client:auth2', () => {
+    window.gapi.client.init({
+        clientId: '789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com',
+        plugin_name: "chat"
+    })
+})
+
+
+
+
    google.accounts.id.initialize(IdConfiguration)
 
   window.onload = function () {
