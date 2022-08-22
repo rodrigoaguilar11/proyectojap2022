@@ -70,3 +70,13 @@
    function onGoogleSignInFailure(res) {
        console.error('onFail', res);
    }
+//testing
+   google.accounts.id.initialize(IdConfiguration)
+
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: '789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com',
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.prompt();
+  };
