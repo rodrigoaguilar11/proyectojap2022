@@ -26,7 +26,30 @@ function showCategoriesList(array) {
 
 document.addEventListener("DOMContentLoaded", function (e) {
     //Inicio DOMContentLoaded
-    getJSONData(AUTOS).then(function (resultObj) {
+    let catID;
+    if (localStorage.getItem("catID") == "101") {
+        catID = AUTOS;
+    } else if (localStorage.getItem("catID") == "102") {
+        catID = JUGUETES;
+    } else if (localStorage.getItem("catID") == "103") {
+        catID = MUEBLES;
+    } else if (localStorage.getItem("catID") == "104") {
+        catID = HERRAMIENTAS;
+    } else if (localStorage.getItem("catID") == "105") {
+        catID = COMPUTADORAS;
+    } else if (localStorage.getItem("catID") == "106") {
+        catID = VESTIMENTA;
+    }else if (localStorage.getItem("catID") == "107") {
+        catID = ELECTRODOMESTICOS;
+    }else if (localStorage.getItem("catID") == "108") {
+        catID = DEPORTE;
+    }else if (localStorage.getItem("catID") == "109") {
+        catID = CELULARES;
+    }
+
+
+    //Asignar ID a la Lista
+    getJSONData(catID).then(function (resultObj) {
         if (resultObj.status === "ok") {
             showCategoriesList(resultObj.data.products);
         }

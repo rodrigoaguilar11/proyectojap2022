@@ -41,15 +41,13 @@ function setCatID(id) {
 }
 //Crea el string htmlContentToAppend y lo agrega como codigo en elemento del DOM #cat-list-container
 function showCategoriesList(){
-
-    let htmlContentToAppend = "";
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let category = currentCategoriesArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
-            htmlContentToAppend += `
+         document.getElementById("cat-list-container").innerHTML+= `
             <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
@@ -67,7 +65,6 @@ function showCategoriesList(){
             `
         }
 
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
