@@ -1,6 +1,7 @@
 let categoriesArray = [];
 
 function showCategoriesList(array) {
+    document.getElementById("cat-list-container").innerHTML="";
     for (let i = 0; i < array.length; i++) {
         document.getElementById("cat-list-container").innerHTML += `
         <div class="list-group-item list-group-item-action">
@@ -39,20 +40,63 @@ document.addEventListener("DOMContentLoaded", function (e) {
         catID = COMPUTADORAS;
     } else if (localStorage.getItem("catID") == "106") {
         catID = VESTIMENTA;
-    }else if (localStorage.getItem("catID") == "107") {
+    } else if (localStorage.getItem("catID") == "107") {
         catID = ELECTRODOMESTICOS;
-    }else if (localStorage.getItem("catID") == "108") {
+    } else if (localStorage.getItem("catID") == "108") {
         catID = DEPORTE;
-    }else if (localStorage.getItem("catID") == "109") {
+    } else if (localStorage.getItem("catID") == "109") {
         catID = CELULARES;
     }
-
-
     //Asignar ID a la Lista
+    let productos;
     getJSONData(catID).then(function (resultObj) {
         if (resultObj.status === "ok") {
             showCategoriesList(resultObj.data.products);
+            productos = (resultObj.data.products);
+            console.log(productos);
         }
     });
+    //Ordenadores
+
+    document.getElementById("sortAsc").addEventListener("click", () => {
+        console.log("sortAsc called");
+        productos.sort((o1, o2) => {
+            if (o1.cost < o2.cost) {
+                return 1;
+            } else if (o1.cost > o2.cost) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        showCategoriesList(productos);
+    })
+    document.getElementById("sortDesc").addEventListener("click", () => {
+        console.log("sortDesc called");
+        productos.sort((o1, o2) => {
+            if (o1.cost < o2.cost) {
+                return -1;
+            } else if (o1.cost > o2.cost) {
+                return 1;
+            } else {
+                return 0;
+            }    
+        });
+        showCategoriesList(productos);
+    })
+    document.getElementById("rel").addEventListener("click", () => {
+        console.log("rel called");
+        productos.sort((o1, o2) => {
+            if (o1.soldCount > o2.soldCount) {
+                return -1;
+            } else if (o1.soldCount < o2.soldCount) {
+                return 1;
+            } else {
+                return 0;
+            }    
+        });
+        showCategoriesList(productos);
+
+    })
     //Fin de DOMContentLoaded
 });
