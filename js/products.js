@@ -27,36 +27,29 @@ function showCategoriesList(array) {
 
 document.addEventListener("DOMContentLoaded", function (e) {
     //Inicio DOMContentLoaded
-    let catID;
+    let catID = localStorage.getItem("catID");
     let productsh1 = document.getElementById("productsh1");
-    if (localStorage.getItem("catID") == "101") {
-        catID = AUTOS;
+    if (catID == "101") {
         productsh1.innerHTML = "Autos";
-    } else if (localStorage.getItem("catID") == "102") {
-        catID = JUGUETES;
+    } else if (catID == "102") {
         productsh1.innerHTML = "Juguetes";
-    } else if (localStorage.getItem("catID") == "103") {
-        catID = MUEBLES;
+    } else if (catID == "103") {
         productsh1.innerHTML = "Muebles";
-    } else if (localStorage.getItem("catID") == "104") {
-        catID = HERRAMIENTAS;
+    } else if (catID == "104") {
         productsh1.innerHTML = "Herramientas";
-    } else if (localStorage.getItem("catID") == "105") {
-        catID = COMPUTADORAS;
+    } else if (catID == "105") {
         productsh1.innerHTML = "Computadoras";
-    } else if (localStorage.getItem("catID") == "106") {
-        catID = VESTIMENTA;
+    } else if (catID == "106") {
         productsh1.innerHTML = "Vestimenta";
-    } else if (localStorage.getItem("catID") == "107") {
-        catID = ELECTRODOMESTICOS;
+    } else if (catID == "107") {
         productsh1.innerHTML = "Electrodomesticos";
-    } else if (localStorage.getItem("catID") == "108") {
-        catID = DEPORTE;
+    } else if (catID == "108") {
         productsh1.innerHTML = "Deporte";
-    } else if (localStorage.getItem("catID") == "109") {
-        catID = CELULARES;
+    } else if (catID == "109") {
         productsh1.innerHTML = "Celulares";
     }
+    catID = PRODUCTS_URL + catID + EXT_TYPE;
+    
     //Asignar ID a la Lista
     let productos;
     getJSONData(catID).then(function (resultObj) {
