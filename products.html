@@ -31,14 +31,19 @@
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 101);'>Autos</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 102);'>Juguetes</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 103);'>Muebles</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 104);'>Herramientas</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 105);'>Computadoras</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 106);'>Vestimenta</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 107);'>Electrodomesticos</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 104);'>Herramientas</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 105);'>Computadoras</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 106);'>Vestimenta</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 107);'>Electrodomesticos</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 108);'>Deporte</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 109);'>Celulares</a>
               </div>
-            </div>            </li>
+            </div>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
@@ -55,42 +60,41 @@
       <h5>Aqui verás todos los productos de la categoria <span id="productsh1"></span></h5>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col text-end">
-          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-            <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>
-              $</label>
 
-            <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
 
-            <input type="radio" class="btn-check" name="options" id="rel" checked>
-            <label class="btn btn-light" for="rel"><i class="fas fa-sort-amount-down mr-1"></i>
-              Rel.</label>
-          </div>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
-            <div class="col">
-              <p class="font-weight-normal text-end my-2">Nombre</p>
+            <div class="col" style="display: flex;">
+              <label class="btn btn-light" for="filterSearch"> <i class="fa fa-search" aria-hidden="true" style="margin-right: .5em;"></i>
+            </label>
+             
+              <input class="form-control" type="search" placeholder="Nombre o Descripcion:" id="filterSearch">
             </div>
-            <div class="col">
-              <input class="form-control" type="search" placeholder="Nombre de Producto" id="filterSearch">
-            </div>
-            <div class="col">
+            <div class="col" style="max-width:10em;">
               <input class="form-control" type="number" placeholder="Precio min." id="filterMin">
             </div>
-            <div class="col">
+            <div class="col" style="max-width:10em;">
               <input class="form-control" type="number" placeholder="Precio máx." id="filterMax">
             </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-              </div>
+            <div class="col" style="max-width:5em;">
+              <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
+            </div>
+            <div class="col">
+              <input type="radio" class="btn-check" name="options" id="sortAsc">
+              <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>
+                $</label>
+
+              <input type="radio" class="btn-check" name="options" id="sortDesc">
+              <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
+
+              <input type="radio" class="btn-check" name="options" id="rel" checked>
+              <label class="btn btn-light" for="rel"><i class="fas fa-sort-amount-down mr-1"></i>
+                Rel.</label>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
         </div>

@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 //filtrado por nombre
 document.getElementById("filterSearch").addEventListener("input", () => {
     let search = document.getElementById("filterSearch").value;
-    let result = productos.filter(p => p.name.includes(search));
+    let result = productos.filter(p => p.name.includes(search) ||p.description.includes(search) );
     result.sort((a, b) => a.search - b.search);
     showCategoriesList(result);
 })
@@ -142,11 +142,3 @@ document.getElementById("filterSearch").addEventListener("input", () => {
     //Fin de DOMContentLoaded
 });
 
-//Ordenar lista
-function filtrar() {
-    let inicial = parseInt(document.getElementById("inicio").value);
-    let final = parseInt(document.getElementById("final").value);
-    let listaFiltrada = personas.filter(persona => persona.edad >= inicial && persona.edad <= final);
-    listaFiltrada.sort((ant, sig) => ant.edad - sig.edad);
-    mostrar(listaFiltrada);
-}
