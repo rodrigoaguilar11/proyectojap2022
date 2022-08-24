@@ -112,8 +112,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("rangeFilterCount").addEventListener("click", () => {
         let min = document.getElementById("filterMin").value;
         let max = document.getElementById("filterMax").value;
-
-        if (min == "") {
+        if (min == "" && max == "") {
+            min = "0";
+            max = "99999999999";
+        } else if (min == "") {
             min = "0";
         } else if (max == "") {
             max = "99999999999";
@@ -121,13 +123,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let result = productos.filter(p => p.cost >= min && p.cost <= max);
         result.sort((a, b) => a.cost - b.cost);
         showCategoriesList(result);
-
     })
+    
+//filtrado por nombre
+document.getElementById("filterSearch").addEventListener("input", () => {
+    let search = document.getElementById("filterSearch").value;
+    let result = productos.filter(p => p.name.includes(search));
+    result.sort((a, b) => a.search - b.search);
+    showCategoriesList(result);
+})
+//Boton de Limpiar
     document.getElementById("clearRangeFilter").addEventListener("click", () => {
         document.getElementById("filterMax").value = "";
         document.getElementById("filterMin").value = "";
+        document.getElementById("filterSearch").value = "";
+        showCategoriesList(productos);
     })
-
     //Fin de DOMContentLoaded
 });
 
