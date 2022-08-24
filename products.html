@@ -66,35 +66,29 @@
       <div class="row">
         <div class="col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
-            <div class="col" style="display: flex;">
-              <label class="btn btn-light" for="filterSearch"> <i class="fa fa-search" aria-hidden="true" style="margin-right: .5em;"></i>
-            </label>
-             
+            <div class="" style="display: flex;  margin-bottom: .3em;">
+              <label class="btn btn-light" for="filterSearch"> <i class="fa fa-search" aria-hidden="true"
+                  style="margin-right: .5em;"></i>
+              </label>
               <input class="form-control" type="search" placeholder="Nombre o Descripcion:" id="filterSearch">
             </div>
-            <div class="col" style="max-width:10em;">
-              <input class="form-control" type="number" placeholder="Precio min." id="filterMin">
-            </div>
-            <div class="col" style="max-width:10em;">
-              <input class="form-control" type="number" placeholder="Precio máx." id="filterMax">
-            </div>
-            <div class="col" style="max-width:5em;">
+            <div class="col" style="min-width:19em; display: flex; padding-left:0; padding-right: 0; margin-bottom:.3em">
+              <input class="form-control" type="number" placeholder="Precio min." id="filterMin"
+                style="margin-right: .3em;">
+              <input class="form-control" type="number" placeholder="Precio máx." id="filterMax"
+                style="margin-right: .3em;">
               <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
             </div>
             <div class="col">
               <input type="radio" class="btn-check" name="options" id="sortAsc">
               <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>
                 $</label>
-
               <input type="radio" class="btn-check" name="options" id="sortDesc">
               <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
-
               <input type="radio" class="btn-check" name="options" id="rel" checked>
               <label class="btn btn-light" for="rel"><i class="fas fa-sort-amount-down mr-1"></i>
                 Rel.</label>
-            </div>
-            <div class="col">
-              <button class="btn btn-danger" id="clearRangeFilter">Limpiar</button>
+              <button class="btn btn-danger" id="clearRangeFilter" >Limpiar</button>
             </div>
           </div>
         </div>
