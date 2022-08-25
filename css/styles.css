@@ -26,6 +26,18 @@
 .list_element:hover{
   color: rgb(2, 179, 255);
 }
+.coverimg{
+  height: 50vh;
+    padding: 5em inherit;
+    margin-bottom: 0;
+    background-color: #53C0FB;
+    background: url(../img/cover_back.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+    font-weight: bold;
+}
 /*Fin de mis estilos*/
 .jumbotron,
 .card-body,
