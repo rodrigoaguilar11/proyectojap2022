@@ -4,6 +4,23 @@
        document.getElementById("loginButton").addEventListener("click", () => {
            login();
        })
+
+       username.addEventListener("keydown", githubEnterDetect);
+function githubEnterDetect(e) {
+    switch (e.key) {
+        case "Enter":
+            login();
+            break;
+    }
+}
+password.addEventListener("keydown", githubEnterDetect);
+function githubEnterDetect(e) {
+    switch (e.key) {
+        case "Enter":
+            login();
+            break;
+    }
+}
        //Fin del DOMContenLoaded
    });
 
@@ -39,7 +56,10 @@
        }
    }
 
-   //Google Oauth
+   
+
+   //TEST
+//Google Oauth
    function onGoogleSignIn(googleUser) {
        alert("onGoogleSignIn called");
        let perfil = googleUser.name;
@@ -53,8 +73,6 @@
    function onGoogleSignInFailure(res) {
        console.error('onFail', res);
    }
-
-   //TEST
 
    function handleCredentialResponse(response) {
     // decodeJwtResponse() is a custom function defined by you
