@@ -23,9 +23,9 @@
             <a class="nav-link active" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <div class="contenedor" style="text-align:center;">
+            <div class="contenedor">
               <a class="nav-link" href="categories.html">Categorías</a>
-              <div class="products_list">
+              <div class="products_list" id="products_list">
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 101);'>Autos</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 102);'>Juguetes</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 103);'>Muebles</a>
@@ -49,7 +49,7 @@
     </div>
   </nav>
   <main>
-    <div class="jumbotron text-center"></div>
+    <div class="jumbotron text-center" ></div>
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">

@@ -28,29 +28,30 @@ function showCategoriesList(array) {
 document.addEventListener("DOMContentLoaded", function (e) {
     //Inicio DOMContentLoaded
     let catID = localStorage.getItem("catID");
-    let productsh1 = document.getElementById("productsh1");
+    let productsh1;
     if (catID == "101") {
-        productsh1.innerHTML = "Autos";
+        productsh1 = "Autos";
     } else if (catID == "102") {
-        productsh1.innerHTML = "Juguetes";
+        productsh1 = "Juguetes";
     } else if (catID == "103") {
-        productsh1.innerHTML = "Muebles";
+        productsh1 = "Muebles";
     } else if (catID == "104") {
-        productsh1.innerHTML = "Herramientas";
+        productsh1 = "Herramientas";
     } else if (catID == "105") {
-        productsh1.innerHTML = "Computadoras";
+        productsh1 = "Computadoras";
     } else if (catID == "106") {
-        productsh1.innerHTML = "Vestimenta";
+        productsh1 = "Vestimenta";
     } else if (catID == "107") {
-        productsh1.innerHTML = "Electrodomesticos";
+        productsh1 = "Electrodomesticos";
     } else if (catID == "108") {
-        productsh1.innerHTML = "Deporte";
+        productsh1 = "Deporte";
     } else if (catID == "109") {
-        productsh1.innerHTML = "Celulares";
+        productsh1 = "Celulares";
     }
+    document.getElementById("productsh1").innerHTML=productsh1;
     catID = PRODUCTS_URL + catID + EXT_TYPE;
     
-    //Asignar ID a la Lista
+    //Asignar Json a la Lista
     let productos;
     getJSONData(catID).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -59,8 +60,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             //console.log(productos);
         }
     });
-    //Ordenadores
-
+    //Botones Ordenadores
     document.getElementById("sortAsc").addEventListener("click", () => {
         console.log("sortAsc called");
         productos.sort((o1, o2) => {
@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showCategoriesList(productos);
     })
     document.getElementById("sortDesc").addEventListener("click", () => {
-        console.log("sortDesc called");
         productos.sort((o1, o2) => {
             if (o1.cost < o2.cost) {
                 return -1;
@@ -88,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showCategoriesList(productos);
     })
     document.getElementById("rel").addEventListener("click", () => {
-        console.log("rel called");
         productos.sort((o1, o2) => {
             if (o1.soldCount > o2.soldCount) {
                 return -1;

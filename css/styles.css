@@ -1,17 +1,20 @@
 /*mis estilos*/
 /* Muestra lista y elementos*/
 
-.contenedor:hover .products_list{
+.contenedor:hover #products_list{
   display: block;
-
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  margin:0;
 }
 /*Div de la Lista*/
 .products_list {  
   display: none;  
   flex-direction: column;
-  width: 35em;
 }
 .list_element {
+  text-align: left;
   background-color: #535252;
   float: left;
   color: rgba(255,255,255,.55);
@@ -19,6 +22,9 @@
   padding: 0.5rem 1rem;
   text-decoration: none;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.list_element:hover{
+  color: rgb(2, 179, 255);
 }
 /*Fin de mis estilos*/
 .jumbotron,
