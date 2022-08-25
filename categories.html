@@ -64,6 +64,8 @@
             <label class="btn btn-light" for="sortDesc">Z-A</label>
             <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
             <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            <button class="btn btn-danger" id="clearRangeFilter" style="margin-left:.3em ;">Limpiar</button>
+
           </div>
         </div>
       </div>
@@ -80,10 +82,7 @@
               <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
             <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-primary" id="rangeFilterCount" style="margin-right:.3em ;">Filtrar</button>
-                <button class="btn btn-danger" id="clearRangeFilter">Limpiar</button>
-              </div>
+                <button class="btn btn-primary" id="rangeFilterCount" >Filtrar</button>
             </div>
           </div>
         </div>
