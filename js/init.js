@@ -46,3 +46,9 @@ let getJSONData = function (url) {
     
   }
   document.getElementById("profile").innerHTML += '<span style= color:lightblue; font-size:30px; font-weight:bold;>' + localStorage.getItem("username") + '</span>';
+
+  function closeSesion(){
+          localStorage.clear();    
+          location.href = "login.html";
+
+  }

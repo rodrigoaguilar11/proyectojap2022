@@ -15,17 +15,22 @@
 
 </head>
 
-<body style="background-image: url(img/blanco.jpg);">
+<body class="main_backgound">
   <main class="mt-5">
     <div class="container text-center" style="width: 25em">
       <h1>Rodrigo Aguilar e_Commerce</h1>
       <img src="img/login.png" class="img-responsive" width="100%">
       <!--Inicio de Sesion Normal-->
       <h2 class="">Inicio de sesión</h2>
-      <p>Email</p>
+      <label for="username">
+        <p>Email o Nomre de Usuario</p>
+      </label>
       <input id="username" type="text" class="form-control" placeholder="Email">
       <div class="invalid-feedback" id="usernameError"></div>
-      <p>Contraseña</p>
+      <label for="password">
+        <p>Contraseña</p>
+      </label>
+
       <input id="password" type="password" class="form-control" placeholder="Contraseña">
       <div class="invalid-feedback" id="passwordError"></div>
       <br>
@@ -33,7 +38,7 @@
         Ingresar
       </button>
       <!--Google Oauth-->
-      <h2>Iniciar sesion con google</h2>
+      <h2>Iniciar Sesion con Google Identity</h2>
       <div id="g_id_onload" data-client_id="789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com"
         data-callback="handleCredentialResponse">
       </div>
@@ -44,9 +49,11 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p style="color:white">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+      <p class="pfooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
+          Programar</a> -
         2022</p>
-      <p style="color:white">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      <p class="pfooter">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.
+      </p>
   </footer>
 </body>
 

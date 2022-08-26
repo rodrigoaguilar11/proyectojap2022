@@ -30,20 +30,34 @@
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 101);'>Autos</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 102);'>Juguetes</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 103);'>Muebles</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 104);'>Herramientas</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 105);'>Computadoras</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 106);'>Vestimenta</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 107);'>Electrodomesticos</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 104);'>Herramientas</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 105);'>Computadoras</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 106);'>Vestimenta</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 107);'>Electrodomesticos</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 108);'>Deporte</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 109);'>Celulares</a>
               </div>
-            </div>            </li>
+            </div>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a id="profile" class="nav-link" href="my-profile.html">Perfil: </a>
-          </li>   
+            <a class="nav-link" href="cart.html">Carrito</a>
+          </li>
+          <li class="nav-item">
+            <div class="contenedor">
+              <a id="profile" class="nav-link" href="my-profile.html">Perfil: </a>
+              <div class="profilelist">
+                <a class="list_element" href="my-profile.html">Mi Perfil</a>
+                <a class="list_element" href="#" onclick='closeSesion()'>Cerrar Sesion</a>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -60,9 +74,11 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p style="color:white">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+      <p class="pfooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/"
+          target="_blank">Jovenes a Programar</a> -
         2022</p>
-      <p style="color:white">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      <p class="pfooter">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del
+        obligatorio.</p>
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">

@@ -11,7 +11,7 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body style="background-image: url(img/blanco.jpg);">
+<body class="main_backgound">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,19 +30,33 @@
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 101);'>Autos</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 102);'>Juguetes</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 103);'>Muebles</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 104);'>Herramientas</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 105);'>Computadoras</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 106);'>Vestimenta</a>
-                <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 107);'>Electrodomesticos</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 104);'>Herramientas</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 105);'>Computadoras</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 106);'>Vestimenta</a>
+                <a class="list_element" href="products.html"
+                  onclick='localStorage.setItem("catID", 107);'>Electrodomesticos</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 108);'>Deporte</a>
                 <a class="list_element" href="products.html" onclick='localStorage.setItem("catID", 109);'>Celulares</a>
               </div>
-            </div>            </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="sell.html">Vender</a>
+            </div>
           </li>
           <li class="nav-item">
-            <a id="profile" class="nav-link" href="my-profile.html">Perfil: </a>
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Carrito</a>
+          </li>
+          <li class="nav-item">
+            <div class="contenedor">
+              <a id="profile" class="nav-link" href="my-profile.html">Perfil: </a>
+              <div class="profilelist">
+                <a class="list_element" href="my-profile.html">Mi Perfil</a>
+                <a class="list_element" href="#" onclick='closeSesion()'>Cerrar Sesion</a>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -85,15 +99,16 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCostInput">Costo</label>
-              <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder="" required="" value="0"
-                min="0">
+              <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder=""
+                required="" value="0" min="0">
               <div class="invalid-feedback">
                 El costo debe ser mayor que 0.
               </div>
             </div>
             <div class="col-md-4 mb-3">
               <label for="productCurrency">Moneda</label>
-              <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency" required>
+              <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency"
+                required>
                 <option value="" hidden selected>Seleccionar moneda</option>
                 <option>Pesos Uruguayos (UYU)</option>
                 <option>Dólares (USD)</option>
@@ -123,8 +138,8 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCountInput">Cantidad en stock</label>
-              <input type="number" name="productCountInput" class="form-control" id="productCountInput"  required value="1"
-                min="0">
+              <input type="number" name="productCountInput" class="form-control" id="productCountInput" required
+                value="1" min="0">
               <div class="invalid-feedback">
                 La cantidad es requerida.
               </div>
@@ -186,9 +201,11 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p style="color:white">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+      <p class="pfooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
+          Programar</a> -
         2022</p>
-      <p style="color:white">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      <p class="pfooter">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.
+      </p>
   </footer>
 
   <div class="alert alert-primary-dismissible fade" id="alertResult" role="alert">

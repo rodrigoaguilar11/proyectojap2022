@@ -24,7 +24,10 @@ function showCategoriesList(array) {
         `;
     }
 }
-
+function setCatID(id) {
+    localStorage.setItem("catID", id);
+    window.location = "product-info.html"
+}
 document.addEventListener("DOMContentLoaded", function (e) {
     //Inicio DOMContentLoaded
     let catID = localStorage.getItem("catID");
@@ -62,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
     //Botones Ordenadores
     document.getElementById("sortAsc").addEventListener("click", () => {
-        console.log("sortAsc called");
         productos.sort((o1, o2) => {
             if (o1.cost < o2.cost) {
                 return 1;
