@@ -4,7 +4,7 @@ function showCategoriesList(array) {
     document.getElementById("cat-list-container").innerHTML = "";
     for (let i = 0; i < array.length; i++) {
         document.getElementById("cat-list-container").innerHTML += `
-        <div class="list-group-item list-group-item-action">
+        <div onclick="setProductID(${array[i].id})" class="list-group-item list-group-item-action cursor-active">
             <div class="row">
                 <div class="col-3">
                     <img src="` + array[i].image + `" alt="product image" class="img-thumbnail">
@@ -24,8 +24,8 @@ function showCategoriesList(array) {
         `;
     }
 }
-function setCatID(id) {
-    localStorage.setItem("catID", id);
+function setProductID(id) {
+    localStorage.setItem("productID", id);
     window.location = "product-info.html"
 }
 document.addEventListener("DOMContentLoaded", function (e) {
