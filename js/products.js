@@ -2,6 +2,7 @@ let categoriesArray = [];
 
 function showCategoriesList(array) {
     document.getElementById("cat-list-container").innerHTML = "";
+    if(array.length > 0) {
     for (let i = 0; i < array.length; i++) {
         document.getElementById("cat-list-container").innerHTML += `
         <div onclick="setProductID(${array[i].id})" class="list-group-item list-group-item-action cursor-active">
@@ -22,6 +23,15 @@ function showCategoriesList(array) {
             </div>
         </div>
         `;
+    }
+}else{
+    document.getElementById("cat-list-container").innerHTML += `
+    <div class="row list-group-item">
+        <div class="col">
+            <h4>`+ "Aun no hay productos para esta categoria" +`</h4> 
+        </div>
+    </div>
+`;
     }
 }
 function setProductID(id) {

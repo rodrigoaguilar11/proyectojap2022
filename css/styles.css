@@ -6,9 +6,9 @@
 .contenedor:hover #products_list{
   display: flex;
   position: fixed;
-  z-index: 100;
+  z-index: 2;
   margin:0;
- animation: aparecer .8s ease 0s forwards;
+  animation: aparecer .8s ease 0s forwards;
 }
 /*Div de la Lista*/
 .products_list {  
@@ -53,6 +53,8 @@
 }
 
 .profilelist{
+  z-index: 100;
+
   display: none;  
   flex-direction: column;
 }
