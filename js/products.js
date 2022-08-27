@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         productsh1 = "Celulares";
     }
     document.getElementById("productsh1").innerHTML=productsh1;
+    document.getElementById("productCategory").innerHTML=productsh1;
+
     catID = PRODUCTS_URL + catID + EXT_TYPE;
     
     //Asignar Json a la Lista
