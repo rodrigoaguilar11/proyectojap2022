@@ -1,11 +1,10 @@
-
 const productID = localStorage.getItem("productID");
 let productInfo = PRODUCT_INFO_URL + productID + EXT_TYPE;
 let productComments = PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE;
 
 console.log(productComments);
 
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function (e) {
     let description;
     getJSONData(productInfo).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -21,11 +20,11 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             console.log(comments);
 
-            showComments(comments); 
+            showComments(comments);
         }
     });
 
-   
+
 })
 
 function showProductInfo(array) {
@@ -50,14 +49,17 @@ function showProductInfo(array) {
         product = "Deporte";
     } else if (catID == "109") {
         product = "Celulares";
-    }    
-        document.getElementById("cat-list-container").innerHTML += `
-        <p><a href="categories.html">Categorías</a> &lt; <a href="products.html">${product}</a></p>
+    }
+    document.getElementById("cat-list-container").innerHTML += `
+<div class="col-6 list-group-item justify-content-between" style="border-radius: 1em;">
+     <p><a href="categories.html">Categorías</a> &lt; <a href="products.html">${product}</a> &lt; ${array.name}</p>
+</div>
+<br>
 <div class="col-12 list-group-item justify-content-between">
-            <h4>` + "Nombre: " + array.name + `</h4> 
-            <h4>` + "Precio: " + array.currency + " " + array.cost + `</h4> 
-            <p> ` + "Descripcion: " + array.description + `</p> 
-            <p>` + "Cantidad de Vendidos: " + array.soldCount + `</p> 
+     <h4>` + "Nombre: " + array.name + `</h4> 
+     <h4>` + "Precio: " + array.currency + " " + array.cost + `</h4> 
+     <p> ` + "Descripcion: " + array.description + `</p> 
+     <p>` + "Cantidad de Vendidos: " + array.soldCount + `</p> 
 </div>
 <div class="col-6">
     <div class="d-flex w-100 justify-content-between">
@@ -72,16 +74,16 @@ function showProductInfo(array) {
 
 
         `;
-        document.getElementById("relatedProducts").innerHTML += `
+    document.getElementById("relatedProducts").innerHTML += `
     <div class="col">
         <div class="d-flex w-100 justify-content-between">
               <div onclick="setProductID(${array.relatedProducts[0].id})" class="list-group-item list-group-item-action cursor-active">
-                <h4>` + array.relatedProducts[0].name +`</h4> 
+                <h4>` + array.relatedProducts[0].name + `</h4> 
                 <img src="` + array.relatedProducts[0].image + `" alt="product image" class="img-thumbnail">
               </div>
 
               <div onclick="setProductID(${array.relatedProducts[1].id})" class="list-group-item list-group-item-action cursor-active">
-                <h4>` + array.relatedProducts[1].name +`</h4> 
+                <h4>` + array.relatedProducts[1].name + `</h4> 
                 <img src="` + array.relatedProducts[1].image + `" alt="product image" class="img-thumbnail">
               </div>
         </div>         
@@ -89,32 +91,45 @@ function showProductInfo(array) {
         
         `;
 }
+
 function setProductID(id) {
     localStorage.setItem("productID", id);
     window.location = "product-info.html"
 }
 
 function showComments(array) {
-if (array.length > 0){
-    for (let i = 0; i < array.length; i++) {
-        document.getElementById("comments").innerHTML += `
+    if (array.length > 0) {
+        for (let i = 0; i < array.length; i++) {
+            let stars;
+            if (array[i].score == 1) {
+           stars="img/stars-1.jpg";
+            }else if(array[i].score == 2) {
+                stars="img/stars-2.jpg";
+            }else if(array[i].score == 3) {
+                stars="img/stars-3.jpg";
+            }else if(array[i].score == 4) {
+                stars="img/stars-4.jpg";
+            }else if(array[i].score == 5) {
+                stars="img/stars-5.jpg";
+            }
+            document.getElementById("comments").innerHTML += `
 <div class="row list-group-item">
     <div class="col">
-        <h4>` + array[i].user +`</h4> 
+        <h4>` + array[i].user + `</h4> 
         <h5> ` + array[i].description + `</h5> 
-        <h7>` + "Puntuacion: " + array[i].score + `</h7> 
-        <p>` + array[i].dateTime +`</p> 
+        <img src="`+stars+`" style="width:15em"></img>
+        <p>` + array[i].dateTime + `</p> 
     </div>
 </div>
         `;
-    }}else{
+        }
+    } else {
         document.getElementById("comments").innerHTML += `
         <div class="row list-group-item">
             <div class="col">
-                <h4>`+ "Aun no hay comentarios para esta publicación" +`</h4> 
+                <h4>` + "Aun no hay comentarios para esta publicación" + `</h4> 
             </div>
         </div>
     `;
     }
 }
-
