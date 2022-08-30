@@ -2,8 +2,6 @@ const productID = localStorage.getItem("productID");
 let productInfo = PRODUCT_INFO_URL + productID + EXT_TYPE;
 let productComments = PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE;
 
-console.log(productComments);
-
 document.addEventListener("DOMContentLoaded", function (e) {
     let description;
     getJSONData(productInfo).then(function (resultObj) {
@@ -17,20 +15,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(productComments).then(function (resultObj) {
         if (resultObj.status === "ok") {
             comments = (resultObj.data);
-
-            console.log(comments);
-
             showComments(comments);
         }
     });
 
+ 
 
 })
 
 function showProductInfo(array) {
     let catID = localStorage.getItem("catID");
     let product;
-    let href;
     if (catID == "101") {
         product = "Autos";
     } else if (catID == "102") {
@@ -63,12 +58,12 @@ function showProductInfo(array) {
 </div>
 <div class="col-6">
     <div class="d-flex w-100 justify-content-between">
-           <img src="` + array.images[0] + `" alt="product image" class="img-thumbnail">
-           <img src="` + array.images[1] + `" alt="product image" class="img-thumbnail">
+           <img id="img1" src="` + array.images[0] + `" alt="product image" class="img-thumbnail">
+           <img id="img2" src="` + array.images[1] + `" alt="product image" class="img-thumbnail">
     </div>   
     <div class="d-flex w-100 justify-content-between">
-           <img src="` + array.images[2] + `" alt="product image" class="img-thumbnail">
-           <img src="` + array.images[3] + `" alt="product image" class="img-thumbnail">
+           <img id="img3" src="` + array.images[2] + `" alt="product image" class="img-thumbnail">
+           <img id="img4" src="` + array.images[3] + `" alt="product image" class="img-thumbnail">
     </div>   
 </div>   
 
@@ -117,7 +112,7 @@ function showComments(array) {
     <div class="col">
         <h4>` + array[i].user + `</h4> 
         <h5> ` + array[i].description + `</h5> 
-        <img src="`+stars+`" style="width:15em"></img>
+        <img src="`+stars+`" style="width:13em"></img>
         <p>` + array[i].dateTime + `</p> 
     </div>
 </div>
@@ -132,4 +127,14 @@ function showComments(array) {
         </div>
     `;
     }
+}
+
+function imgZoom(id){
+   const image = document.getElementById(id)
+ if (image.classList.contains("imgInfoBig")){
+    image.classList.remove('imgInfoBig');
+ }else{
+    image.classList.add('imgInfoBig');
+ }
+   
 }
