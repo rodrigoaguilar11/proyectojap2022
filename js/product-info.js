@@ -1,29 +1,32 @@
 const productID = localStorage.getItem("productID");
 let productInfo = PRODUCT_INFO_URL + productID + EXT_TYPE;
 let productComments = PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE;
+let productName = document.getElementById("productName");
 
+let id,pname,unitCost,currency,image;
 document.addEventListener("DOMContentLoaded", function (e) {
-    let description;
     getJSONData(productInfo).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            description = (resultObj.data);
-            showProductInfo(description);
+            showProductInfo(resultObj.data);
         }
     });
 
-    let comments;
     getJSONData(productComments).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            comments = (resultObj.data);
-            showComments(comments);
+            showComments(resultObj.data);
         }
     });
 
- 
-
+    document.getElementById("addToCart").addEventListener("click", () => {
+        let count = document.getElementById("count").value;
+        addItemToCart(count);
+    })
+    //End of DOMContentLoaded
 })
 
 function showProductInfo(array) {
+    productName.innerHTML = array.name;
+
     let catID = localStorage.getItem("catID");
     let product;
     if (catID == "101") {
@@ -45,11 +48,15 @@ function showProductInfo(array) {
     } else if (catID == "109") {
         product = "Celulares";
     }
+    document.getElementById("productsBar").innerHTML = product;
+    document.getElementById("product-infoBar").innerHTML = array.name;
+//Variables used in addItemToCart
+id = array.id
+pname = array.name;
+unitCost = array.cost;
+currency = array.currency;
+image = array.images[0];
     document.getElementById("cat-list-container").innerHTML += `
-<div class="col-6 list-group-item justify-content-between" style="border-radius: 1em;">
-     <p><a href="categories.html">Categorías</a> &lt; <a href="products.html">${product}</a> &lt; ${array.name}</p>
-</div>
-<br>
 <div class="col-12 list-group-item justify-content-between">
      <h4>` + "Nombre: " + array.name + `</h4> 
      <h4>` + "Precio: " + array.currency + " " + array.cost + `</h4> 
@@ -66,8 +73,6 @@ function showProductInfo(array) {
            <img id="img4" src="` + array.images[3] + `" alt="product image" class="img-thumbnail">
     </div>   
 </div>   
-
-
         `;
     document.getElementById("relatedProducts").innerHTML += `
     <div class="col">
@@ -97,22 +102,22 @@ function showComments(array) {
         for (let i = 0; i < array.length; i++) {
             let stars;
             if (array[i].score == 1) {
-           stars="img/stars-1.jpg";
-            }else if(array[i].score == 2) {
-                stars="img/stars-2.jpg";
-            }else if(array[i].score == 3) {
-                stars="img/stars-3.jpg";
-            }else if(array[i].score == 4) {
-                stars="img/stars-4.jpg";
-            }else if(array[i].score == 5) {
-                stars="img/stars-5.jpg";
+                stars = "img/stars-1.jpg";
+            } else if (array[i].score == 2) {
+                stars = "img/stars-2.jpg";
+            } else if (array[i].score == 3) {
+                stars = "img/stars-3.jpg";
+            } else if (array[i].score == 4) {
+                stars = "img/stars-4.jpg";
+            } else if (array[i].score == 5) {
+                stars = "img/stars-5.jpg";
             }
             document.getElementById("comments").innerHTML += `
 <div class="row list-group-item">
     <div class="col">
         <h4>` + array[i].user + `</h4> 
         <h5> ` + array[i].description + `</h5> 
-        <img src="`+stars+`" style="width:13em"></img>
+        <img src="` + stars + `" style="width:13em"></img>
         <p>` + array[i].dateTime + `</p> 
     </div>
 </div>
@@ -128,13 +133,29 @@ function showComments(array) {
     `;
     }
 }
+//Add item to cart______________________________________________________
+function addItemToCart(count) {
+if(localStorage.getItem("cart").includes(id&&pname&&image&&unitCost)){
+alert("si incluye")
 
-function imgZoom(id){
-   const image = document.getElementById(id)
- if (image.classList.contains("imgInfoBig")){
-    image.classList.remove('imgInfoBig');
- }else{
-    image.classList.add('imgInfoBig');
- }
-   
+}else{
+
+    let product = {
+                   "user":25801,
+                   "articles":[
+                           {
+                                "id":id,
+                                "name":pname,
+                                "count":count,
+                                "unitCost":unitCost,
+                                "currency":currency,
+                                "image":image
+                           }
+        ]
+    };
+    let string = JSON.parse(localStorage.getItem("cart"));
+    string.push(product);
+    localStorage.setItem("cart", JSON.stringify(string));
+    checkCart()
+}
 }

@@ -6,28 +6,39 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
-function sortCategories(criteria, array){
+function sortCategories(criteria, array) {
     let result = [];
-    if (criteria === ORDER_ASC_BY_NAME)
-    {
-        result = array.sort(function(a, b) {
-            if ( a.name < b.name ){ return -1; }
-            if ( a.name > b.name ){ return 1; }
+    if (criteria === ORDER_ASC_BY_NAME) {
+        result = array.sort(function (a, b) {
+            if (a.name < b.name) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
             return 0;
         });
-    }else if (criteria === ORDER_DESC_BY_NAME){
-        result = array.sort(function(a, b) {
-            if ( a.name > b.name ){ return -1; }
-            if ( a.name < b.name ){ return 1; }
+    } else if (criteria === ORDER_DESC_BY_NAME) {
+        result = array.sort(function (a, b) {
+            if (a.name > b.name) {
+                return -1;
+            }
+            if (a.name < b.name) {
+                return 1;
+            }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_COUNT){
-        result = array.sort(function(a, b) {
+    } else if (criteria === ORDER_BY_PROD_COUNT) {
+        result = array.sort(function (a, b) {
             let aCount = parseInt(a.productCount);
             let bCount = parseInt(b.productCount);
 
-            if ( aCount > bCount ){ return -1; }
-            if ( aCount < bCount ){ return 1; }
+            if (aCount > bCount) {
+                return -1;
+            }
+            if (aCount < bCount) {
+                return 1;
+            }
             return 0;
         });
     }
@@ -40,14 +51,16 @@ function setCatID(id) {
     window.location = "products.html"
 }
 //Crea el string htmlContentToAppend y lo agrega como codigo en elemento del DOM #cat-list-container
-function showCategoriesList(){
-    for(let i = 0; i < currentCategoriesArray.length; i++){
+function showCategoriesList() {
+    document.getElementById("cat-list-container").innerHTML =""
+
+    for (let i = 0; i < currentCategoriesArray.length; i++) {
         let category = currentCategoriesArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))) {
 
-         document.getElementById("cat-list-container").innerHTML+= `
+            document.getElementById("cat-list-container").innerHTML += `
             <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
@@ -66,45 +79,38 @@ function showCategoriesList(){
     }
 }
 
-function sortAndShowCategories(sortCriteria, categoriesArray){
-//currentSortCriteria = sortCriteria    
-    currentSortCriteria = sortCriteria; //actualmente son undefined
-//currentCategoriesArray = categoriesArray solo si el mismo tiene datos.
-    if(categoriesArray != undefined){
+function sortAndShowCategories(sortCriteria, categoriesArray) {
+    currentSortCriteria = sortCriteria;
+    if (categoriesArray != undefined) {
         currentCategoriesArray = categoriesArray;
     }
-//currentCategoriesArray se reasigna aplicando el filtro sortCategories
+   
     currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
 
-    //Muestro las categorías ordenadas
     showCategoriesList();
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(CATEGORIES_URL).then(function(resultObj){
-        if (resultObj.status === "ok"){
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(CATEGORIES_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
             currentCategoriesArray = resultObj.data
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
-//Ejecuta sortAndShowCategories con atributo ORDER_ASC_BY_NAME al clickear sortAsc
-    document.getElementById("sortAsc").addEventListener("click", function(){
+    document.getElementById("sortAsc").addEventListener("click", function () {
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });
 
-    document.getElementById("sortDesc").addEventListener("click", function(){
+    document.getElementById("sortDesc").addEventListener("click", function () {
         sortAndShowCategories(ORDER_DESC_BY_NAME);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
+    document.getElementById("sortByCount").addEventListener("click", function () {
         sortAndShowCategories(ORDER_BY_PROD_COUNT);
     });
 
-    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("clearRangeFilter").addEventListener("click", function () {
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
 
@@ -114,23 +120,21 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+    document.getElementById("rangeFilterCount").addEventListener("click", function () {
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
             minCount = parseInt(minCount);
-        }
-        else{
+        } else {
             minCount = undefined;
         }
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
             maxCount = parseInt(maxCount);
-        }
-        else{
+        } else {
             maxCount = undefined;
         }
 

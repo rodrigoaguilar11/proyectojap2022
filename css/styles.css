@@ -1,14 +1,12 @@
-.imgInfoBig {
-  z-index: 1;
-  width: 150%;
-  height: 150%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 
 /*mis estilos*/
+
 .main_backgound{
   background: url(../img/blanco.jpg);
+  background-size: cover;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 /* Muestra lista y elementos*/
 .contenedor:hover #products_list{

@@ -1,6 +1,6 @@
 let categoriesArray = [];
 
-function showCategoriesList(array) {
+function showProductsList(array) {
     document.getElementById("cat-list-container").innerHTML = "";
     if(array.length > 0) {
     for (let i = 0; i < array.length; i++) {
@@ -19,7 +19,6 @@ function showCategoriesList(array) {
                         <p> ` + array[i].soldCount + ` vendidos </p> 
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     let productos;
     getJSONData(catID).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            showCategoriesList(resultObj.data.products);
+            showProductsList(resultObj.data.products);
             productos = (resultObj.data.products);
             //console.log(productos);
         }
@@ -87,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 return 0;
             }
         });
-        showCategoriesList(productos);
+        showProductsList(productos);
     })
     document.getElementById("sortDesc").addEventListener("click", () => {
         productos.sort((o1, o2) => {
@@ -99,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 return 0;
             }
         });
-        showCategoriesList(productos);
+        showProductsList(productos);
     })
     document.getElementById("rel").addEventListener("click", () => {
         productos.sort((o1, o2) => {
@@ -111,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 return 0;
             }
         });
-        showCategoriesList(productos);
+        showProductsList(productos);
 
     })
     //Filtro por precio
@@ -128,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
         let result = productos.filter(p => p.cost >= min && p.cost <= max);
         result.sort((a, b) => a.cost - b.cost);
-        showCategoriesList(result);
+        showProductsList(result);
     })
     
 //filtrado por nombre
@@ -136,14 +135,14 @@ document.getElementById("filterSearch").addEventListener("input", () => {
     let search = document.getElementById("filterSearch").value;
     let result = productos.filter(p => p.name.includes(search) ||p.description.includes(search) );
     result.sort((a, b) => a.search - b.search);
-    showCategoriesList(result);
+    showProductsList(result);
 })
 //Boton de Limpiar
     document.getElementById("clearRangeFilter").addEventListener("click", () => {
         document.getElementById("filterMax").value = "";
         document.getElementById("filterMin").value = "";
         document.getElementById("filterSearch").value = "";
-        showCategoriesList(productos);
+        showProductsList(productos);
     })
     //Fin de DOMContentLoaded
 });

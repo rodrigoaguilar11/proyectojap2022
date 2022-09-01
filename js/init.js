@@ -1,10 +1,10 @@
-const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";//Json de Categories html
-const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";//Has publicad con exito
+const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json"; //Json de Categories html
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";
 const PRODUCT_INFO_URL = "https://japceibal.github.io/emercado-api/products/";
 const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/products_comments/";
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
-const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
+const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json"; //¡Has comprado con éxito!
+const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json"; //Has publicado con exito
 const EXT_TYPE = ".json";
 
 let showSpinner = function () {
@@ -41,14 +41,28 @@ let getJSONData = function (url) {
 }
 
 
-  if (localStorage.getItem("username") == undefined || localStorage.getItem("password") == undefined) {
-    location.href = "login.html";
-    
-  }
-  document.getElementById("profile").innerHTML += '<span style= color:lightblue; font-size:30px; font-weight:bold;>' + localStorage.getItem("username") + '</span>';
+if (localStorage.getItem("username") == undefined || localStorage.getItem("password") == undefined) {
+  location.href = "login.html";
 
-  function closeSesion(){
-          localStorage.clear();    
-          location.href = "login.html";
+}
+document.getElementById("profile").innerHTML += '<span style= color:lightblue; font-size:30px; font-weight:bold;>' + localStorage.getItem("username") + '</span>';
 
+function closeSesion() {
+  localStorage.clear();
+  location.href = "login.html";
+
+}
+document.addEventListener("DOMContentLoaded", function () {
+  checkCart()
+
+  
+  //Emd of DOMContentLoaded
+});
+
+//Create cart array key on localStorage if no exist
+function checkCart() {
+  if (localStorage.getItem("cart") === null) {
+    localStorage.setItem("cart", JSON.stringify([]));
   }
+  document.getElementById("cartNumber").innerHTML = JSON.parse(localStorage.getItem("cart")).length;
+}
