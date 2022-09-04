@@ -1,5 +1,3 @@
-let categoriesArray = [];
-
 function showProductsList(array) {
     document.getElementById("cat-list-container").innerHTML = "";
     if (array.length > 0) {

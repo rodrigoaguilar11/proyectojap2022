@@ -55,8 +55,7 @@ function closeSesion() {
 document.addEventListener("DOMContentLoaded", function () {
   checkCart()
 
-  
-  //Emd of DOMContentLoaded
+  //End of DOMContentLoaded
 });
 
 //Create cart array key on localStorage if no exist
