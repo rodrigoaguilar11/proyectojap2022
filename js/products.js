@@ -2,9 +2,9 @@ let categoriesArray = [];
 
 function showProductsList(array) {
     document.getElementById("cat-list-container").innerHTML = "";
-    if(array.length > 0) {
-    for (let i = 0; i < array.length; i++) {
-        document.getElementById("cat-list-container").innerHTML += `
+    if (array.length > 0) {
+        for (let i = 0; i < array.length; i++) {
+            document.getElementById("cat-list-container").innerHTML += `
         <div onclick="setProductID(${array[i].id})" class="list-group-item list-group-item-action cursor-active">
             <div class="row">
                 <div class="col-3">
@@ -13,7 +13,7 @@ function showProductsList(array) {
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="mb-1">
-                        <h4>` + array[i].name +`</h4> 
+                        <h4>` + array[i].name + `</h4> 
                         <h4>` + array[i].currency + " " + array[i].cost + `</h4> 
                         <p> ` + array[i].description + `</p> 
                         <p> ` + array[i].soldCount + ` vendidos </p> 
@@ -23,58 +23,38 @@ function showProductsList(array) {
             </div>
         </div>
         `;
-    }
-}else{
-    document.getElementById("cat-list-container").innerHTML += `
+        }
+    } else {
+        document.getElementById("cat-list-container").innerHTML += `
     <div class="row list-group-item">
         <div class="col">
-            <h4>`+ "Aun no hay productos para esta categoria" +`</h4> 
+            <h4>` + "Aun no hay productos para esta categoria" + `</h4> 
         </div>
     </div>
 `;
     }
 }
+
 function setProductID(id) {
     localStorage.setItem("productID", id);
     window.location = "product-info.html"
 }
 document.addEventListener("DOMContentLoaded", function (e) {
     //Inicio DOMContentLoaded
-    let catID = localStorage.getItem("catID");
-    let productsh1;
-    if (catID == "101") {
-        productsh1 = "Autos";
-    } else if (catID == "102") {
-        productsh1 = "Juguetes";
-    } else if (catID == "103") {
-        productsh1 = "Muebles";
-    } else if (catID == "104") {
-        productsh1 = "Herramientas";
-    } else if (catID == "105") {
-        productsh1 = "Computadoras";
-    } else if (catID == "106") {
-        productsh1 = "Vestimenta";
-    } else if (catID == "107") {
-        productsh1 = "Electrodomesticos";
-    } else if (catID == "108") {
-        productsh1 = "Deporte";
-    } else if (catID == "109") {
-        productsh1 = "Celulares";
-    }
-    document.getElementById("productsh1").innerHTML=productsh1;
-    document.getElementById("productCategory").innerHTML=productsh1;
 
-    catID = PRODUCTS_URL + catID + EXT_TYPE;
-    
+    let catID = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
     //Asignar Json a la Lista
-    let productos;
+    let productos, catName;
     getJSONData(catID).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            showProductsList(resultObj.data.products);
             productos = (resultObj.data.products);
-            //console.log(productos);
+            showProductsList(productos);
+            catName = (resultObj.data.catName);
+            document.getElementById("productsh1").innerHTML = catName;
+            document.getElementById("productCategory").innerHTML = catName;
         }
     });
+
     //Botones Ordenadores
     document.getElementById("sortAsc").addEventListener("click", () => {
         productos.sort((o1, o2) => {
@@ -129,21 +109,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
         result.sort((a, b) => a.cost - b.cost);
         showProductsList(result);
     })
-    
-//filtrado por nombre
-document.getElementById("filterSearch").addEventListener("input", () => {
-    let search = document.getElementById("filterSearch").value;
-    let result = productos.filter(p => p.name.includes(search) ||p.description.includes(search) );
-    result.sort((a, b) => a.search - b.search);
-    showProductsList(result);
-})
-//Boton de Limpiar
+
+    //filtrado por nombre
+    document.getElementById("filterSearch").addEventListener("input", () => {
+        let search = document.getElementById("filterSearch").value;
+        let result = productos.filter(p => p.name.includes(search) || p.description.includes(search));
+        result.sort((a, b) => a.search - b.search);
+        showProductsList(result);
+    })
+    //Boton de Limpiar
     document.getElementById("clearRangeFilter").addEventListener("click", () => {
-        document.getElementById("filterMax").value = "";
-        document.getElementById("filterMin").value = "";
-        document.getElementById("filterSearch").value = "";
+        document.getElementById("filterMax").value = null;
+        document.getElementById("filterMin").value = null;
+        document.getElementById("filterSearch").value = null;
         showProductsList(productos);
     })
     //Fin de DOMContentLoaded
 });
-

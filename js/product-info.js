@@ -3,7 +3,7 @@ let productInfo = PRODUCT_INFO_URL + productID + EXT_TYPE;
 let productComments = PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE;
 let productName = document.getElementById("productName");
 
-let id,pname,unitCost,currency,image;
+let id, pname, unitCost, currency, image;
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(productInfo).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     document.getElementById("addToCart").addEventListener("click", () => {
-        let count = document.getElementById("count").value;
-        addItemToCart(count);
+        addItemToCart();
     })
     //End of DOMContentLoaded
 })
@@ -50,12 +49,12 @@ function showProductInfo(array) {
     }
     document.getElementById("productsBar").innerHTML = product;
     document.getElementById("product-infoBar").innerHTML = array.name;
-//Variables used in addItemToCart
-id = array.id
-pname = array.name;
-unitCost = array.cost;
-currency = array.currency;
-image = array.images[0];
+    //Variables used in addItemToCart
+    id = array.id
+    pname = array.name;
+    unitCost = array.cost;
+    currency = array.currency;
+    image = array.images[0];
     document.getElementById("cat-list-container").innerHTML += `
 <div class="col-12 list-group-item justify-content-between">
      <h4>` + "Nombre: " + array.name + `</h4> 
@@ -134,28 +133,29 @@ function showComments(array) {
     }
 }
 //Add item to cart______________________________________________________
-function addItemToCart(count) {
-if(localStorage.getItem("cart").includes(id&&pname&&image&&unitCost)){
-alert("si incluye")
+function addItemToCart() {
+    let count = document.getElementById("count").value;
+    if (localStorage.getItem("cart").includes(id && pname && image && unitCost)) {
+        alert("si incluye")
+        let addCount = JSON.parse(localStorage.getItem("cart"));
 
-}else{
+        console.log(addCount);
+    } else {
 
-    let product = {
-                   "user":25801,
-                   "articles":[
-                           {
-                                "id":id,
-                                "name":pname,
-                                "count":count,
-                                "unitCost":unitCost,
-                                "currency":currency,
-                                "image":image
-                           }
-        ]
-    };
-    let string = JSON.parse(localStorage.getItem("cart"));
-    string.push(product);
-    localStorage.setItem("cart", JSON.stringify(string));
-    checkCart()
-}
+        let product = {
+            "articles":[
+                {
+                "id": id,
+                "name": pname,
+                "count": count,
+                "unitCost": unitCost,
+                "currency": currency,
+                "image": image
+            }]
+        };
+        let string = JSON.parse(localStorage.getItem("cart"));
+        string.push(product);
+        localStorage.setItem("cart", JSON.stringify(string));
+        checkCart()
+    }
 }
