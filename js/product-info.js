@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("addToCart").addEventListener("click", () => {
         addItemToCart();
     })
+
+    document.getElementById("sendComment").addEventListener("click", () => {
+        addComment();
+    })
+
     //End of DOMContentLoaded
 })
 
@@ -56,13 +61,13 @@ function showProductInfo(array) {
     currency = array.currency;
     image = array.images[0];
     document.getElementById("cat-list-container").innerHTML += `
-<div class="col-12 list-group-item justify-content-between">
+<div class="col-10 list-group-item justify-content-between">
      <h4>` + "Nombre: " + array.name + `</h4> 
      <h4>` + "Precio: " + array.currency + " " + array.cost + `</h4> 
      <p> ` + "Descripcion: " + array.description + `</p> 
      <p>` + "Cantidad de Vendidos: " + array.soldCount + `</p> 
 </div>
-<div class="col-6">
+<div class="col-5">
     <div class="d-flex w-100 justify-content-between">
            <img id="img1" src="` + array.images[0] + `" alt="product image" class="img-thumbnail">
            <img id="img2" src="` + array.images[1] + `" alt="product image" class="img-thumbnail">
@@ -74,7 +79,7 @@ function showProductInfo(array) {
 </div>   
         `;
     document.getElementById("relatedProducts").innerHTML += `
-    <div class="col">
+    <div class="col-6">
         <div class="d-flex w-100 justify-content-between">
               <div onclick="setProductID(${array.relatedProducts[0].id})" class="list-group-item list-group-item-action cursor-active">
                 <h4>` + array.relatedProducts[0].name + `</h4> 
@@ -87,7 +92,7 @@ function showProductInfo(array) {
               </div>
         </div>         
     </div>  
-        
+        <br>
         `;
 }
 
@@ -112,22 +117,22 @@ function showComments(array) {
                 stars = "img/stars-5.jpg";
             }
             document.getElementById("comments").innerHTML += `
-<div class="row list-group-item">
+<div class="col-10 row list-group-item">
     <div class="col">
-        <h4>` + array[i].user + `</h4> 
-        <h5> ` + array[i].description + `</h5> 
-        <img src="` + stars + `" style="width:13em"></img>
+    <div class="d-flex w-100 justify-content-between">
+    <img src="` + stars + `" style="width:13em"></img>
+        <h4>` + array[i].user + `</h4>     
         <p>` + array[i].dateTime + `</p> 
+    </div>
+        <h5> ` + array[i].description + `</h5> 
     </div>
 </div>
         `;
         }
     } else {
         document.getElementById("comments").innerHTML += `
-        <div class="row list-group-item">
-            <div class="col">
+        <div class="col-10 row list-group-item">
                 <h4>` + "Aun no hay comentarios para esta publicación" + `</h4> 
-            </div>
         </div>
     `;
     }
@@ -143,8 +148,7 @@ function addItemToCart() {
     } else {
 
         let product = {
-            "articles":[
-                {
+            "articles": [{
                 "id": id,
                 "name": pname,
                 "count": count,
@@ -158,4 +162,61 @@ function addItemToCart() {
         localStorage.setItem("cart", JSON.stringify(string));
         checkCart()
     }
+}
+
+function addComment() {
+//Comentario
+    let comment = document.getElementById("comment").value;
+//Puntuacion
+    let puntuationInput = document.getElementById("puntuation");
+    let puntuation = puntuationInput.selectedOptions[0].value;
+console.log("Puntuation", puntuation);
+    let estrellas;
+    if (puntuation == 1) {
+        estrellas = "img/stars-1.jpg";
+    } else if (puntuation == 2) {
+        estrellas = "img/stars-2.jpg";
+    } else if (puntuation== 3) {
+        estrellas = "img/stars-3.jpg";
+    } else if (puntuation == 4) {
+        estrellas = "img/stars-4.jpg";
+    } else if (puntuation == 5) {
+        estrellas = "img/stars-5.jpg";
+    }
+//Fecha
+    let today = new Date(),
+        day = today.getDate(),
+        month = today.getMonth() + 1,
+        year = today.getFullYear(),
+        hour = today.getHours(),
+        minutes = today.getMinutes(),
+        seconds = today.getSeconds();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if(seconds <10){
+        seconds = "0" + seconds;
+       }
+    let actualDate = (`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
+    console.log(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
+
+    
+    document.getElementById("comments").innerHTML += `
+<div class="col-10 row list-group-item">
+    <div class="col">
+    <div class="d-flex w-100 justify-content-between">
+    <img src="` + estrellas + `" style="width:13em"></img>
+        <h4>` + localStorage.getItem("username") + `</h4>     
+        <p>` + actualDate + `</p> 
+    </div>
+        <h5> ` + comment + `</h5> 
+    </div>
+</div>
+        `;
 }
