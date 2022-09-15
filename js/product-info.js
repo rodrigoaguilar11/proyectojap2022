@@ -67,17 +67,18 @@ function showProductInfo(array) {
      <p> ` + "Descripcion: " + array.description + `</p> 
      <p>` + "Cantidad de Vendidos: " + array.soldCount + `</p> 
 </div>
-<div class="col-5">
-    <div class="d-flex w-100 justify-content-between">
-           <img id="img1" src="` + array.images[0] + `" alt="product image" class="img-thumbnail">
-           <img id="img2" src="` + array.images[1] + `" alt="product image" class="img-thumbnail">
-    </div>   
-    <div class="d-flex w-100 justify-content-between">
-           <img id="img3" src="` + array.images[2] + `" alt="product image" class="img-thumbnail">
-           <img id="img4" src="` + array.images[3] + `" alt="product image" class="img-thumbnail">
-    </div>   
-</div>   
         `;
+  for (let i = 0; i < array.images.length; i++) {
+        document.getElementById("images").innerHTML += `
+        <div class="col-5">
+        <img id="img3" src="` + array.images[i] + `" alt="product image" class="img-thumbnail">
+        </div>
+        `
+    }
+        
+//    <div class="d-flex w-100 justify-content-between">
+ 
+
     document.getElementById("relatedProducts").innerHTML += `
     <div class="col-6">
         <div class="d-flex w-100 justify-content-between">
@@ -104,24 +105,21 @@ function setProductID(id) {
 function showComments(array) {
     if (array.length > 0) {
         for (let i = 0; i < array.length; i++) {
-            let stars;
-            if (array[i].score == 1) {
-                stars = "img/stars-1.jpg";
-            } else if (array[i].score == 2) {
-                stars = "img/stars-2.jpg";
-            } else if (array[i].score == 3) {
-                stars = "img/stars-3.jpg";
-            } else if (array[i].score == 4) {
-                stars = "img/stars-4.jpg";
-            } else if (array[i].score == 5) {
-                stars = "img/stars-5.jpg";
+            let score = array[i].score;
+            console.log(array[i].score);
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= score) {
+                    stars += '<i class="fas fa-star checked"></i>';
+                } else {
+                    stars += '<i class="far fa-star checked"></i>';
+                }
             }
             document.getElementById("comments").innerHTML += `
 <div class="col-10 row list-group-item">
     <div class="col">
     <div class="d-flex w-100 justify-content-between">
-    <img src="` + stars + `" style="width:13em"></img>
-        <h4>` + array[i].user + `</h4>     
+        <h4>` + array[i].user + "  " + stars + array[i].score + `</h4>
         <p>` + array[i].dateTime + `</p> 
     </div>
         <h5> ` + array[i].description + `</h5> 
@@ -165,25 +163,23 @@ function addItemToCart() {
 }
 
 function addComment() {
-//Comentario
+    //Comentario
     let comment = document.getElementById("comment").value;
-//Puntuacion
+    //Puntuacion
     let puntuationInput = document.getElementById("puntuation");
     let puntuation = puntuationInput.selectedOptions[0].value;
-console.log("Puntuation", puntuation);
-    let estrellas;
-    if (puntuation == 1) {
-        estrellas = "img/stars-1.jpg";
-    } else if (puntuation == 2) {
-        estrellas = "img/stars-2.jpg";
-    } else if (puntuation== 3) {
-        estrellas = "img/stars-3.jpg";
-    } else if (puntuation == 4) {
-        estrellas = "img/stars-4.jpg";
-    } else if (puntuation == 5) {
-        estrellas = "img/stars-5.jpg";
+    console.log("Puntuation", puntuation);
+
+    let iStars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= puntuation) {
+            iStars += '<i class="fas fa-star checked"></i>';
+        } else {
+            iStars += '<i class="far fa-star checked"></i>';
+        }
     }
-//Fecha
+
+    //Fecha
     let today = new Date(),
         day = today.getDate(),
         month = today.getMonth() + 1,
@@ -191,8 +187,12 @@ console.log("Puntuation", puntuation);
         hour = today.getHours(),
         minutes = today.getMinutes(),
         seconds = today.getSeconds();
+
     if (month < 10) {
         month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
     }
     if (hour < 10) {
         hour = "0" + hour;
@@ -200,19 +200,18 @@ console.log("Puntuation", puntuation);
     if (minutes < 10) {
         minutes = "0" + minutes;
     }
-    if(seconds <10){
+    if (seconds < 10) {
         seconds = "0" + seconds;
-       }
+    }
     let actualDate = (`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
     console.log(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
 
-    
+
     document.getElementById("comments").innerHTML += `
 <div class="col-10 row list-group-item">
     <div class="col">
     <div class="d-flex w-100 justify-content-between">
-    <img src="` + estrellas + `" style="width:13em"></img>
-        <h4>` + localStorage.getItem("username") + `</h4>     
+        <h4>` + localStorage.getItem("username") + "  " + iStars + puntuation + `</h4>     
         <p>` + actualDate + `</p> 
     </div>
         <h5> ` + comment + `</h5> 
