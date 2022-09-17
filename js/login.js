@@ -62,12 +62,8 @@ function githubEnterDetect(e) {
 passInput.type="text";
    }else{
     passInput.type="password";
-
-
    }
-
 }
-
 
    //TEST
 //Google Oauth
@@ -88,8 +84,8 @@ passInput.type="text";
    function handleCredentialResponse(response) {
     // decodeJwtResponse() is a custom function defined by you
     // to decode the credential response.
-    let responsePayload = decodeJwt(response.credential);
-    responsePayload = (jwt_decode(responsePayload));
+    let responsePayload = parseJwt(response.credential);
+    responsePayload = (decodeJwt(responsePayload));
 
     console.log("ID: " + responsePayload.sub);
     console.log('Full Name: ' + responsePayload.name);
