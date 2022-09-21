@@ -60,7 +60,6 @@
 
 .profilelist{
   z-index: 100;
-
   display: none;  
   flex-direction: column;
 }

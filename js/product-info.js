@@ -71,23 +71,20 @@ function showProductInfo(array) {
   for (let i = 0; i < array.images.length; i++) {
         document.getElementById("images").innerHTML += `
         <div class="col-5">
-        <img id="img3" src="` + array.images[i] + `" alt="product image" class="img-thumbnail">
+        <img src="` + array.images[i] + `" alt="product image" class="img-thumbnail">
         </div>
         `
     }
         
-//    <div class="d-flex w-100 justify-content-between">
- 
-
     document.getElementById("relatedProducts").innerHTML += `
     <div class="col-6">
         <div class="d-flex w-100 justify-content-between">
-              <div onclick="setProductID(${array.relatedProducts[0].id})" class="list-group-item list-group-item-action cursor-active">
+              <div onclick="setProductID(${array.relatedProducts[0].id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center">
                 <h4>` + array.relatedProducts[0].name + `</h4> 
                 <img src="` + array.relatedProducts[0].image + `" alt="product image" class="img-thumbnail">
               </div>
 
-              <div onclick="setProductID(${array.relatedProducts[1].id})" class="list-group-item list-group-item-action cursor-active">
+              <div onclick="setProductID(${array.relatedProducts[1].id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center; margin-left:2em">
                 <h4>` + array.relatedProducts[1].name + `</h4> 
                 <img src="` + array.relatedProducts[1].image + `" alt="product image" class="img-thumbnail">
               </div>
@@ -106,7 +103,6 @@ function showComments(array) {
     if (array.length > 0) {
         for (let i = 0; i < array.length; i++) {
             let score = array[i].score;
-            console.log(array[i].score);
             let stars = '';
             for (let i = 1; i <= 5; i++) {
                 if (i <= score) {
@@ -204,8 +200,6 @@ function addComment() {
         seconds = "0" + seconds;
     }
     let actualDate = (`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
-    console.log(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
-
 
     document.getElementById("comments").innerHTML += `
 <div class="col-10 row list-group-item">
