@@ -4,6 +4,7 @@ let productComments = PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE;
 let productName = document.getElementById("productName");
 
 let id, pname, unitCost, currency, image;
+let rateCommentStars = 1;
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(productInfo).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -61,37 +62,39 @@ function showProductInfo(array) {
     currency = array.currency;
     image = array.images[0];
     document.getElementById("cat-list-container").innerHTML += `
-<div class="col-10 list-group-item justify-content-between">
      <h4>` + "Nombre: " + array.name + `</h4> 
      <h4>` + "Precio: " + array.currency + " " + array.cost + `</h4> 
      <p> ` + "Descripcion: " + array.description + `</p> 
      <p>` + "Cantidad de Vendidos: " + array.soldCount + `</p> 
-</div>
-        `;
-  for (let i = 0; i < array.images.length; i++) {
+`;
+    for (let i = 0; i < array.images.length; i++) {
         document.getElementById("images").innerHTML += `
         <div class="col-5">
         <img src="` + array.images[i] + `" alt="product image" class="img-thumbnail">
         </div>
         `
     }
-        
-    document.getElementById("relatedProducts").innerHTML += `
-    <div class="col-6">
-        <div class="d-flex w-100 justify-content-between">
-              <div onclick="setProductID(${array.relatedProducts[0].id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center">
-                <h4>` + array.relatedProducts[0].name + `</h4> 
-                <img src="` + array.relatedProducts[0].image + `" alt="product image" class="img-thumbnail">
-              </div>
-
-              <div onclick="setProductID(${array.relatedProducts[1].id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center; margin-left:2em">
-                <h4>` + array.relatedProducts[1].name + `</h4> 
-                <img src="` + array.relatedProducts[1].image + `" alt="product image" class="img-thumbnail">
-              </div>
-        </div>         
-    </div>  
-        <br>
-        `;
+    document.getElementById("carrousel").innerHTML += `
+    <div class="carousel-item active">
+    <img src=" ` + array.images[0] + `" class="d-block w-100" alt="product image">
+    </div>
+    `
+    for (let i = 1; i < array.images.length; i++) {
+        document.getElementById("carrousel").innerHTML += `
+        <div class="carousel-item">
+            <img src=" ` + array.images[i] + `" class="d-block w-100" alt="product image">
+        </div>
+        `
+    }
+    // Add Related Products
+    for (let i = 0; i < array.relatedProducts.length; i++) {
+        document.getElementById("relatedProducts").innerHTML += `
+  <div onclick="setProductID(${array.relatedProducts[i].id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center">
+    <h4>${array.relatedProducts[i].name}</h4> 
+    <img src="${array.relatedProducts[i].image}" alt="related product image" class="img-thumbnail">
+  </div>
+    `
+    }
 }
 
 function setProductID(id) {
@@ -108,14 +111,14 @@ function showComments(array) {
                 if (i <= score) {
                     stars += '<i class="fas fa-star checked"></i>';
                 } else {
-                    stars += '<i class="far fa-star checked"></i>';
+                    stars += '<i class="far fa-star"></i>';
                 }
             }
             document.getElementById("comments").innerHTML += `
 <div class="col-10 row list-group-item">
     <div class="col">
     <div class="d-flex w-100 justify-content-between">
-        <h4>` + array[i].user + "  " + stars + array[i].score + `</h4>
+        <h4>` + array[i].user + " " + stars + `</h4>
         <p>` + array[i].dateTime + `</p> 
     </div>
         <h5> ` + array[i].description + `</h5> 
@@ -162,16 +165,12 @@ function addComment() {
     //Comentario
     let comment = document.getElementById("comment").value;
     //Puntuacion
-    let puntuationInput = document.getElementById("puntuation");
-    let puntuation = puntuationInput.selectedOptions[0].value;
-    console.log("Puntuation", puntuation);
-
     let iStars = '';
     for (let i = 1; i <= 5; i++) {
-        if (i <= puntuation) {
+        if (i <= rateCommentStars) {
             iStars += '<i class="fas fa-star checked"></i>';
         } else {
-            iStars += '<i class="far fa-star checked"></i>';
+            iStars += '<i class="far fa-star"></i>';
         }
     }
 
@@ -205,11 +204,57 @@ function addComment() {
 <div class="col-10 row list-group-item">
     <div class="col">
     <div class="d-flex w-100 justify-content-between">
-        <h4>` + localStorage.getItem("username") + "  " + iStars + puntuation + `</h4>     
+        <h4>` + localStorage.getItem("username") + "  " + iStars + `</h4>     
         <p>` + actualDate + `</p> 
     </div>
         <h5> ` + comment + `</h5> 
     </div>
 </div>
         `;
+}
+
+function comentPuntuation(value) {
+    rateCommentStars = value;
+    if (value == 5) {
+        rate5.classList.add("checked", "fas");
+        rate4.classList.add("checked", "fas");
+        rate3.classList.add("checked", "fas");
+        rate2.classList.add("checked", "fas");
+        rate1.classList.add("checked", "fas");
+    } else if (value == 4) {
+        rate5.classList.add("far");
+        rate5.classList.remove("checked", "fas");
+        rate4.classList.add("checked", "fas");
+        rate3.classList.add("checked", "fas");
+        rate2.classList.add("checked", "fas");
+        rate1.classList.add("checked", "fas");
+
+    } else if (value == 3) {
+        rate5.classList.add("far");
+        rate5.classList.remove("checked", "fas");
+        rate4.classList.add("far");
+        rate4.classList.remove("checked", "fas");
+        rate3.classList.add("checked", "fas");
+        rate2.classList.add("checked", "fas");
+        rate1.classList.add("checked", "fas");
+    } else if (value == 2) {
+        rate5.classList.add("far");
+        rate5.classList.remove("checked", "fas");
+        rate4.classList.add("far");
+        rate4.classList.remove("checked", "fas");
+        rate3.classList.add("far");
+        rate3.classList.remove("checked", "fas");
+        rate2.classList.add("checked", "fas");
+        rate1.classList.add("checked", "fas");
+    } else if (value == 1) {
+        rate5.classList.add("far");
+        rate5.classList.remove("checked", "fas");
+        rate4.classList.add("far");
+        rate4.classList.remove("checked", "fas");
+        rate3.classList.add("far");
+        rate3.classList.remove("checked", "fas");
+        rate2.classList.add("far");
+        rate2.classList.remove("checked", "fas");
+        rate1.classList.add("checked");
+    }
 }

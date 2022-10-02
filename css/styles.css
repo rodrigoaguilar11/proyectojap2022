@@ -1,5 +1,17 @@
 
 /*mis estilos*/
+.star-widget input{
+  display: none;
+}
+.star-widget label{
+  font-size: 1.5em;
+  padding:5px;
+  float:right;
+  transition:all 0.2s ease;
+  user-select: none; 
+}
+
+
 
 .main_backgound{
   background: url(../img/blanco.jpg);
