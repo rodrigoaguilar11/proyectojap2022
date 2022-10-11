@@ -149,88 +149,95 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
+  <main class="pb-5">
     <div class="text-center p-4">
       <h2>Informacion de producto: <span id="productName"></span></h2>
+      <p class="lead">Aqui veras informacion del producto seleccionado.</p>
     </div>
-    <div class="col-6 list-group-item justify-content-between" style="border-radius: 1em;">
-      <p><a href="categories.html">Categorías</a>&lt;<a href="products.html"><span id="productsBar"></span></a> &lt;
-        <span id="product-infoBar"></span></p>
-    </div>
-    <br>
-    <div class="row" style="--bs-gutter-x:0;">
-      <div class="list-group">
-        <div class="col-10 list-group-item justify-content-between" id="cat-list-container">
-        </div>
-         <div class="col-10 list-group-item justify-content-between">
-          <div class="col-5 d-flex justify-content-between" style="height:2.2em;">
+    <div class="container">
+      <div class="col-6 list-group-item justify-content-between" style="border-radius: 1em;">
+        <p><a href="categories.html">Categorías</a>&lt;<a href="products.html"><span id="productsBar"></span></a> &lt;
+          <span id="product-infoBar"></span></p>
+      </div>
+      <br>
+      <div class="row" style="--bs-gutter-x:0;">
+        <div class="list-group list-group-item">
+          <div class="col-12  justify-content-between" id="cat-list-container">
+
+          </div>
+          <div class="col-12 justify-content-between" id="totalAverage">
+
+          </div>
+          <div class="col-4 d-flex justify-content-between" style="height:2.2em;">
             <p style="padding-top: 7px">Quiero comprar</p>
-            <input class="form-control" type="number" id="count" style="max-width:5em" value="1">
+            <input class="form-control" type="number" id="count" min="1" style="max-width:5em" value="1">
             <button class="btn btn-primary" id="addToCart">Agregar al Carrito</button>
           </div>
         </div>
-      </div>
-      <div id="images" class="col-12" style="flex-flow: row wrap;   display: flex; text-align: center; padding:0; margin:0;
+        <div id="images" class="col-12" style="flex-flow: row wrap;display:flex;text-align:center;padding:0;margin:0;
       ">
-      </div>
-
-      <!--  carrousel-->
-
-      <div id="carouselExampleControls" class="carousel slide col-10 img-thumbnail" data-bs-ride="carousel">
-        <div class="carousel-inner img-thumbnail" id="carrousel">
-
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-          data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.1);">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-          data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.1);">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
 
-      <!-- Fin de carrousel-->
-      <h2 class="text-center p-4">Comentarios</h2>
-      <div class="list-group" id="comments">
-      </div>
-      <div class="col-6 list-group-item justify-content-between" style="margin-top:2em ;">
-        <label for="comment">Realizar un comentario</label>
-        <textarea style="width:75%" id="comment"></textarea>
-        <br>
-        <div class="d-flex w-100">
-          <p>Valoracion:</p>
-          <div class="star-widget">
-            <input type="button" name="rate" id="rate-5" onclick="comentPuntuation(5)">
-            <label for="rate-5" class="far fa-star" id="rate5"></label>
-            <input type="button" name="rate" id="rate-4" onclick="comentPuntuation(4)">
-            <label for="rate-4" class="far fa-star" id="rate4"></label>
-            <input type="button" name="rate" id="rate-3" onclick="comentPuntuation(3)">
-            <label for="rate-3" class="far fa-star" id="rate3"></label>
-            <input type="button" name="rate" id="rate-2" onclick="comentPuntuation(2)">
-            <label for="rate-2" class="far fa-star" id="rate2"></label>
-            <input type="button" name="rate" id="rate-1" onclick="comentPuntuation(1)">
-            <label for="rate-1" class="fas fa-star checked" id="rate1"></label>
+        <!--  carrousel-->
+
+        <div id="carouselExampleControls" class="carousel slide col-12 img-thumbnail" data-bs-ride="carousel">
+          <div class="carousel-inner img-thumbnail" id="carrousel">
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.1);">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.1);">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- Fin de carrousel-->
+        <h2 class="text-center p-4">Comentarios</h2>
+        <div class="col-12 list-group-item justify-content-between">
+
+          <div class="list-group" id="comments">
+          </div>
+          <div class="col-12 list-group-item justify-content-between" style="margin-top:2em ;">
+            <div class="d-flex w-100">
+              <p>Mi Valoracion:</p>
+              <div class="star-widget">
+                <input type="button" name="rate" id="rate-5" onclick="comentPuntuation(5)">
+                <label for="rate-5" class="far fa-star" id="rate5"></label>
+                <input type="button" name="rate" id="rate-4" onclick="comentPuntuation(4)">
+                <label for="rate-4" class="far fa-star" id="rate4"></label>
+                <input type="button" name="rate" id="rate-3" onclick="comentPuntuation(3)">
+                <label for="rate-3" class="far fa-star" id="rate3"></label>
+                <input type="button" name="rate" id="rate-2" onclick="comentPuntuation(2)">
+                <label for="rate-2" class="far fa-star" id="rate2"></label>
+                <input type="button" name="rate" id="rate-1" onclick="comentPuntuation(1)">
+                <label for="rate-1" class="fas fa-star checked" id="rate1"></label>
+              </div>
+            </div>
+            <label for="comment">Realizar un comentario:</label>
+            <br>
+            <textarea style="width:40%; min-height:5em ;" id="comment"></textarea>
+            <br>
+
+            <br>
+            <button class="btn btn-primary" id="sendComment">Comentar</button>
+          </div>
+        </div>
+        <h2 class="text-center p-4">Productos Relacionados</h2>
+        <div class="list-group">
+          <div class="col-12">
+            <div class="d-flex w-100 justify-content-between" id="relatedProducts">
+
+            </div>
           </div>
         </div>
         <br>
-        <button class="btn btn-primary" id="sendComment">Comentar</button>
       </div>
-      <h2 class="text-center p-4">Productos Relacionados</h2>
-      <div class="list-group">
-        <div class="col-6">
-          <div class="d-flex w-100 justify-content-between" id="relatedProducts">
-
-          </div>
-        </div>
-
-
-      </div>
-      <br>
     </div>
-
   </main>
   <footer class="text-muted bg-dark ">
     <div class="container">

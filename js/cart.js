@@ -1,32 +1,60 @@
 let cartURL = CART_INFO_URL + "25801" + EXT_TYPE;
-let productos;
 let cart = document.getElementById("cart");
 
-
-console.log("Productos: " + productos);
-console.log("cartURL: " + cartURL);
-
 document.addEventListener("DOMContentLoaded", function (e) {
-getJSONData(cartURL).then(function (resultObj) {
-    if (resultObj.status === "ok") {
-        showCartList(resultObj.data);
-        productos = (resultObj.data);
-    }
-});   
+    getJSONData(cartURL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            showCartList(resultObj.data.articles);
+        }
+    });
+    let cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
+    showCartList(cartLocalStorage);
 
+    cart.addEventListener("input", (e) => {
+        if (e.target && e.target.tagName === "INPUT") {
+            let cost = document.getElementById("cost-" + e.target.id).outerText;
+            document.getElementById("sub-" + e.target.id).innerHTML = `${cost * e.target.value}`;
+        }
+    })
+
+    if (localStorage.getItem("direction") != null) {
+        let direction = JSON.parse(localStorage.getItem("direction"));
+        document.getElementById("directionToSend").value = direction.direction;
+        document.getElementById("directionStreet").value = direction.street;
+        document.getElementById("directionNumber").value = direction.number;
+    }
+    //End of DOMContentLoaded
 });
 
-function showCartList(array) {
-        cart.innerHTML = `
-        <div>
-            <h3>user: ${array.user}</h3>
-            <h3>articles: </h3>
-            <h3>id: ${array.articles[0].id}</h3>
-            <h3>name: ${array.articles[0].name}</h3>
-            <h3>count: ${array.articles[0].count}</h3>
-            <h3>unitCost: ${array.articles[0].unitCost}</h3>
-            <h3>currency: ${array.articles[0].currency}</h3>
-            <img src=${array.articles[0].image}>
-        </div>
+function showCartList(products) {
+    for (product of products) {
+        cart.innerHTML += `
+      <tr>
+        <td>
+            <img src=${product.image} style="max-width:5em">
+        </td>
+        <td>
+            <p>${product.name}</p>
+        </td>
+        <td>
+            <p>${product.currency} <label id="cost-${product.id}">${product.unitCost}</label></p>
+        </td>
+        <td>
+            <input id="${product.id}" class="form-control" type="number" id="count" value="${product.count}" style="max-width:5em; display:inline;" min="0"></td>
+        <th>
+        <p>${product.currency} <label id="sub-${product.id}"></label></p>
+        </th>
+      </tr>
         `;
+        let subID = "sub-" + product.id;
+        let unitCost = product.unitCost;
+        let inputID = product.id;
+        
+        document.getElementById(subID).innerHTML = (unitCost * parseInt(document.getElementById(inputID).value));
+    }
+}
+
+function clearCart() {
+    localStorage.setItem("cart", JSON.stringify([]));
+    location.href = "cart.html";
 }

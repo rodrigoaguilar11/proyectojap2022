@@ -137,40 +137,117 @@
                   <path
                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                 </svg> Perfil: </a>
-                <div class="profilelist">
-                  <a class="list_element" href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                      height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                      <path
-                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                    </svg> Mi Perfil</a>
-  
-                  <a class="list_element" href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                      <path
-                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                    </svg> Carrito: <span id="cartNumber" style="color: lightblue;"></span> Productos</a>
-  
-                  <a class="list_element" href="#" onclick='closeSesion()'><svg xmlns="http://www.w3.org/2000/svg"
-                      width="16" height="16" fill="currentColor" class="bi bi-escape" viewBox="0 0 16 16">
-                      <path
-                        d="M8.538 1.02a.5.5 0 1 0-.076.998 6 6 0 1 1-6.445 6.444.5.5 0 0 0-.997.076A7 7 0 1 0 8.538 1.02Z" />
-                      <path
-                        d="M7.096 7.828a.5.5 0 0 0 .707-.707L2.707 2.025h2.768a.5.5 0 1 0 0-1H1.5a.5.5 0 0 0-.5.5V5.5a.5.5 0 0 0 1 0V2.732l5.096 5.096Z" />
-                    </svg> Cerrar Sesion</a>
-                </div>
+              <div class="profilelist">
+                <a class="list_element" href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                    height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path
+                      d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                  </svg> Mi Perfil</a>
+
+                <a class="list_element" href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path
+                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                  </svg> Carrito: <span id="cartNumber" style="color: lightblue;"></span> Productos</a>
+
+                <a class="list_element" href="#" onclick='closeSesion()'><svg xmlns="http://www.w3.org/2000/svg"
+                    width="16" height="16" fill="currentColor" class="bi bi-escape" viewBox="0 0 16 16">
+                    <path
+                      d="M8.538 1.02a.5.5 0 1 0-.076.998 6 6 0 1 1-6.445 6.444.5.5 0 0 0-.997.076A7 7 0 1 0 8.538 1.02Z" />
+                    <path
+                      d="M7.096 7.828a.5.5 0 0 0 .707-.707L2.707 2.025h2.768a.5.5 0 1 0 0-1H1.5a.5.5 0 0 0-.5.5V5.5a.5.5 0 0 0 1 0V2.732l5.096 5.096Z" />
+                  </svg> Cerrar Sesion</a>
+              </div>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="container text-center">
-        <br>
-        <h1 id="my-profile-title"></h1>
-        <button class="btn btn-danger" id="closeSesion">Cerrar Sesion</button>
+  <main class="pb-5">
+    <div class="text-center p-4">
+      <h2 id="my-profile-title"></h2>
+      <p class="lead">Aquí podrás cambiar tus datos o cerrar sesión.</p>
+    </div>
+    <div class="container list-group-item">
+      <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseChangeName" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          Cambiar Nombre De Usuario </a>
+      </p>
+      <div class="collapse" id="collapseChangeName">
+        <div class="card card-body">
+          <p>Ingresa su contraseña y su nuevo nombre</p>
+          <div class="col-2">
+            <label for="password">Contraseña:</label>
+            <input type="password" name="password" id="password">
+            <label for="username">Nuevo Nombre:</label>
+            <input type="text" name="username" id="username">
+            <br><br>
+            <button class="btn btn-success" id="changeName">Cambiar Nombre</button>
+          </div>
+        </div>
       </div>
+      <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseChangePassword" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          Cambiar Contraseña </a>
+      </p>
+      <div class="collapse" id="collapseChangePassword">
+        <div class="card card-body">
+          <p>Ingresa su contraseña actual y la nueva</p>
+          <div class="col-2">
+            <label for="password1">Contraseña Actual:</label>
+            <input type="password" name="password1" id="password1">
+            <label for="password2">Repite la Contraseña:</label>
+            <input type="password" name="password2" id="password2">
+            <label for="newPassword">Contraseña Nueva:</label>
+            <input type="password" name="newPassword" id="newPassword">
+            <br><br>
+            <button class="btn btn-success" id="changePassword">Cambiar Contraseña</button>
+          </div>
+        </div>
+      </div>
+      <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseDirection" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          Modificar Direccion</a>
+      </p>
+      <div class="collapse" id="collapseDirection">
+        <div class="card card-body">
+          <p>Puedes modificar la direccion donde quieres que te enviemos los productos.</p>
+          <div class="col-2">
+            <label for="directionToSend">Direccion de Envio:</label>
+            <input type="text" name="directionToSend" id="directionToSend">
+            <label for="directionStreet">Calle:</label>
+            <input type="text" name="directionStreet" id="directionStreet">
+            <label for="directionNumber">Numero:</label>
+            <input type="number" name="directionNumber" id="directionNumber" min="0">
+            <br><br>
+            <button class="btn btn-success" id="aceptDirection">Aceptar</button>
+            <button class="btn btn-danger" id="cancelDirection" data-bs-toggle="collapse" href="#collapseDirection" role="button">Cancelar</button>
+
+          </div>
+        </div>
+      </div>
+      <p>
+        <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseCloseSession" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          Cerrar Sesion </a>
+      </p>
+      <div class="collapse" id="collapseCloseSession">
+        <div class="card card-body">
+          <p>Si cierras Sesion volveras a el menu de inicio y deberas logearte para entrar.</p>
+          <div class="col-2">
+            <button class="btn btn-danger" id="closeSesion">Si, cerrar!</button>
+            <button class="btn btn-success" data-bs-toggle="collapse" href="#collapseCloseSession" role="button">Volver</button>
+
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
   </main>
   <footer class="text-muted bg-dark ">

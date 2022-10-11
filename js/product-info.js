@@ -1,18 +1,20 @@
-const productID = localStorage.getItem("productID");
-let productInfo = PRODUCT_INFO_URL + productID + EXT_TYPE;
-let productComments = PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE;
-let productName = document.getElementById("productName");
+const PRODUCT_ID = localStorage.getItem("productID"),
+    PRODUCT_INFO = PRODUCT_INFO_URL + PRODUCT_ID + EXT_TYPE,
+    PRODUCTS_COMMENTS = PRODUCT_INFO_COMMENTS_URL + PRODUCT_ID + EXT_TYPE;
+let id,
+    rateCommentStars = 1,
+    totalAverage = 0,
+    totalAverageCount = 0,
+    thereComments;
 
-let id, pname, unitCost, currency, image;
-let rateCommentStars = 1;
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(productInfo).then(function (resultObj) {
+    getJSONData(PRODUCT_INFO).then(function (resultObj) {
         if (resultObj.status === "ok") {
             showProductInfo(resultObj.data);
         }
     });
 
-    getJSONData(productComments).then(function (resultObj) {
+    getJSONData(PRODUCTS_COMMENTS).then(function (resultObj) {
         if (resultObj.status === "ok") {
             showComments(resultObj.data);
         }
@@ -30,68 +32,69 @@ document.addEventListener("DOMContentLoaded", function (e) {
 })
 
 function showProductInfo(array) {
-    productName.innerHTML = array.name;
+    document.getElementById("productName").innerHTML = array.name;
 
     let catID = localStorage.getItem("catID");
-    let product;
+    let category;
     if (catID == "101") {
-        product = "Autos";
+        category = "Autos";
     } else if (catID == "102") {
-        product = "Juguetes";
+        category = "Juguetes";
     } else if (catID == "103") {
-        product = "Muebles";
+        category = "Muebles";
     } else if (catID == "104") {
-        product = "Herramientas";
+        category = "Herramientas";
     } else if (catID == "105") {
-        product = "Computadoras";
+        category = "Computadoras";
     } else if (catID == "106") {
-        product = "Vestimenta";
+        category = "Vestimenta";
     } else if (catID == "107") {
-        product = "Electrodomesticos";
+        category = "Electrodomesticos";
     } else if (catID == "108") {
-        product = "Deporte";
+        category = "Deporte";
     } else if (catID == "109") {
-        product = "Celulares";
+        category = "Celulares";
     }
-    document.getElementById("productsBar").innerHTML = product;
+    document.getElementById("productsBar").innerHTML = category;
     document.getElementById("product-infoBar").innerHTML = array.name;
     //Variables used in addItemToCart
-    id = array.id
+    id = array.id;
     pname = array.name;
     unitCost = array.cost;
     currency = array.currency;
     image = array.images[0];
+
     document.getElementById("cat-list-container").innerHTML += `
-     <h4>` + "Nombre: " + array.name + `</h4> 
-     <h4>` + "Precio: " + array.currency + " " + array.cost + `</h4> 
-     <p> ` + "Descripcion: " + array.description + `</p> 
-     <p>` + "Cantidad de Vendidos: " + array.soldCount + `</p> 
+     <h4>Nombre: ${array.name}</h4> 
+     <h4>Precio: ${array.currency} ${array.cost}</h4> 
+     <p>Descripcion: ${array.description}</p> 
+     <p>Cantidad de Vendidos: ${array.soldCount}</p> 
 `;
-    for (let i = 0; i < array.images.length; i++) {
+    for (img of array.images) {
         document.getElementById("images").innerHTML += `
-        <div class="col-5">
-        <img src="` + array.images[i] + `" alt="product image" class="img-thumbnail">
+        <div class="col-6">
+        <img src="${img}" alt="product image" class="img-thumbnail">
         </div>
         `
     }
     document.getElementById("carrousel").innerHTML += `
     <div class="carousel-item active">
-    <img src=" ` + array.images[0] + `" class="d-block w-100" alt="product image">
+    <img src="${image}" class="d-block w-100" alt="product image">
     </div>
     `
     for (let i = 1; i < array.images.length; i++) {
         document.getElementById("carrousel").innerHTML += `
         <div class="carousel-item">
-            <img src=" ` + array.images[i] + `" class="d-block w-100" alt="product image">
+            <img src="${array.images[i]}" class="d-block w-100" alt="product image">
         </div>
         `
     }
     // Add Related Products
-    for (let i = 0; i < array.relatedProducts.length; i++) {
+    for (relatedProduct of array.relatedProducts) {
         document.getElementById("relatedProducts").innerHTML += `
-  <div onclick="setProductID(${array.relatedProducts[i].id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center">
-    <h4>${array.relatedProducts[i].name}</h4> 
-    <img src="${array.relatedProducts[i].image}" alt="related product image" class="img-thumbnail">
+  <div onclick="setProductID(${relatedProduct.id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center">
+    <h4>${relatedProduct.name}</h4> 
+    <img src="${relatedProduct.image}" alt="related product image" class="img-thumbnail" style="max-width:25em">
   </div>
     `
     }
@@ -102,57 +105,75 @@ function setProductID(id) {
     window.location = "product-info.html"
 }
 
-function showComments(array) {
-    if (array.length > 0) {
-        for (let i = 0; i < array.length; i++) {
-            let score = array[i].score;
+function showComments(comments) {
+    if (comments.length > 0) {
+        thereComments = true;
+        for (comment of comments) {
             let stars = '';
             for (let i = 1; i <= 5; i++) {
-                if (i <= score) {
+                if (i <= comment.score) {
                     stars += '<i class="fas fa-star checked"></i>';
                 } else {
                     stars += '<i class="far fa-star"></i>';
                 }
             }
             document.getElementById("comments").innerHTML += `
-<div class="col-10 row list-group-item">
+<div class="col-12 row list-group-item">
     <div class="col">
-    <div class="d-flex w-100 justify-content-between">
-        <h4>` + array[i].user + " " + stars + `</h4>
-        <p>` + array[i].dateTime + `</p> 
+    <div class="d-flex w-100 justify-content-between" >
+      <div class="d-flex w-50 justify-content-between" style="text-align: center;">
+        <h4>${comment.user}</h4>
+        <h4>${stars}</h4>
+      </div>
+        <p>${comment.dateTime}</p> 
     </div>
-        <h5> ` + array[i].description + `</h5> 
+        <h5>${comment.description}</h5> 
     </div>
 </div>
         `;
+            totalAverage += comment.score;
+            totalAverageCount++;
         }
     } else {
+        thereComments = false;
         document.getElementById("comments").innerHTML += `
         <div class="col-10 row list-group-item">
-                <h4>` + "Aun no hay comentarios para esta publicación" + `</h4> 
+            <h4>Aun no hay comentarios para esta publicación</h4> 
         </div>
     `;
     }
+    UpdateTotalAverage();
 }
-//Add item to cart______________________________________________________
+
 function addItemToCart() {
     let count = document.getElementById("count").value;
-    if (localStorage.getItem("cart").includes(id && pname && image && unitCost)) {
-        alert("si incluye")
-        let addCount = JSON.parse(localStorage.getItem("cart"));
-
-        console.log(addCount);
+    if (localStorage.getItem("cart").includes(id)) {
+        //trae el Cart List del Local Storage
+        let cartLS = JSON.parse(localStorage.getItem("cart"));
+        //filtra el producto actual segun su id
+        let product = cartLS.filter(p => p.id == id);
+        //asignamos el valor de producto a su objeto
+        product = product[0];
+        //cambia la propiedad de product count por el valor del input
+         product.count = count;
+         //filtra la lista quitando el objeto id
+         cartLS = cartLS.filter(p => p.id != id);
+        //agrega  el producto con el nuevo valor a la lista
+        cartLS.push(product);
+        //crea una nueva lista modificada
+        localStorage.setItem("cart", JSON.stringify(cartLS));
+        //actualiza el contador de items en el carrito
+        checkCart()
+        //document.getElementById("count").value = product[0].count;
     } else {
 
         let product = {
-            "articles": [{
-                "id": id,
-                "name": pname,
-                "count": count,
-                "unitCost": unitCost,
-                "currency": currency,
-                "image": image
-            }]
+            "id": id,
+            "name": pname,
+            "count": count,
+            "unitCost": unitCost,
+            "currency": currency,
+            "image": image
         };
         let string = JSON.parse(localStorage.getItem("cart"));
         string.push(product);
@@ -162,6 +183,10 @@ function addItemToCart() {
 }
 
 function addComment() {
+    if (thereComments == false) {
+        document.getElementById("comments").innerHTML = "";
+        thereComments = true;
+    }
     //Comentario
     let comment = document.getElementById("comment").value;
     //Puntuacion
@@ -201,60 +226,73 @@ function addComment() {
     let actualDate = (`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
 
     document.getElementById("comments").innerHTML += `
-<div class="col-10 row list-group-item">
+<div class="col-12 row list-group-item">
     <div class="col">
-    <div class="d-flex w-100 justify-content-between">
-        <h4>` + localStorage.getItem("username") + "  " + iStars + `</h4>     
-        <p>` + actualDate + `</p> 
-    </div>
-        <h5> ` + comment + `</h5> 
+      <div class="d-flex w-100 justify-content-between">
+         <div class="d-flex w-50 justify-content-between" style="text-align: center;">
+           <h4>${localStorage.getItem("username")}</h4>
+           <h4>${iStars}</h4>     
+         </div>
+         <p>${actualDate}</p> 
+       </div>
+       <h5>${comment}</h5> 
     </div>
 </div>
         `;
+    totalAverage += rateCommentStars;
+    totalAverageCount++;
+    UpdateTotalAverage();
 }
 
 function comentPuntuation(value) {
     rateCommentStars = value;
-    if (value == 5) {
-        rate5.classList.add("checked", "fas");
-        rate4.classList.add("checked", "fas");
-        rate3.classList.add("checked", "fas");
-        rate2.classList.add("checked", "fas");
-        rate1.classList.add("checked", "fas");
-    } else if (value == 4) {
-        rate5.classList.add("far");
-        rate5.classList.remove("checked", "fas");
-        rate4.classList.add("checked", "fas");
-        rate3.classList.add("checked", "fas");
-        rate2.classList.add("checked", "fas");
-        rate1.classList.add("checked", "fas");
-
-    } else if (value == 3) {
-        rate5.classList.add("far");
-        rate5.classList.remove("checked", "fas");
-        rate4.classList.add("far");
-        rate4.classList.remove("checked", "fas");
-        rate3.classList.add("checked", "fas");
-        rate2.classList.add("checked", "fas");
-        rate1.classList.add("checked", "fas");
-    } else if (value == 2) {
-        rate5.classList.add("far");
-        rate5.classList.remove("checked", "fas");
-        rate4.classList.add("far");
-        rate4.classList.remove("checked", "fas");
-        rate3.classList.add("far");
-        rate3.classList.remove("checked", "fas");
-        rate2.classList.add("checked", "fas");
-        rate1.classList.add("checked", "fas");
-    } else if (value == 1) {
-        rate5.classList.add("far");
-        rate5.classList.remove("checked", "fas");
-        rate4.classList.add("far");
-        rate4.classList.remove("checked", "fas");
-        rate3.classList.add("far");
-        rate3.classList.remove("checked", "fas");
+    if (value < 2) {
         rate2.classList.add("far");
         rate2.classList.remove("checked", "fas");
-        rate1.classList.add("checked");
+    } else {
+        rate2.classList.add("checked", "fas");
     }
+    if (value < 3) {
+        rate3.classList.add("far");
+        rate3.classList.remove("checked", "fas");
+    } else {
+        rate3.classList.add("checked", "fas");
+    }
+    if (value < 4) {
+        rate4.classList.add("far");
+        rate4.classList.remove("checked", "fas");
+    } else {
+        rate4.classList.add("checked", "fas");
+    }
+    if (value < 5) {
+        rate5.classList.add("far");
+        rate5.classList.remove("checked", "fas");
+    } else {
+        rate5.classList.add("checked", "fas");
+    }
+}
+
+function UpdateTotalAverage() {
+    if (totalAverageCount != 0) {
+        let totalScore = totalAverage / totalAverageCount;
+        let count = Math.floor(totalScore);
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= count) {
+                stars += '<i class="fas fa-star checked"></i>';
+            } else {
+                stars += '<i class="far fa-star"></i>';
+            }
+        }
+        totalScore = totalScore.toString();
+        totalScore = totalScore.substring(0, 4);
+        document.getElementById("totalAverage").innerHTML = `
+<h4>Puntuación ${totalScore} ${stars}</h4>
+        `;
+    } else {
+        document.getElementById("totalAverage").innerHTML = `
+        <h4>Puntuación inexistente</h4>
+        `;
+    }
+
 }

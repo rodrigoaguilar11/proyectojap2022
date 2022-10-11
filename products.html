@@ -149,10 +149,10 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
+  <main class="pb-5">
     <div class="text-center p-4">
       <h2>Productos</h2>
-      <h5>Aqui verás todos los productos de la categoria <span id="productsh1"></span></h5>
+      <p class="lead">Aqui verás todos los productos de la categoria <span id="productsh1"></span></p>
     </div>
     <div class="container">
       <div class="col-6 list-group-item justify-content-between" style="border-radius: 1em;">
@@ -171,9 +171,9 @@
             <div class="col"
               style="min-width:19em; display: flex; padding-left:0; padding-right: 0; margin-bottom:.3em">
               <input class="form-control" type="number" placeholder="Precio min." id="filterMin"
-                style="margin-right: .3em;">
+                style="margin-right: .3em;" min="0">
               <input class="form-control" type="number" placeholder="Precio máx." id="filterMax"
-                style="margin-right: .3em;">
+                style="margin-right: .3em;" min="0">
               <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
             </div>
             <div class="col">
@@ -192,10 +192,7 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="list-group" id="cat-list-container">
-
-          </div>
-          <div class="list-group" id="comments">
+          <div class="row" id="cat-list-container">
 
           </div>
         </div>

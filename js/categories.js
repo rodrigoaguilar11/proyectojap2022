@@ -46,31 +46,22 @@ function sortCategories(criteria, array) {
     return result;
 }
 
-function setCatID(id) {
-    localStorage.setItem("catID", id);
-    window.location = "products.html"
-}
+
 //Crea el string htmlContentToAppend y lo agrega como codigo en elemento del DOM #cat-list-container
 function showCategoriesList() {
-    document.getElementById("cat-list-container").innerHTML =""
+    document.getElementById("cat-list-container").innerHTML = ""
 
-    for (let i = 0; i < currentCategoriesArray.length; i++) {
-        let category = currentCategoriesArray[i];
-
+    for (category of currentCategoriesArray) {
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))) {
 
             document.getElementById("cat-list-container").innerHTML += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setCatID(${category.id})"class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active">
                 <div class="row">
-                    <div class="col-3">
-                        <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
-                    </div>
-                    <div class="col">
                         <h4 class="mb-1">${category.name}</h4>
+                        <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
                         <p class="mb-1">${category.description}</p>
                         <p>${category.productCount} artículos</p>
-                    </div>
                 </div>
             </div>
             `
@@ -84,7 +75,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
     if (categoriesArray != undefined) {
         currentCategoriesArray = categoriesArray;
     }
-   
+
     currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
 
     showCategoriesList();
