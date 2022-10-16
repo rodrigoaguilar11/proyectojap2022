@@ -36,24 +36,35 @@ function showProductInfo(array) {
 
     let catID = localStorage.getItem("catID");
     let category;
-    if (catID == "101") {
-        category = "Autos";
-    } else if (catID == "102") {
-        category = "Juguetes";
-    } else if (catID == "103") {
-        category = "Muebles";
-    } else if (catID == "104") {
-        category = "Herramientas";
-    } else if (catID == "105") {
-        category = "Computadoras";
-    } else if (catID == "106") {
-        category = "Vestimenta";
-    } else if (catID == "107") {
-        category = "Electrodomesticos";
-    } else if (catID == "108") {
-        category = "Deporte";
-    } else if (catID == "109") {
-        category = "Celulares";
+
+    switch (catID) {
+        case "101":
+            category = "Autos";
+            break
+        case "102":
+            category = "Juguetes";
+            break
+        case "103":
+            category = "Muebles";
+            break
+        case "104":
+            category = "Herramientas";
+            break
+        case "105":
+            category = "Computadoras";
+            break
+        case "106":
+            category = "Vestimenta";
+            break
+        case "107":
+            category = "Electrodomesticos";
+            break
+        case "108":
+            category = "Deporte";
+            break
+        case "109":
+            category = "Celulares";
+            break
     }
     document.getElementById("productsBar").innerHTML = category;
     document.getElementById("product-infoBar").innerHTML = array.name;
@@ -92,9 +103,9 @@ function showProductInfo(array) {
     // Add Related Products
     for (relatedProduct of array.relatedProducts) {
         document.getElementById("relatedProducts").innerHTML += `
-  <div onclick="setProductID(${relatedProduct.id})" class="list-group-item list-group-item-action cursor-active" style="text-align:center">
+  <div onclick="setProductID(${relatedProduct.id})" class="list-group list-group-item-action cursor-active" style="text-align:center">
     <h4>${relatedProduct.name}</h4> 
-    <img src="${relatedProduct.image}" alt="related product image" class="img-thumbnail" style="max-width:25em">
+    <img src="${relatedProduct.image}" alt="related product image" class="img-thumbnail">
   </div>
     `
     }
@@ -108,6 +119,7 @@ function setProductID(id) {
 function showComments(comments) {
     if (comments.length > 0) {
         thereComments = true;
+        let commentsToAdd = "";
         for (comment of comments) {
             let stars = '';
             for (let i = 1; i <= 5; i++) {
@@ -117,27 +129,24 @@ function showComments(comments) {
                     stars += '<i class="far fa-star"></i>';
                 }
             }
-            document.getElementById("comments").innerHTML += `
-<div class="col-12 row list-group-item">
-    <div class="col">
-    <div class="d-flex w-100 justify-content-between" >
-      <div class="d-flex w-50 justify-content-between" style="text-align: center;">
-        <h4>${comment.user}</h4>
-        <h4>${stars}</h4>
-      </div>
-        <p>${comment.dateTime}</p> 
+            commentsToAdd += `
+<div class="col-12 list-group-item">
+    <div class="d-lg-flex d-md-block justify-content-between">
+      <h4>${stars}</h4>
+      <h4>${comment.user}</h4>
+      <p>${comment.dateTime}</p> 
     </div>
-        <h5>${comment.description}</h5> 
-    </div>
+    <h5>${comment.description}</h5> 
 </div>
         `;
             totalAverage += comment.score;
             totalAverageCount++;
         }
+        document.getElementById("comments").innerHTML += commentsToAdd;
     } else {
         thereComments = false;
         document.getElementById("comments").innerHTML += `
-        <div class="col-10 row list-group-item">
+        <div class="col-12 list-group-item">
             <h4>Aun no hay comentarios para esta publicación</h4> 
         </div>
     `;
@@ -155,9 +164,9 @@ function addItemToCart() {
         //asignamos el valor de producto a su objeto
         product = product[0];
         //cambia la propiedad de product count por el valor del input
-         product.count = count;
-         //filtra la lista quitando el objeto id
-         cartLS = cartLS.filter(p => p.id != id);
+        product.count = count;
+        //filtra la lista quitando el objeto id
+        cartLS = cartLS.filter(p => p.id != id);
         //agrega  el producto con el nuevo valor a la lista
         cartLS.push(product);
         //crea una nueva lista modificada
@@ -226,17 +235,13 @@ function addComment() {
     let actualDate = (`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
 
     document.getElementById("comments").innerHTML += `
-<div class="col-12 row list-group-item">
-    <div class="col">
-      <div class="d-flex w-100 justify-content-between">
-         <div class="d-flex w-50 justify-content-between" style="text-align: center;">
-           <h4>${localStorage.getItem("username")}</h4>
-           <h4>${iStars}</h4>     
-         </div>
-         <p>${actualDate}</p> 
-       </div>
-       <h5>${comment}</h5> 
+<div class="col-12 list-group-item">
+    <div class="d-lg-flex d-md-block justify-content-between">
+        <h4>${iStars}</h4>     
+        <h4>${localStorage.getItem("username")}</h4>
+        <p>${actualDate}</p> 
     </div>
+    <h5>${comment}</h5> 
 </div>
         `;
     totalAverage += rateCommentStars;

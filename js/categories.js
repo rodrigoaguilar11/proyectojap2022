@@ -49,13 +49,11 @@ function sortCategories(criteria, array) {
 
 //Crea el string htmlContentToAppend y lo agrega como codigo en elemento del DOM #cat-list-container
 function showCategoriesList() {
-    document.getElementById("cat-list-container").innerHTML = ""
-
+let actualCategories = "";
     for (category of currentCategoriesArray) {
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))) {
-
-            document.getElementById("cat-list-container").innerHTML += `
+                actualCategories += `
             <div onclick="setCatID(${category.id})"class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active">
                 <div class="row">
                         <h4 class="mb-1">${category.name}</h4>
@@ -68,6 +66,8 @@ function showCategoriesList() {
         }
 
     }
+    document.getElementById("cat-list-container").innerHTML = actualCategories;
+
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray) {

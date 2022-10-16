@@ -10,10 +10,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     let cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
     showCartList(cartLocalStorage);
 
+    //Agrega delegacion de eventos a los INPUT en el Tbody
     cart.addEventListener("input", (e) => {
-        if (e.target && e.target.tagName === "INPUT") {
-            let cost = document.getElementById("cost-" + e.target.id).outerText;
-            document.getElementById("sub-" + e.target.id).innerHTML = `${cost * e.target.value}`;
+        if (e.target.tagName === "INPUT") {
+            document.getElementById("sub-" + e.target.id).innerHTML =
+                `${document.getElementById("cost-" + e.target.id).outerText * e.target.value}`;
         }
     })
 
@@ -49,7 +50,7 @@ function showCartList(products) {
         let subID = "sub-" + product.id;
         let unitCost = product.unitCost;
         let inputID = product.id;
-        
+
         document.getElementById(subID).innerHTML = (unitCost * parseInt(document.getElementById(inputID).value));
     }
 }

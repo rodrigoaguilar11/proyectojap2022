@@ -85,8 +85,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 function showProductsList(products) {
     document.getElementById("cat-list-container").innerHTML = "";
     if (products.length > 0) {
+        let actualList="";
         for (product of products) {
-            document.getElementById("cat-list-container").innerHTML += `
+             actualList +=`
         <div onclick="setProductID(${product.id})" class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active">
             <div class="row">
                     <h4>${product.name}</h4> 
@@ -98,6 +99,7 @@ function showProductsList(products) {
         </div>
         `;
         }
+        document.getElementById("cat-list-container").innerHTML += actualList;
     } else {
         document.getElementById("cat-list-container").innerHTML += `
     <div class="row list-group-item">
