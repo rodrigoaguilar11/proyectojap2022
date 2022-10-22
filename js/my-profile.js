@@ -43,10 +43,11 @@
       };
       localStorage.setItem("direction", JSON.stringify(directionToAdd));
     })
-
+    if (localStorage.getItem("direction") != null) {
     let direction = JSON.parse(localStorage.getItem("direction"));
     document.getElementById("directionToSend").value = direction.direction;
     document.getElementById("directionStreet").value = direction.street;
     document.getElementById("directionNumber").value = direction.number;
+    }
     //Fin de DOMContentLoaded
   });
