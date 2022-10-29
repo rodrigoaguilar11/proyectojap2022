@@ -83,9 +83,7 @@ function showProductInfo(array) {
 `;
     for (img of array.images) {
         document.getElementById("images").innerHTML += `
-        <div class="col-6">
         <img src="${img}" alt="product image" class="img-thumbnail">
-        </div>
         `
     }
     document.getElementById("carrousel").innerHTML += `
@@ -103,9 +101,9 @@ function showProductInfo(array) {
     // Add Related Products
     for (relatedProduct of array.relatedProducts) {
         document.getElementById("relatedProducts").innerHTML += `
-  <div onclick="setProductID(${relatedProduct.id})" class="list-group list-group-item-action cursor-active" style="text-align:center">
+  <div onclick="setProductID(${relatedProduct.id})" class="list-group list-group-item-action cursor-active" style="text-align:center; align-items:center">
     <h4>${relatedProduct.name}</h4> 
-    <img src="${relatedProduct.image}" alt="related product image" class="img-thumbnail">
+    <img src="${relatedProduct.image}" alt="related product image" class="img-thumbnail shadow" style="width:50%">
   </div>
     `
     }

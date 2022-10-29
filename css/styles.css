@@ -1,5 +1,8 @@
 
-/*mis estilos*/
+/*mis estilos*/ 
+.shadow{
+  filter: drop-shadow(3px 5px 5px black) ;
+}
 .star-widget input{
   display: none;
 }
@@ -11,10 +14,8 @@
   user-select: none; 
 }
 
-
-
 .main_backgound{
-  background: url(../img/blanco.jpg);
+  background-image: url(../img/wallpaper1.jpg);
   background-size: cover;
   background-position: left top;
   background-repeat: no-repeat;

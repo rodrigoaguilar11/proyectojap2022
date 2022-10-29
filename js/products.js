@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             min = "0";
         }
         if (max == "") {
-            max = "99999999999";
+            max = Infinity;
         }
         let result = productos.filter(p => p.cost >= min && p.cost <= max);
         result.sort((a, b) => a.cost - b.cost);
@@ -88,7 +88,7 @@ function showProductsList(products) {
         let actualList="";
         for (product of products) {
              actualList +=`
-        <div onclick="setProductID(${product.id})" class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active">
+        <div onclick="setProductID(${product.id})" class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active shadow">
             <div class="row">
                     <h4>${product.name}</h4> 
                     <img src="${product.image}" alt="product image" class="img-thumbnail">

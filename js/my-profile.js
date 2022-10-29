@@ -11,15 +11,7 @@
       });
 
     })
-    //Username Settings
-    document.getElementById("changeName").addEventListener("click", () => {
-      if (localStorage.getItem("password") == document.getElementById("password").value) {
-        localStorage.setItem("username", document.getElementById("username").value);
-        location.href = "my-profile.html";
-      } else {
-        alert("contraseña incorrecta");
-      }
-    })
+
     //Password Settings
     document.getElementById("changePassword").addEventListener("click", () => {
       if (localStorage.getItem("password") == document.getElementById("password1").value && document.getElementById("password2").value == document.getElementById("password1").value) {
@@ -32,8 +24,12 @@
     document.getElementById("my-profile-title").innerHTML += 'Configuracion de perfil de ' + localStorage.getItem("username");
 
     //Direction Settings
-
-
+    if (localStorage.getItem("direction") != null) {
+      let direction = JSON.parse(localStorage.getItem("direction"));
+      document.getElementById("directionToSend").value = direction.direction;
+      document.getElementById("directionStreet").value = direction.street;
+      document.getElementById("directionNumber").value = direction.number;
+    }
 
     document.getElementById("aceptDirection").addEventListener("click", () => {
       let directionToAdd = {
@@ -42,12 +38,64 @@
         "number": document.getElementById("directionNumber").value
       };
       localStorage.setItem("direction", JSON.stringify(directionToAdd));
+      document.getElementById("alert-success").classList.add("show");
     })
-    if (localStorage.getItem("direction") != null) {
-    let direction = JSON.parse(localStorage.getItem("direction"));
-    document.getElementById("directionToSend").value = direction.direction;
-    document.getElementById("directionStreet").value = direction.street;
-    document.getElementById("directionNumber").value = direction.number;
+
+    //Change Wallpaper Settings
+    document.getElementById("changeWallpaper").addEventListener("click", () => {
+      localStorage.setItem("wallpaper", document.getElementById("wallpapers").value);
+      location.href = "my-profile.html";
+    })
+    //Get e-mail
+    document.getElementById("email").value = localStorage.getItem("username");
+    //Get personal Data in localStorage
+    if (localStorage.getItem("personalData") != null) {
+      let personalData = JSON.parse(localStorage.getItem("personalData"));
+      document.getElementById("firstName").value = personalData.firstName;
+      document.getElementById("secondName").value = personalData.secondName;
+      document.getElementById("lastname").value = personalData.lastname;
+      document.getElementById("secondLastname").value = personalData.secondLastname;
+      document.getElementById("phoneNumber").value = personalData.phoneNumber;
+
     }
     //Fin de DOMContentLoaded
   });
+
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          } else {
+            savePersonalData()
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+
+        }, false)
+      })
+  })()
+
+  function savePersonalData() {
+    let personalDataToAdd = {
+      "firstName": document.getElementById("firstName").value,
+      "secondName": document.getElementById("secondName").value,
+      "lastname": document.getElementById("lastname").value,
+      "secondLastname": document.getElementById("secondLastname").value,
+      "email": document.getElementById("email").value,
+      "phoneNumber": document.getElementById("phoneNumber").value,
+
+    };
+    localStorage.setItem("personalData", JSON.stringify(personalDataToAdd));
+    document.getElementById("alert-success").classList.add("show");
+  }
+  function deleteDates(){
+    localStorage.removeItem("personalData");
+    location.href = "my-profile.html";
+  }

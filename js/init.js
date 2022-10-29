@@ -7,6 +7,13 @@ const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json"; /
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json"; //Has publicado con exito
 const EXT_TYPE = ".json";
 
+let body = document.getElementsByTagName("body")[0];
+if (localStorage.getItem("wallpaper") != undefined) {
+  let wallpaper = localStorage.getItem("wallpaper");
+  body.style.backgroundImage ="url(" +wallpaper + ")";
+  console.log("Obtenido del LocalStorage: " + wallpaper)
+}
+
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 }

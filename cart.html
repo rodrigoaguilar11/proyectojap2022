@@ -155,7 +155,7 @@
       <h2>Lista de pedidos</h2>
       <p class="lead">Aqui veras todos los productos que agregaste a tu carrito.</p>
     </div>
-    <div class="container">
+    <div class="container shadow">
       <div class="container row list-group-item">
         <form action="#" method="get" class="row mt-4 needs-validation" id="purchaseForm" novalidate>
           <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
@@ -181,7 +181,7 @@
             <div class="col-4">
               <h5 class="mb-3">Tipo de envio</h5>
               <div class="custom-control custom-radio">
-                <input id="standardradio" name="purchaseType" type="radio" class="custom-control-input"
+                <input id="standardradio" name="purchaseType" type="radio" class="custom-control-input" checked
                   onclick="calcTotal()" value="0.05">
                 <label class="custom-control-label" for="standardradio">Standard 12 a 15 dias (5%)</label>
               </div>
@@ -191,7 +191,7 @@
                 <label class="custom-control-label" for="premiumradio">Express 5 a 8 dias (7%)</label>
               </div>
               <div class="custom-control custom-radio">
-                <input id="goldradio" name="purchaseType" type="radio" class="custom-control-input" checked
+                <input id="goldradio" name="purchaseType" type="radio" class="custom-control-input" 
                   onclick="calcTotal()" value="0.15">
                 <label class="custom-control-label" for="goldradio">Premium 2 a 5 dias (15%)</label>
               </div>

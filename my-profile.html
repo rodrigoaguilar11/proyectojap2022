@@ -28,7 +28,8 @@
 </head>
 
 <body class="main_backgound">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 d-block mb-4" style="position:fixed; width: 100%; z-index: 99;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 d-block mb-4"
+    style="position:fixed; width: 100%; z-index: 99;">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,84 +170,168 @@
       <h2 id="my-profile-title"></h2>
       <p class="lead">Aquí podrás cambiar tus datos o cerrar sesión.</p>
     </div>
-    <div class="container list-group-item">
-      <p>
-        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseChangeName" role="button"
-          aria-expanded="false" aria-controls="collapseExample">
-          Cambiar Nombre De Usuario </a>
-      </p>
-      <div class="collapse" id="collapseChangeName">
-        <div class="card card-body">
-          <p>Ingresa su contraseña y su nuevo nombre</p>
-          <div class="col-2">
-            <label for="password">Contraseña:</label>
-            <input type="password" name="password" id="password">
-            <label for="username">Nuevo Nombre:</label>
-            <input type="text" name="username" id="username">
-            <br><br>
-            <button class="btn btn-success" id="changeName">Cambiar Nombre</button>
-          </div>
-        </div>
+    <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
+      <h3>Cambios Guardados.</h3>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="container list-group-item shadow">
+      <div class="d-flex">
+        <p class="col-2">
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseChangePassword" role="button"
+            aria-expanded="false" aria-controls="collapseExample">
+            Cambiar Contraseña </a>
+        </p>
+        <p class="col-2">
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseDirection" role="button"
+            aria-expanded="false" aria-controls="collapseExample">
+            Modificar Direccion</a>
+        </p>
+        <p class="col-3">
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseChangeWallpaper" role="button"
+            aria-expanded="false" aria-controls="collapseExample">
+            Cambiar Fondo de pantalla </a>
+        </p>
+        <p class="col-2">
+          <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseCloseSession" role="button"
+            aria-expanded="false" aria-controls="collapseExample">
+            Cerrar Sesion </a>
+        </p>
       </div>
-      <p>
-        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseChangePassword" role="button"
-          aria-expanded="false" aria-controls="collapseExample">
-          Cambiar Contraseña </a>
-      </p>
+
       <div class="collapse" id="collapseChangePassword">
         <div class="card card-body">
           <p>Ingresa su contraseña actual y la nueva</p>
           <div class="col-2">
             <label for="password1">Contraseña Actual:</label>
-            <input type="password" name="password1" id="password1">
+            <input class="form-control" type="password" name="password1" id="password1">
             <label for="password2">Repite la Contraseña:</label>
-            <input type="password" name="password2" id="password2">
+            <input class="form-control" type="password" name="password2" id="password2">
             <label for="newPassword">Contraseña Nueva:</label>
-            <input type="password" name="newPassword" id="newPassword">
+            <input class="form-control" type="password" name="newPassword" id="newPassword">
             <br><br>
             <button class="btn btn-success" id="changePassword">Cambiar Contraseña</button>
           </div>
         </div>
       </div>
-      <p>
-        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseDirection" role="button"
-          aria-expanded="false" aria-controls="collapseExample">
-          Modificar Direccion</a>
-      </p>
+
       <div class="collapse" id="collapseDirection">
         <div class="card card-body">
           <p>Puedes modificar la direccion donde quieres que te enviemos los productos.</p>
           <div class="col-2">
             <label for="directionToSend">Calle:</label>
-            <input type="text" name="directionToSend" id="directionToSend">
+            <input class="form-control" type="text" name="directionToSend" id="directionToSend">
             <label for="directionStreet">Esquina:</label>
-            <input type="text" name="directionStreet" id="directionStreet">
+            <input class="form-control" type="text" name="directionStreet" id="directionStreet">
             <label for="directionNumber">Numero:</label>
-            <input type="number" name="directionNumber" id="directionNumber" min="0">
+            <input class="form-control" type="number" name="directionNumber" id="directionNumber" min="0">
             <br><br>
             <button class="btn btn-success" id="aceptDirection">Aceptar</button>
-            <button class="btn btn-danger" id="cancelDirection" data-bs-toggle="collapse" href="#collapseDirection" role="button">Cancelar</button>
+            <button class="btn btn-danger" id="cancelDirection" data-bs-toggle="collapse" href="#collapseDirection"
+              role="button">Cancelar</button>
 
           </div>
         </div>
       </div>
-      <p>
-        <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseCloseSession" role="button"
-          aria-expanded="false" aria-controls="collapseExample">
-          Cerrar Sesion </a>
-      </p>
+
+      <div class="collapse" id="collapseChangeWallpaper">
+        <div class="card card-body">
+          <p>Selecciona un fondo de la lista y presiona aceptar para guardar los cambios.</p>
+          <div class="col-2">
+            <select name="wallpapers" id="wallpapers" class="form-select">
+              <option value="../img/wallpaper1.jpg">Fondo por defecto</option>
+              <option value="../img/wallpaper2.jpg">Flores</option>
+              <option value="../img/wallpaper3.jpg">Windows XP</option>
+              <option value="../img/wallpaper4.jpg">Rectangulos</option>
+              <option value="../img/wallpaper5.jpg">Lockheed Martin F-35 Lightning II</option>
+            </select>
+            <br>
+            <button class="btn btn-success" id="changeWallpaper">Aceptar</button>
+          </div>
+        </div>
+      </div>
+
       <div class="collapse" id="collapseCloseSession">
         <div class="card card-body">
           <p>Si cierras Sesion volveras a el menu de inicio y deberas logearte para entrar.</p>
           <div class="col-2">
             <button class="btn btn-danger" id="closeSesion">Si, cerrar!</button>
-            <button class="btn btn-success" data-bs-toggle="collapse" href="#collapseCloseSession" role="button">Volver</button>
+            <button class="btn btn-success" data-bs-toggle="collapse" href="#collapseCloseSession"
+              role="button">Volver</button>
 
           </div>
         </div>
       </div>
+      <div class="card card-body">
+        <h3>Datos Personales</h3>
+        <div class="row col-8 d-flex">
+          <form action="#" method="get" class="row mt-4 needs-validation" id="purchaseForm" novalidate>
 
+          <div class="col-6">
+            <label for="firstName">Nombre</label>
+            <input class="form-control" type="text" name="firstName" id="firstName" required>
+            <div class="invalid-feedback">
+              Ingrese su nombre.
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="secondName">Segundo Nombre</label>
+            <input class="form-control" type="text" name="secondName" id="secondName" required>
+            <div class="invalid-feedback">
+              Ingrese su segundo nombre.
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="lastname">Apellido</label>
+            <input class="form-control" type="text" name="lastname" id="lastname" required>
+            <div class="invalid-feedback">
+              Ingrese su apellido.
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="secondLastname">Segundo Apellido</label>
+            <input class="form-control" type="text" name="secondLastname" id="secondLastname" required>
+            <div class="invalid-feedback">
+              Ingrese su segundo apellido.
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="email">e-mail</label>
+            <input class="form-control" type="email" name="email" id="email" required>
+            <div class="invalid-feedback">
+              Ingrese su e-mail.
+            </div>
+          </div>
+          <div class="col-6 ">
+            <label for="phoneNumber">Telefono de contacto</label>
+            <input class="form-control" type="number" name="phoneNumber" id="phoneNumber" required>
+            <div class="invalid-feedback">
+              Ingrese su telefono de contacto.
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-4">
+          <button class="btn btn-success" type="submit">Guardar
+            datos</button>
+          </form>
+          <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseDeleteDates" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            Borrar mis datos </a>
+        </div>
+        <div class="collapse" id="collapseDeleteDates">
+          <div class="card card-body">
+            <p>Si borras tus datos personales tendras que rellenarlos otra vez para completar tu perfil ¿Estas seguro?
+            </p>
+            <div class="col-8">
+              <button class="btn btn-danger" onclick="deleteDates()">Si, Borrar Datos</button>
+              <button class="btn btn-success" data-bs-toggle="collapse" href="#collapseCloseSession"
+                role="button">Volver</button>
 
+            </div>
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </main>

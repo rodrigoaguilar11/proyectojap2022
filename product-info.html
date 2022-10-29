@@ -13,7 +13,8 @@
 </head>
 
 <body class="main_backgound">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 d-block mb-4" style="position:fixed; width: 100%; z-index: 99;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 d-block mb-4"
+    style="position:fixed; width: 100%; z-index: 99;">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -154,7 +155,7 @@
       <h2>Informacion de producto: <span id="productName"></span></h2>
       <p class="lead">Aqui veras informacion del producto seleccionado.</p>
     </div>
-    <div class="container">
+    <div class="container shadow">
       <div class="col d-lg-flex d-md-block">
 
         <div class="row">
@@ -176,31 +177,29 @@
               <input class="form-control m-1" type="number" id="count" min="1" style="max-width:5em" value="1">
               <button class="btn btn-primary m-1" id="addToCart">Agregar al Carrito</button>
             </div>
-            <div id="images" class="col-12 p-0 m-0 d-flex"style="flex-flow: row wrap">
-            </div>
-
-            <!--  carrousel-->
-
-            <div id="carouselExampleControls" class="carousel slide col-12 img-thumbnail" data-bs-ride="carousel">
-              <div class="carousel-inner img-thumbnail" id="carrousel">
-
+            <div class="col-12 d-flex">
+              <div id="images" class="col-2 p-0 m-0" style="align-items: center;">
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.1);">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.1);">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+              <!--  carrousel-->
+              <div id="carouselExampleControls" class="carousel slide col-10 img-thumbnail" data-bs-ride="carousel">
+                <div class="carousel-inner img-thumbnail" id="carrousel">
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                  data-bs-slide="prev" style="background-color: rgba(0, 0, 0, 0.1);">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                  data-bs-slide="next" style="background-color: rgba(0, 0, 0, 0.1);">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
-
             <!-- Fin de carrousel-->
             <h2 class="text-center p-4">Comentarios</h2>
             <div class="col-12 justify-content-between">
-              <div class="list-group" id="comments">
+              <div class="list-group shadow" id="comments">
               </div>
               <br>
               <div class="col list-group d-flex p-2">
@@ -217,7 +216,7 @@
                   <input type="button" name="rate" id="rate-5" onclick="comentPuntuation(5)">
                   <label for="rate-5" class="far fa-star" id="rate5"></label>
                 </div>
-                <label for="comment">Realizar un comentario:</label>
+                <label for="comment">Realizar un comentario (Opcional):</label>
                 <textarea class="col-lg-8 col-md-12 col-sm-12 mb-2" id="comment"></textarea>
                 <button class="btn btn-primary col-lg-2 col-md-3 col-sm-3" id="sendComment">Enviar</button>
               </div>

@@ -24,16 +24,16 @@
       <!--Inicio de Sesion Normal-->
       <h2 class="">Inicio de sesión</h2>
       <label for="username">
-        <h4 style="cursor: pointer;">Email o Nombre de Usuario <svg xmlns="http://www.w3.org/2000/svg" width="16"
+        <h4 style="cursor: pointer;">Correo Electronico<svg xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
             <path
               d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
           </svg></h4>
       </label>
-      <input id="username" type="text" class="form-control" placeholder="Email">
+      <input id="username" type="email" class="form-control" placeholder="Email">
       <div class="invalid-feedback" id="usernameError"></div>
       <label for="password">
-        <h4 style="cursor: pointer;">Contraseña <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+        <h4 style="cursor: pointer;">Contraseña<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
             fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
             <path
               d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
@@ -72,5 +72,27 @@
       </p>
   </footer>
 </body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBOqRGdaWuNw1_oaPQ7gi9vAKQFw2DVyo0",
+    authDomain: "proyecto-jap-360001.firebaseapp.com",
+    projectId: "proyecto-jap-360001",
+    storageBucket: "proyecto-jap-360001.appspot.com",
+    messagingSenderId: "789117301039",
+    appId: "1:789117301039:web:e455795788587a7ee2f1da",
+    measurementId: "G-9JX77JCHZ2"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </html>
