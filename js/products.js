@@ -88,7 +88,7 @@ function showProductsList(products) {
         let actualList="";
         for (product of products) {
              actualList +=`
-        <div onclick="setProductID(${product.id})" class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active shadow border p-2">
+        <div onclick="setProductID(${product.id})" class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active shadow border-item p-2 mb-2">
             <div class="row">
                     <h4>${product.name}</h4> 
                     <img src="${product.image}" alt="product image">
