@@ -13,7 +13,8 @@
 </head>
 
 <body class="main_backgound">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 d-block mb-4" style="position:fixed; width: 100%; z-index: 99;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 d-block mb-4"
+    style="position:fixed; width: 100%; z-index: 99;">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,33 +156,37 @@
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </div>
     <div class="container">
-        <div class="text-end">
-          <div class="btn-group btn-group-toggle mb-2 col-lg-5 col-md-6 m-lg-1">
-              <p class="font-weight-normal text-end my-2">Cantidad: </p>
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0">
-              <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
-          </div>
-          <div class="btn-group btn-group-toggle mb-2 col-lg-3 col-md-6 m-lg-1" data-bs-toggle="buttons">
-            <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
-            <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
-            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
-            <button class="btn btn-danger" id="clearRangeFilter" style="margin-left:.3em ;">Limpiar</button>
-          </div>
+      <div class="text-end">
+        <div class="btn-group btn-group-toggle mb-2 col-lg-5 col-md-6 m-lg-1">
+          <p class="font-weight-normal text-end my-2">Cantidad: </p>
+          <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0">
+          <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0">
+          <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
         </div>
-        <div class="row" id="cat-list-container">
+        <div class="btn-group btn-group-toggle mb-2 col-lg-3 col-md-6 m-lg-1" data-bs-toggle="buttons">
+          <input type="radio" class="btn-check" name="options" id="sortAsc">
+          <label class="btn btn-light" for="sortAsc">A-Z</label>
+          <input type="radio" class="btn-check" name="options" id="sortDesc">
+          <label class="btn btn-light" for="sortDesc">Z-A</label>
+          <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+          <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+          <button class="btn btn-danger" id="clearRangeFilter" style="margin-left:.3em ;">Limpiar</button>
+        </div>
+      </div>
+      <div class="row" id="cat-list-container">
 
-        </div>
+      </div>
     </div>
   </main>
   <footer class="text-muted bg-dark ">
     <div class="container">
-      <p class="float-end">
+      <div class="float-end pfooter col">
+        <h4>
+          Proyecto realizado por Rodrigo Aguilar <a href="https://www.linkedin.com/in/rodrigo-aguilar-91b09a252/"
+            target="_blank">Linkedin</a> <a href="https://github.com/rodrigoaguilar11" target="_blank">GitHub</a></h4>
         <a href="#">Volver arriba</a>
-      </p>
+      </div>
+
       <p class="pfooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
           Programar</a> -
         2022</p>

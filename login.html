@@ -17,54 +17,87 @@
 </head>
 
 <body class="main_backgound">
-  <main class="mt-5">
-    <div class="container text-center" style="width: 25em">
-      <h1>Rodrigo Aguilar e_Commerce</h1>
-      <img src="img/login.png" class="img-responsive" width="100%">
-      <!--Inicio de Sesion Normal-->
-      <h2 class="">Inicio de sesión</h2>
-      <label for="username">
-        <h4 style="cursor: pointer;">Correo Electronico<svg xmlns="http://www.w3.org/2000/svg" width="16"
-            height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-            <path
-              d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-          </svg></h4>
-      </label>
-      <input id="username" type="email" class="form-control" placeholder="Email">
-      <div class="invalid-feedback" id="usernameError"></div>
-      <label for="password">
-        <h4 style="cursor: pointer;">Contraseña<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-            fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
-            <path
-              d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
-            <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-          </svg></h4>
-      </label>
-      <input id="password" type="password" class="form-control" placeholder="Contraseña">
-      <h4 onclick="showPassword()" style="cursor: pointer;">Mostrar Contraseña <svg xmlns="http://www.w3.org/2000/svg"
-          width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-          <path
-            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-          <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-        </svg></h4>
-      <div class="invalid-feedback" id="passwordError"></div>
-      <br>
-      <button id="loginButton" class="btn btn-primary btn-lg">
-        Ingresar
-      </button>
+  <main class="mt-4 mb-4">
+    <div class="container text-center col-lg-5 col-md-10 col-sm-12">
+      <div class="list-group-item p-5 shadow">
+        <img src="img/login.png" class="img-responsive" width="100%">
+        <h5>Para este y cualquier otro formulario del sitio puede introducir datos aleatorios y ficticios.</h5>
+        <!--Inicio de Sesion-->
+        <form action="#" method="get" class="row mt-4 needs-validation" id="loginForm" novalidate>
+
+          <div class="col-12 d-flex mb-3">
+            <label for="username" class="col-lg-4 col-md-5 col-sm-6">
+              <h4 style="cursor: pointer;">Email: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                </svg></h4>
+            </label>
+            <div class="col-lg-8 col-md-7 col-sm-6">
+              <input id="username" type="email" class="form-control" placeholder="Email" required>
+              <div class="invalid-feedback">
+                Ingrese su correo. (example@example)
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 d-flex mb-3">
+            <label for="password" class="col-lg-4 col-md-5 col-sm-6">
+              <h4 style="cursor: pointer;">Contraseña <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                  <path
+                    d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                  <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                </svg></h4>
+            </label>
+            <div class="col-lg-8 col-md-7 col-sm-6">
+              <input id="password" type="password" class="form-control" placeholder="Contraseña" required>
+
+              <div class="invalid-feedback">
+                Ingrese su contraseña.
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <h3 onclick="showPassword()" style="cursor: pointer; user-select: none;"><span id="showPasswordText">Mostrar
+                contraseña </span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-eye" viewBox="0 0 16 16">
+                <path
+                  d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+              </svg></h3>
+          </div>
+          <br>
+          <button id="loginButton" class="btn btn-primary btn-lg" type="submit">
+            Ingresar
+          </button>
+        </form>
+        <br>
+        <h4>Este sitio es una herramienta generada con fines estrictamente educativos. No realiza compras o ventas
+          reales
+          a terceros. Tampoco administra datos personales o de clientes. Todo lo expresado en este dominio no tiene
+          validez comercial.</h5>
+      </div>
       <!--Google Oauth-->
+      <!--
       <h2>Iniciar Sesion con Google Identity</h2>
       <div id="g_id_onload" data-client_id="789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com"
         data-callback="handleCredentialResponse">
       </div>
       <div class="g_id_signin" data-type="standard"></div>
       <br>
+    -->
   </main>
   <footer class="text-muted bg-dark ">
     <div class="container">
-      <p class="float-end">
+      <div class="float-end pfooter col">
+        <h4>
+          Proyecto realizado por Rodrigo Aguilar <a href="https://www.linkedin.com/in/rodrigo-aguilar-91b09a252/"
+            target="_blank">Linkedin</a> <a href="https://github.com/rodrigoaguilar11" target="_blank">GitHub</a></h4>
         <a href="#">Volver arriba</a>
-      </p>
+      </div>
+
       <p class="pfooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
           Programar</a> -
         2022</p>
@@ -95,4 +128,5 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+
 </html>

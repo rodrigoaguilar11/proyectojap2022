@@ -53,11 +53,14 @@ let getJSONData = function (url) {
 }
 
 
-if (localStorage.getItem("username") == undefined || localStorage.getItem("password") == undefined) {
+if (localStorage.getItem("email") == undefined || localStorage.getItem("password") == undefined) {
   location.href = "login.html";
 
 }
-document.getElementById("profile").innerHTML += '<span style= color:lightblue; font-size:30px; font-weight:bold;>' + localStorage.getItem("username") + '</span>';
+let username = localStorage.getItem("email");            
+username = username.substring(0, username.indexOf('@'));
+console.log(username.indexOf('@'))
+document.getElementById("profile").innerHTML += '<span>' + username + '</span>';
 
 function closeSesion() {
   localStorage.clear();

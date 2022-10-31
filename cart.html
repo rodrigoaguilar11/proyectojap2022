@@ -155,7 +155,7 @@
       <h2>Lista de pedidos</h2>
       <p class="lead">Aqui veras todos los productos que agregaste a tu carrito.</p>
     </div>
-    <div class="container shadow">
+    <div class="container">
       <div class="container row list-group-item">
         <form action="#" method="get" class="row mt-4 needs-validation" id="purchaseForm" novalidate>
           <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
@@ -233,6 +233,9 @@
                   <div class="">
                     <p>Si eliminas el carrito, todos los productos serán removidos.</p>
                     <button type="button" class="btn btn-danger" onclick="clearCart()">Si Eliminar!</button>
+                    <button class="btn btn-success" data-bs-toggle="collapse" href="#deleteCart"
+                    role="button" type="button">Volver</button>
+        
                   </div>
                 </div>
               </div>
@@ -352,14 +355,18 @@
   </main>
   <footer class="text-muted bg-dark ">
     <div class="container">
-      <p class="float-end">
+      <div class="float-end pfooter col">
+        <h4>
+        Proyecto realizado por Rodrigo Aguilar <a href="https://www.linkedin.com/in/rodrigo-aguilar-91b09a252/"
+          target="_blank">Linkedin</a> <a href="https://github.com/rodrigoaguilar11" target="_blank">GitHub</a></h4>
         <a href="#">Volver arriba</a>
-      </p>
+      </div>
+      
       <p class="pfooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
           Programar</a> -
         2022</p>
-      <p class="pfooter">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del
-        obligatorio.</p>
+      <p class="pfooter">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.
+      </p>
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">

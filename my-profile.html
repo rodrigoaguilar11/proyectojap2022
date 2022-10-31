@@ -238,11 +238,11 @@
           <p>Selecciona un fondo de la lista y presiona aceptar para guardar los cambios.</p>
           <div class="col-2">
             <select name="wallpapers" id="wallpapers" class="form-select">
-              <option value="../img/wallpaper1.jpg">Fondo por defecto</option>
-              <option value="../img/wallpaper2.jpg">Flores</option>
-              <option value="../img/wallpaper3.jpg">Windows XP</option>
-              <option value="../img/wallpaper4.jpg">Rectangulos</option>
-              <option value="../img/wallpaper5.jpg">Lockheed Martin F-35 Lightning II</option>
+              <option value="../proyectojap2022/img/wallpaper1.jpg">Fondo por defecto</option>
+              <option value="../proyectojap2022/img/wallpaper2.jpg">Flores</option>
+              <option value="../proyectojap2022/img/wallpaper3.jpg">Windows XP</option>
+              <option value="../proyectojap2022/img/wallpaper4.jpg">Rectangulos</option>
+              <option value="/img/wallpaper5.jpg">Lockheed Martin F-35 Lightning II</option>
             </select>
             <br>
             <button class="btn btn-success" id="changeWallpaper">Aceptar</button>
@@ -261,90 +261,103 @@
           </div>
         </div>
       </div>
-      <div class="card card-body">
+      <form action="#" method="get" class="row mt-4 needs-validation" id="purchaseForm" novalidate>
         <h3>Datos Personales</h3>
-        <div class="row col-8 d-flex">
-          <form action="#" method="get" class="row mt-4 needs-validation" id="purchaseForm" novalidate>
+        <div class="d-flex">
+          <div class="row col-8 d-flex">
+            <div class="col-6">
+              <label for="firstName">Nombre</label>
+              <input class="form-control" type="text" name="firstName" id="firstName" required>
+              <div class="invalid-feedback">
+                Ingrese su nombre.
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="secondName">Segundo Nombre</label>
+              <input class="form-control" type="text" name="secondName" id="secondName" required>
+              <div class="invalid-feedback">
+                Ingrese su segundo nombre.
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="lastname">Apellido</label>
+              <input class="form-control" type="text" name="lastname" id="lastname" required>
+              <div class="invalid-feedback">
+                Ingrese su apellido.
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="secondLastname">Segundo Apellido</label>
+              <input class="form-control" type="text" name="secondLastname" id="secondLastname" required>
+              <div class="invalid-feedback">
+                Ingrese su segundo apellido.
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="email">e-mail</label>
+              <input class="form-control" type="email" name="email" id="email" required>
+              <div class="invalid-feedback">
+                Ingrese su e-mail.
+              </div>
+            </div>
+            <div class="col-6 ">
+              <label for="phoneNumber">Telefono de contacto</label>
+              <input class="form-control" type="number" name="phoneNumber" id="phoneNumber" required>
+              <div class="invalid-feedback">
+                Ingrese su telefono de contacto.
+              </div>
+            </div>
+            <div class="col-12 ">
+              <label for="inputProfilePhoto">Foto de perfil (Opcional)</label>
+              <input class="form-control" type="file" name="inputProfilePhoto" id="inputProfilePhoto"
+                accept="image/png, image/jpeg, image/jpg">
+            </div>
+            <div class="col-12 mt-2">
+              <button class="btn btn-success" type="submit">Guardar datos</button>
+              <a class="btn btn-primary" type="button" href="my-profile.html">Descartar Cambios</a>
 
-          <div class="col-6">
-            <label for="firstName">Nombre</label>
-            <input class="form-control" type="text" name="firstName" id="firstName" required>
-            <div class="invalid-feedback">
-              Ingrese su nombre.
+              <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseDeleteDates" role="button"
+                aria-expanded="false" aria-controls="collapseExample">Borrar mis datos </a>
             </div>
           </div>
-          <div class="col-6">
-            <label for="secondName">Segundo Nombre</label>
-            <input class="form-control" type="text" name="secondName" id="secondName" required>
-            <div class="invalid-feedback">
-              Ingrese su segundo nombre.
-            </div>
-          </div>
-          <div class="col-6">
-            <label for="lastname">Apellido</label>
-            <input class="form-control" type="text" name="lastname" id="lastname" required>
-            <div class="invalid-feedback">
-              Ingrese su apellido.
-            </div>
-          </div>
-          <div class="col-6">
-            <label for="secondLastname">Segundo Apellido</label>
-            <input class="form-control" type="text" name="secondLastname" id="secondLastname" required>
-            <div class="invalid-feedback">
-              Ingrese su segundo apellido.
-            </div>
-          </div>
-          <div class="col-6">
-            <label for="email">e-mail</label>
-            <input class="form-control" type="email" name="email" id="email" required>
-            <div class="invalid-feedback">
-              Ingrese su e-mail.
-            </div>
-          </div>
-          <div class="col-6 ">
-            <label for="phoneNumber">Telefono de contacto</label>
-            <input class="form-control" type="number" name="phoneNumber" id="phoneNumber" required>
-            <div class="invalid-feedback">
-              Ingrese su telefono de contacto.
-            </div>
+          <div class="col-4 m-2">
+            <img src="./img/img_perfil.png" alt="related product image" class="img-thumbnail profile-image"
+              id="profilePhoto">
+
           </div>
         </div>
-        <br>
-        <div class="col-4">
-          <button class="btn btn-success" type="submit">Guardar
-            datos</button>
-          </form>
-          <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseDeleteDates" role="button" aria-expanded="false"
-            aria-controls="collapseExample">
-            Borrar mis datos </a>
-        </div>
-        <div class="collapse" id="collapseDeleteDates">
-          <div class="card card-body">
-            <p>Si borras tus datos personales tendras que rellenarlos otra vez para completar tu perfil ¿Estas seguro?
-            </p>
-            <div class="col-8">
-              <button class="btn btn-danger" onclick="deleteDates()">Si, Borrar Datos</button>
-              <button class="btn btn-success" data-bs-toggle="collapse" href="#collapseCloseSession"
-                role="button">Volver</button>
+      </form>
+      <div class="collapse" id="collapseDeleteDates">
+        <div class="card card-body">
+          <p>Si borras tus datos personales tendras que rellenarlos otra vez para completar tu perfil ¿Estas seguro?
+          </p>
+          <div class="col-8">
+            <button class="btn btn-danger" onclick="deleteDates()">Si, Borrar Datos</button>
+            <button class="btn btn-success" data-bs-toggle="collapse" href="#collapseDeleteDates"
+              role="button">Volver</button>
 
-            </div>
           </div>
         </div>
-
       </div>
+    </div>
+    </div>
 
     </div>
   </main>
   <footer class="text-muted bg-dark ">
     <div class="container">
-      <p class="float-end">
+      <div class="float-end pfooter col">
+        <h4>
+          Proyecto realizado por Rodrigo Aguilar <a href="https://www.linkedin.com/in/rodrigo-aguilar-91b09a252/"
+            target="_blank">Linkedin</a> <a href="https://github.com/rodrigoaguilar11" target="_blank">GitHub</a></h4>
         <a href="#">Volver arriba</a>
-      </p>
+      </div>
+
       <p class="pfooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
           Programar</a> -
         2022</p>
-      <p class="pfooter">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del
-        obligatorio.</p>
+      <p class="pfooter">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.
+      </p>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>

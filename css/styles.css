@@ -1,5 +1,9 @@
 
 /*mis estilos*/ 
+.profile-image{
+  border-radius: 50%;
+  object-fit: cover;
+}
 .shadow{
   filter: drop-shadow(3px 5px 5px black) ;
 }
@@ -87,6 +91,9 @@
 }
 .pfooter{
   color:white
+}
+.pfooter a{
+  color:#53C0FB;
 }
 /*Fin de mis estilos________________________________________________________________________*/
 .jumbotron,

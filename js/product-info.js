@@ -236,7 +236,7 @@ function addComment() {
 <div class="col-12 list-group-item">
     <div class="d-lg-flex d-md-block justify-content-between">
         <h4>${iStars}</h4>     
-        <h4>${localStorage.getItem("username")}</h4>
+        <h4>${localStorage.getItem("email")}</h4>
         <p>${actualDate}</p> 
     </div>
     <h5>${comment}</h5> 
