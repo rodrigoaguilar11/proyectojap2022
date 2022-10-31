@@ -50,6 +50,10 @@
 .list_element:hover{
   color: rgb(2, 179, 255);
 }
+
+.border{
+  border-radius: 1em;
+}
 .coverimg{
     height: 50vh;
     padding: 5em inherit;

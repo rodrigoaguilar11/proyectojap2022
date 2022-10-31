@@ -54,10 +54,10 @@ let actualCategories = "";
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))) {
                 actualCategories += `
-            <div onclick="setCatID(${category.id})"class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active shadow">
+            <div onclick="setCatID(${category.id})"class="col-sm-6 col-md-4 col-lg-3 list-group-item cursor-active shadow border p-2">
                 <div class="row">
                         <h4 class="mb-1">${category.name}</h4>
-                        <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
+                        <img src="${category.imgSrc}" alt="${category.description}">
                         <p class="mb-1">${category.description}</p>
                         <p>${category.productCount} artículos</p>
                 </div>

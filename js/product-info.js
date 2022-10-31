@@ -28,6 +28,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
         addComment();
     })
 
+    //counter of texarea input
+    let comment = document.getElementById('comment');
+    let textAreaCounter = document.getElementById('textAreaCounter');
+
+    comment.addEventListener('input', function (e) {
+        const target = e.target;
+        const longitudMax = target.getAttribute('maxlength');
+        const longitudAct = target.value.length;
+        textAreaCounter.innerHTML = `${longitudAct} de ${longitudMax}`;
+    });
+    document.getElementById("usernameForComment").innerHTML= actualUsername;
     //End of DOMContentLoaded
 })
 
@@ -171,7 +182,6 @@ function addItemToCart() {
         localStorage.setItem("cart", JSON.stringify(cartLS));
         //actualiza el contador de items en el carrito
         checkCart()
-        //document.getElementById("count").value = product[0].count;
     } else {
 
         let product = {
@@ -236,7 +246,7 @@ function addComment() {
 <div class="col-12 list-group-item">
     <div class="d-lg-flex d-md-block justify-content-between">
         <h4>${iStars}</h4>     
-        <h4>${localStorage.getItem("email")}</h4>
+        <h4>${actualUsername}</h4>
         <p>${actualDate}</p> 
     </div>
     <h5>${comment}</h5> 
@@ -290,11 +300,11 @@ function UpdateTotalAverage() {
         totalScore = totalScore.toString();
         totalScore = totalScore.substring(0, 4);
         document.getElementById("totalAverage").innerHTML = `
-<h4>Puntuación ${totalScore} ${stars}</h4>
+<h5>Puntuación media de  ${totalScore} ${stars} en ${totalAverageCount} comentarios.</h5>
         `;
     } else {
         document.getElementById("totalAverage").innerHTML = `
-        <h4>Puntuación inexistente</h4>
+        <h5>Puntuación inexistente</h5>
         `;
     }
 

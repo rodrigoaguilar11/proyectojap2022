@@ -173,7 +173,7 @@
 
             </div>
             <div class="col-12 d-flex mb-2">
-              <h4>Quiero comprar</h4>
+              <h4 class="mt-2">Quiero comprar: </h4>
               <input class="form-control m-1" type="number" id="count" min="1" style="max-width:5em" value="1">
               <button class="btn btn-primary m-1" id="addToCart">Agregar al Carrito</button>
             </div>
@@ -202,8 +202,9 @@
               <div class="list-group shadow" id="comments">
               </div>
               <br>
-              <div class="col list-group d-flex p-2">
-                <p>Mi Valoracion:</p>
+              <div class="col list-group d-flex p-4">
+                <h4>Comentar como <label id="usernameForComment"></label></h4>
+                <h5>Mi Valoracion:</h4>
                 <div class="d-flex star-widget">
                   <input type="button" name="rate" id="rate-1" onclick="comentPuntuation(1)">
                   <label for="rate-1" class="fas fa-star checked" id="rate1"></label>
@@ -216,8 +217,9 @@
                   <input type="button" name="rate" id="rate-5" onclick="comentPuntuation(5)">
                   <label for="rate-5" class="far fa-star" id="rate5"></label>
                 </div>
-                <label for="comment">Realizar un comentario (Opcional):</label>
-                <textarea class="col-lg-8 col-md-12 col-sm-12 mb-2" id="comment"></textarea>
+                <label for="comment"><h5>Realizar un comentario (Opcional) maximo 100 caracteres:</h5></label>
+                <textarea class="col-lg-5 col-md-12 col-sm-12 mb-2" maxlength="100" id="comment"></textarea>
+                <p id="textAreaCounter">0 de 100</p>
                 <button class="btn btn-primary col-lg-2 col-md-3 col-sm-3" id="sendComment">Enviar</button>
               </div>
             </div>

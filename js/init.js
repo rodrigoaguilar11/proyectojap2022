@@ -6,7 +6,7 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json"; //¡Has comprado con éxito!
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json"; //Has publicado con exito
 const EXT_TYPE = ".json";
-
+let actualUsername;
 let body = document.getElementsByTagName("body")[0];
 if (localStorage.getItem("wallpaper") != undefined) {
   let wallpaper = localStorage.getItem("wallpaper");
@@ -57,10 +57,18 @@ if (localStorage.getItem("email") == undefined || localStorage.getItem("password
   location.href = "login.html";
 
 }
+
+if (localStorage.getItem("personalData") != null) {
+  let personalData = JSON.parse(localStorage.getItem("personalData"));
+  actualUsername = personalData.firstName + " " + personalData.lastname;
+  document.getElementById("profile").innerHTML += '<span>' + actualUsername + '</span>';
+}else{
 let username = localStorage.getItem("email");            
 username = username.substring(0, username.indexOf('@'));
-console.log(username.indexOf('@'))
-document.getElementById("profile").innerHTML += '<span>' + username + '</span>';
+actualUsername = username;
+document.getElementById("profile").innerHTML += '<span>' + actualUsername + '</span>';
+}
+console.log(actualUsername)
 
 function closeSesion() {
   localStorage.clear();
