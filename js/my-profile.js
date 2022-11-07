@@ -1,4 +1,12 @@
 let imageLoaded;
+
+const toBase64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = error => reject(error);
+});
+
 document.addEventListener("DOMContentLoaded", function (e) {
   //Inicio DOMContentLoaded
   //Boton para Cerrar Sesion
@@ -63,9 +71,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
   }
   //mostramos la imagen al cargarla
   document.getElementById("inputProfilePhoto").addEventListener("change", (e) => {
-    imageLoaded = URL.createObjectURL(e.target.files[0])
-    document.getElementById("profilePhoto").src = imageLoaded;
+    imageLoaded = e.target.files[0];
+    document.getElementById("profilePhoto").src = URL.createObjectURL(e.target.files[0]);
+
   })
+
   //Fin de DOMContentLoaded
 });
 
@@ -97,17 +107,25 @@ function savePersonalData() {
     "lastname": document.getElementById("lastname").value,
     "secondLastname": document.getElementById("secondLastname").value,
     "phoneNumber": document.getElementById("phoneNumber").value,
-    "profilePhoto": ""
+    "profilePhoto": null
   };
-  if(document.getElementById("email").value != localStorage.getItem("email")){
+  if (document.getElementById("email").value != localStorage.getItem("email")) {
     localStorage.setItem("email", document.getElementById("email").value);
   }
   //Si hay una imagen cargada la agregamos al objeto
   if (document.getElementById("inputProfilePhoto").files.length != 0) {
-    personalDataToAdd.profilePhoto = imageLoaded;
+    parseImage();
+    async function parseImage() {
+      console.log(await toBase64(imageLoaded));
+      let imageParsed = await toBase64(imageLoaded);
+      personalDataToAdd.profilePhoto = imageParsed;
+      localStorage.setItem("personalData", JSON.stringify(personalDataToAdd));
+      document.getElementById("alert-success").classList.add("show");
+    }
+  } else {
+    localStorage.setItem("personalData", JSON.stringify(personalDataToAdd));
+    document.getElementById("alert-success").classList.add("show");
   }
-  localStorage.setItem("personalData", JSON.stringify(personalDataToAdd));
-  document.getElementById("alert-success").classList.add("show");
 }
 
 function deleteDates() {

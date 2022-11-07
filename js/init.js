@@ -11,7 +11,6 @@ let body = document.getElementsByTagName("body")[0];
 if (localStorage.getItem("wallpaper") != undefined) {
   let wallpaper = localStorage.getItem("wallpaper");
   body.style.backgroundImage ="url(" +wallpaper + ")";
-  console.log("Obtenido del LocalStorage: " + wallpaper)
 }
 
 let showSpinner = function () {
@@ -55,7 +54,6 @@ let getJSONData = function (url) {
 
 if (localStorage.getItem("email") == undefined || localStorage.getItem("password") == undefined) {
   location.href = "login.html";
-
 }
 
 if (localStorage.getItem("personalData") != null) {
@@ -68,7 +66,6 @@ username = username.substring(0, username.indexOf('@'));
 actualUsername = username;
 document.getElementById("profile").innerHTML += '<span>' + actualUsername + '</span>';
 }
-console.log(actualUsername)
 
 function closeSesion() {
   localStorage.clear();
@@ -77,7 +74,6 @@ function closeSesion() {
 }
 document.addEventListener("DOMContentLoaded", function () {
   checkCart()
-
   //End of DOMContentLoaded
 });
 
