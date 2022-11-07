@@ -117,11 +117,7 @@
           </li>
           <li class="nav-item">
             <div class="contenedor">
-              <a id="profile" class="nav-link" href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                  height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                  <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                </svg> Perfil: </a>
+              <a id="profile" class="nav-link" href="my-profile.html"><img id="navProfileImg" style="width:25px ; border-radius: 50%;"> Perfil: </a>
               <div class="profilelist">
                 <a class="list_element" href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                     height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -155,24 +151,30 @@
       <p class="lead">Aqui verás todos los productos de la categoria <span id="productsh1"></span></p>
     </div>
     <div class="container">
-      <div class="d-lg-flex d-md-block">
-        <div class="mb-2 col-lg-3 col-md-12 p-lg-2" style="text-align: center">
-          <p class="p-2 m-0" style="background-color: #fff;border-radius: 10px;"><a
-              href="categories.html">Categorías</a> &lt; <span id="productCategory"></span></p>
+      <div class="navbar navbar-expand-lg navbar-dark bg-dark p-0 d-block mb-2 d-flex">
+        <div class="mb-0 col-lg-3 col-md-12 p-lg- mt-3" style="text-align: center">
+          <p><a class="p-2 m-0 green"
+              href="categories.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-tags" viewBox="0 0 16 16">
+              <path
+                d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z" />
+              <path
+                d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z" />
+            </svg> Categorías</a><span class="p-2 m-0 green" id="productCategory"></span></p>
         </div>
-        <div class="mb-2 col-lg-3 col-md-12 p-lg-2" style="display: flex;">
+        <div class="mb-0 col-lg-3 col-md-12 p-lg-2" style="display: flex;">
           <label class="btn btn-light" for="filterSearch"> <i class="fa fa-search" aria-hidden="true"></i>
           </label>
           <input class="form-control" type="search" placeholder="Nombre o Descripcion:" id="filterSearch">
         </div>
-        <div class="mb-2 col-lg-3 col-md-12 p-lg-2" style="display: flex;">
+        <div class="mb-0 col-lg-3 col-md-12 p-lg-2" style="display: flex;">
           <input class="form-control" type="number" placeholder="$ min." id="filterMin" style="margin-right: .3em;"
             min="0">
           <input class="form-control" type="number" placeholder="$ máx." id="filterMax" style="margin-right: .3em;"
             min="0">
           <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
         </div>
-        <div class="mb-2 col-lg-3 col-md-12 p-lg-2" style="display: flex;">
+        <div class="mb-0 col-lg-3 col-md-12 p-lg-2" style="display: flex;">
           <input type="radio" class="btn-check" name="options" id="sortAsc">
           <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1">$</i>
           </label>
@@ -191,7 +193,7 @@
       </div>
     </div>
   </main>
-  <footer class="text-muted bg-dark ">
+  <footer class="text-muted bg-dark">
     <div class="container">
       <div class="float-end pfooter col">
         <h4>

@@ -74,6 +74,7 @@ function closeSesion() {
 }
 document.addEventListener("DOMContentLoaded", function () {
   checkCart()
+  setProfilePhoto()
   //End of DOMContentLoaded
 });
 
@@ -83,4 +84,12 @@ function checkCart() {
     localStorage.setItem("cart", JSON.stringify([]));
   }
   document.getElementById("cartNumber").innerHTML = JSON.parse(localStorage.getItem("cart")).length;
+}
+function setProfilePhoto(){
+  const personalData = JSON.parse(localStorage.getItem("personalData"))
+  if (personalData.profilePhoto == null){
+    document.getElementById("navProfileImg").src = "./img/img_perfil.png";
+  }else{
+    document.getElementById("navProfileImg").src = personalData.profilePhoto;
+  }
 }

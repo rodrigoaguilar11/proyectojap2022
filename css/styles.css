@@ -4,6 +4,12 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.green{
+  color: rgba(255,255,255,.55);
+}
+.green:hover{
+  color: rgb(2, 179, 255);
+}
 .shadow{
   filter: drop-shadow(3px 5px 5px black) ;
 }

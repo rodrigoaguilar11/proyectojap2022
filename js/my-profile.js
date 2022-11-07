@@ -65,7 +65,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("lastname").value = personalData.lastname;
     document.getElementById("secondLastname").value = personalData.secondLastname;
     document.getElementById("phoneNumber").value = personalData.phoneNumber;
-    if (personalData.profilePhoto != "") {
+    if (personalData.profilePhoto == null || "") {
+      document.getElementById("profilePhoto").src="./img/img_perfil.png"
+    }else{
       document.getElementById("profilePhoto").src = personalData.profilePhoto;
     }
   }
@@ -130,5 +132,12 @@ function savePersonalData() {
 
 function deleteDates() {
   localStorage.removeItem("personalData");
+  location.href = "my-profile.html";
+}
+
+function deleteImg(){
+  const personalData = JSON.parse(localStorage.getItem("personalData"))
+  personalData.profilePhoto = null;
+  localStorage.setItem("personalData", JSON.stringify(personalData));
   location.href = "my-profile.html";
 }

@@ -133,11 +133,8 @@
           </li>
           <li class="nav-item">
             <div class="contenedor">
-              <a id="profile" class="nav-link" href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                  height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                  <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                </svg> Perfil: </a>
+              <a id="profile" class="nav-link" href="my-profile.html">
+                <img id="navProfileImg" style="width:25px ; border-radius: 50%;"> Perfil: </a>
               <div class="profilelist">
                 <a class="list_element" href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                     height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -165,6 +162,7 @@
       </div>
     </div>
   </nav>
+
   <main class="pb-5 pt-5">
     <div class="text-center p-4">
       <h2 id="my-profile-title"></h2>
@@ -313,19 +311,18 @@
               <input class="form-control" type="file" name="inputProfilePhoto" id="inputProfilePhoto"
                 accept="image/png, image/jpeg, image/jpg">
             </div>
-            <div class="col-12 mt-2">
-              <button class="btn btn-success" type="submit">Guardar datos</button>
-              <a class="btn btn-primary" type="button" href="my-profile.html">Descartar Cambios</a>
-
-              <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseDeleteDates" role="button"
-                aria-expanded="false" aria-controls="collapseExample">Borrar mis datos </a>
-            </div>
           </div>
-          <div class="col-4 m-2">
-            <img src="./img/img_perfil.png" alt="related product image" class="img-thumbnail profile-image"
+          <div class="col-3 p-2 container">
+            <img alt="related product image" class="img-thumbnail profile-image"
               id="profilePhoto">
-
           </div>
+        </div>
+        <div class="col-12 mt-2">
+          <button class="btn btn-success" type="submit">Guardar datos</button>
+          <a class="btn btn-primary" type="button" href="my-profile.html">Descartar Cambios</a>
+          <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseDeleteDates" role="button"
+            aria-expanded="false" aria-controls="collapseExample">Borrar mis datos </a>
+          <button class="btn btn-danger float-end" onclick="deleteImg()">Eliminar foto de perfil</button>
         </div>
       </form>
       <div class="collapse" id="collapseDeleteDates">
