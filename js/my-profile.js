@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("lastname").value = personalData.lastname;
     document.getElementById("secondLastname").value = personalData.secondLastname;
     document.getElementById("phoneNumber").value = personalData.phoneNumber;
-    if (personalData.profilePhoto == null || "") {
+    if (personalData.profilePhoto == null || "" || undefined) {
       document.getElementById("profilePhoto").src="../proyectojap2022/img/img_perfil.png"
     }else{
       document.getElementById("profilePhoto").src = personalData.profilePhoto;
