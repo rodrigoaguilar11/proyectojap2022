@@ -88,7 +88,7 @@ function checkCart() {
 function setProfilePhoto(){
   const personalData = JSON.parse(localStorage.getItem("personalData"))
   if (personalData.profilePhoto == null){
-    document.getElementById("navProfileImg").src = "./img/img_perfil.png";
+    document.getElementById("navProfileImg").src = "../proyectojap2022/img/img_perfil.png";
   }else{
     document.getElementById("navProfileImg").src = personalData.profilePhoto;
   }
