@@ -65,11 +65,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("lastname").value = personalData.lastname;
     document.getElementById("secondLastname").value = personalData.secondLastname;
     document.getElementById("phoneNumber").value = personalData.phoneNumber;
-    if (personalData.profilePhoto == null || "" || undefined) {
-      document.getElementById("profilePhoto").src="../proyectojap2022/img/img_perfil.png"
-    }else{
-      document.getElementById("profilePhoto").src = personalData.profilePhoto;
-    }
+    document.getElementById("profilePhoto").src = personalData.profilePhoto;
+  }else{
+    document.getElementById("profilePhoto").src = "../proyectojap2022/img/img_perfil.png";
   }
   //mostramos la imagen al cargarla
   document.getElementById("inputProfilePhoto").addEventListener("change", (e) => {
@@ -108,11 +106,9 @@ function savePersonalData() {
     "lastname": document.getElementById("lastname").value,
     "secondLastname": document.getElementById("secondLastname").value,
     "phoneNumber": document.getElementById("phoneNumber").value,
-    "profilePhoto": null
+    "profilePhoto": "../proyectojap2022/img/img_perfil.png"
   };
-  if (document.getElementById("email").value != localStorage.getItem("email")) {
     localStorage.setItem("email", document.getElementById("email").value);
-  }
   //Si hay una imagen cargada la agregamos al objeto
   if (document.getElementById("inputProfilePhoto").files.length != 0) {
     parseImage();
@@ -136,7 +132,7 @@ function deleteDates() {
 
 function deleteImg(){
   const personalData = JSON.parse(localStorage.getItem("personalData"))
-  personalData.profilePhoto = null;
+  personalData.profilePhoto = "../proyectojap2022/img/img_perfil.png";
   localStorage.setItem("personalData", JSON.stringify(personalData));
   location.href = "my-profile.html";
 }
