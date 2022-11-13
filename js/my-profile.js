@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("secondLastname").value = personalData.secondLastname;
     document.getElementById("phoneNumber").value = personalData.phoneNumber;
     if (personalData.profilePhoto == null || "") {
-      document.getElementById("profilePhoto").src="./img/img_perfil.png"
+      document.getElementById("profilePhoto").src="../proyectojap2022/img/img_perfil.png"
     }else{
       document.getElementById("profilePhoto").src = personalData.profilePhoto;
     }
@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("inputProfilePhoto").addEventListener("change", (e) => {
     imageLoaded = e.target.files[0];
     document.getElementById("profilePhoto").src = URL.createObjectURL(e.target.files[0]);
-
   })
 
   //Fin de DOMContentLoaded
@@ -118,7 +117,7 @@ function savePersonalData() {
   if (document.getElementById("inputProfilePhoto").files.length != 0) {
     parseImage();
     async function parseImage() {
-      console.log(await toBase64(imageLoaded));
+      //console.log(await toBase64(imageLoaded));
       let imageParsed = await toBase64(imageLoaded);
       personalDataToAdd.profilePhoto = imageParsed;
       localStorage.setItem("personalData", JSON.stringify(personalDataToAdd));

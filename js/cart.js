@@ -99,7 +99,6 @@ function showCartList(products) {
         document.getElementById(subID).innerHTML = (productCurrency + " " + cost);
     }
     calcTotal();
-
 }
 
 function clearCart() {
