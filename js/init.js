@@ -10,7 +10,7 @@ let actualUsername;
 let body = document.getElementsByTagName("body")[0];
 if (localStorage.getItem("wallpaper") != undefined) {
   let wallpaper = localStorage.getItem("wallpaper");
-  body.style.backgroundImage ="url(" +wallpaper + ")";
+  body.style.backgroundImage ="url(" + wallpaper + ")";
 }
 
 let showSpinner = function () {
@@ -52,19 +52,18 @@ let getJSONData = function (url) {
 }
 
 
-if (localStorage.getItem("email") == undefined || localStorage.getItem("password") == undefined) {
+if (localStorage.getItem("email") == undefined) {
   location.href = "login.html";
 }
 
 if (localStorage.getItem("personalData") != null) {
   let personalData = JSON.parse(localStorage.getItem("personalData"));
   actualUsername = personalData.firstName + " " + personalData.lastname;
-  document.getElementById("profile").innerHTML += '<span>' + actualUsername + '</span>';
+  document.getElementById("profileName").innerHTML = actualUsername;
 }else{
 let username = localStorage.getItem("email");            
-username = username.substring(0, username.indexOf('@'));
-actualUsername = username;
-document.getElementById("profile").innerHTML += '<span>' + actualUsername + '</span>';
+actualUsername = username.substring(0, username.indexOf('@'));
+document.getElementById("profileName").innerHTML = actualUsername;
 }
 
 function closeSesion() {

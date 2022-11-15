@@ -19,7 +19,7 @@
 <body class="main_backgound">
   <main class="mt-4 mb-4">
     <div class="container text-center col-lg-5 col-md-10 col-sm-12">
-      <div class="list-group-item p-5 shadow">
+      <div class="list-group-item p-5 pt-0 pb-0 shadow">
         <img src="img/login.png" class="img-responsive" width="100%">
         <h5>Para este y cualquier otro formulario del sitio puede introducir datos aleatorios y ficticios.</h5>
         <!--Inicio de Sesion-->
@@ -60,34 +60,31 @@
           </div>
 
           <div class="col">
-            <h3 onclick="showPassword()" style="cursor: pointer; user-select: none;"><span id="showPasswordText">Mostrar
+            <h4 onclick="showPassword()" style="cursor: pointer; user-select: none;"><span id="showPasswordText">Mostrar
                 contraseña </span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-eye" viewBox="0 0 16 16">
                 <path
                   d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-              </svg></h3>
+              </svg></h4>
           </div>
           <br>
           <button id="loginButton" class="btn btn-primary btn-lg" type="submit">
             Ingresar
           </button>
         </form>
-        <br>
-        <h4>Este sitio es una herramienta generada con fines estrictamente educativos. No realiza compras o ventas
+        <!--Google Oauth-->
+
+        <h4>O Iniciar Sesion con Google</h4>
+        <div style="margin: 0 auto;
+         width: 40%;">
+          <div id="buttonDiv"></div>
+        </div>
+        <h5>Este sitio es una herramienta generada con fines estrictamente educativos. No realiza compras o ventas
           reales
           a terceros. Tampoco administra datos personales o de clientes. Todo lo expresado en este dominio no tiene
           validez comercial.</h5>
       </div>
-      <!--Google Oauth-->
-      <!--
-      <h2>Iniciar Sesion con Google Identity</h2>
-      <div id="g_id_onload" data-client_id="789117301039-j6fft8pmdrqb4fbqqlr94gvkoukrn9rc.apps.googleusercontent.com"
-        data-callback="handleCredentialResponse">
-      </div>
-      <div class="g_id_signin" data-type="standard"></div>
-      <br>
-    -->
   </main>
   <footer class="text-muted bg-dark ">
     <div class="container">
@@ -105,28 +102,6 @@
       </p>
   </footer>
 </body>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBOqRGdaWuNw1_oaPQ7gi9vAKQFw2DVyo0",
-    authDomain: "proyecto-jap-360001.firebaseapp.com",
-    projectId: "proyecto-jap-360001",
-    storageBucket: "proyecto-jap-360001.appspot.com",
-    messagingSenderId: "789117301039",
-    appId: "1:789117301039:web:e455795788587a7ee2f1da",
-    measurementId: "G-9JX77JCHZ2"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+<script src=”https://accounts.google.com/gsi/client” async defer></script>
 
 </html>

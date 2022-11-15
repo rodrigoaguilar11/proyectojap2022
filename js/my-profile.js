@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   //mostramos la imagen al cargarla
   document.getElementById("inputProfilePhoto").addEventListener("change", (e) => {
     imageLoaded = e.target.files[0];
-    document.getElementById("profilePhoto").src = URL.createObjectURL(e.target.files[0]);
+    document.getElementById("profilePhoto").src = URL.createObjectURL(imageLoaded);
   })
 
   //Fin de DOMContentLoaded
@@ -118,10 +118,15 @@ function savePersonalData() {
       personalDataToAdd.profilePhoto = imageParsed;
       localStorage.setItem("personalData", JSON.stringify(personalDataToAdd));
       document.getElementById("alert-success").classList.add("show");
+      document.getElementById("navProfileImg").src = URL.createObjectURL(imageLoaded);
+      let name = JSON.parse(localStorage.getItem("personalData"));
+      document.getElementById("profileName").innerHTML = name.firstName + " " + name.lastname;
     }
   } else {
     localStorage.setItem("personalData", JSON.stringify(personalDataToAdd));
     document.getElementById("alert-success").classList.add("show");
+    let name = JSON.parse(localStorage.getItem("personalData"));
+    document.getElementById("profileName").innerHTML = name.firstName + " " + name.lastname;
   }
 }
 
