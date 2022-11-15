@@ -62,7 +62,7 @@ if (localStorage.getItem("personalData") != null) {
   document.getElementById("profileName").innerHTML = actualUsername;
 }else{
 let username = localStorage.getItem("email");            
-actualUsername = username.slice('@')[0];
+actualUsername = username.split('@')[0];
 document.getElementById("profileName").innerHTML = actualUsername;
 }
 
