@@ -22,14 +22,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   })
 
   //Password Settings
-  document.getElementById("changePassword").addEventListener("click", () => {
-    if (localStorage.getItem("password") == document.getElementById("password1").value && document.getElementById("password2").value == document.getElementById("password1").value) {
-      localStorage.setItem("password", document.getElementById("newPassword").value);
-      location.href = "my-profile.html";
-    } else {
-      alert("contraseña incorrecta");
-    }
-  })
+
   document.getElementById("my-profile-title").innerHTML += 'Configuracion de perfil de ' + localStorage.getItem("email");
 
   //Direction Settings
@@ -66,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("secondLastname").value = personalData.secondLastname;
     document.getElementById("phoneNumber").value = personalData.phoneNumber;
     document.getElementById("profilePhoto").src = personalData.profilePhoto;
-  }else{
+  } else {
     document.getElementById("profilePhoto").src = "../proyectojap2022/img/img_perfil.png";
   }
   //mostramos la imagen al cargarla
@@ -75,29 +68,49 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("profilePhoto").src = URL.createObjectURL(imageLoaded);
   })
 
+  let form = document.getElementById("purchaseForm")
+  form.addEventListener('submit', function (event) {
+    if (form.checkValidity()) {
+     savePersonalData()
+      event.preventDefault()
+      event.stopPropagation() 
+    } else {
+       event.preventDefault()
+      event.stopPropagation()
+    }
+    form.classList.add('was-validated')
+  }, false)
+
+  let passForm = document.getElementById("passForm")
+  passForm.addEventListener('submit', function (event) {
+    let pass1 = document.getElementById("password1").value;
+    let pass2 = document.getElementById("password2").value;
+    if (passForm.checkValidity() && pass1 == localStorage.getItem("password") && pass2 == pass1) {
+      localStorage.setItem("password", document.getElementById("newPassword").value);
+      Swal.fire({
+        title: 'Contraseña Cambiada',
+        text: 'Su contraseña fue actualizada con éxito.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+      })
+      event.preventDefault()
+      event.stopPropagation()
+    } else {
+      Swal.fire({
+        title: 'Contraseña Incorrecta',
+        text: 'Verifique que los campos sean correctos.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      })
+      event.preventDefault()
+      event.stopPropagation()
+
+    }
+    passForm.classList.add('was-validated')
+  }, false)
+
   //Fin de DOMContentLoaded
 });
-
-(function () {
-  'use strict'
-  var forms = document.querySelectorAll('.needs-validation')
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        } else {
-          savePersonalData()
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-
-      }, false)
-    })
-})()
 
 function savePersonalData() {
   let personalDataToAdd = {
@@ -108,7 +121,7 @@ function savePersonalData() {
     "phoneNumber": document.getElementById("phoneNumber").value,
     "profilePhoto": "../proyectojap2022/img/img_perfil.png"
   };
-    localStorage.setItem("email", document.getElementById("email").value);
+  localStorage.setItem("email", document.getElementById("email").value);
   //Si hay una imagen cargada la agregamos al objeto
   if (document.getElementById("inputProfilePhoto").files.length != 0) {
     parseImage();
@@ -135,9 +148,24 @@ function deleteDates() {
   location.href = "my-profile.html";
 }
 
-function deleteImg(){
+function deleteImg() {
   const personalData = JSON.parse(localStorage.getItem("personalData"))
   personalData.profilePhoto = "../proyectojap2022/img/img_perfil.png";
   localStorage.setItem("personalData", JSON.stringify(personalData));
   location.href = "my-profile.html";
+}
+
+function showPassword() {
+  let pass1 = document.getElementById("password1");
+  let pass2 = document.getElementById("password2");
+  let newPass = document.getElementById("newPassword");
+  if (pass1.type == "password") {
+    pass1.type = "text";
+    pass2.type = "text";
+    newPass.type = "text";
+  } else {
+    pass1.type = "password";
+    pass2.type = "password";
+    newPass.type = "password";
+  }
 }

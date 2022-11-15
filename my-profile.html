@@ -134,7 +134,8 @@
           <li class="nav-item">
             <div class="contenedor">
               <a id="profile" class="nav-link" href="my-profile.html">
-                <img id="navProfileImg" style="width:25px ; border-radius: 50%;"> Perfil: <span id="profileName"></span></a>
+                <img id="navProfileImg" style="width:25px ; border-radius: 50%;"> Perfil: <span
+                  id="profileName"></span></a>
               <div class="profilelist">
                 <a class="list_element" href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                     height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -199,15 +200,19 @@
       <div class="collapse" id="collapseChangePassword">
         <div class="card card-body">
           <p>Ingresa su contraseña actual y la nueva</p>
-          <div class="col-2">
-            <label for="password1">Contraseña Actual:</label>
-            <input class="form-control" type="password" name="password1" id="password1">
-            <label for="password2">Repite la Contraseña:</label>
-            <input class="form-control" type="password" name="password2" id="password2">
-            <label for="newPassword">Contraseña Nueva:</label>
-            <input class="form-control" type="password" name="newPassword" id="newPassword">
-            <br><br>
-            <button class="btn btn-success" id="changePassword">Cambiar Contraseña</button>
+          <div class="col-4"> 
+            <form action="#" id="passForm" novalidate>
+              <label for="password1">Contraseña Actual:</label>
+              <input class="form-control" type="password" name="password1" id="password1" required>
+              <label for="password2">Repite la Contraseña:</label>
+              <input class="form-control" type="password" name="password2" id="password2" required>
+              <label for="newPassword">Contraseña Nueva:</label>
+              <input class="form-control" type="password" name="newPassword" id="newPassword" required>
+              <div class="d-flex m-2">
+                <button class="btn btn-primary m-1" id="showPass" type="button" onclick="showPassword()">Mostrar contraseña</button>
+                <button class="btn btn-success m-1" id="changePassword" type="submit">Cambiar Contraseña</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -259,7 +264,7 @@
           </div>
         </div>
       </div>
-      <form action="#" method="get" class="row mt-4 needs-validation" id="purchaseForm" novalidate>
+      <form action="#" method="get" class="row mt-4" id="purchaseForm" novalidate>
         <h3>Datos Personales</h3>
         <p>Al guardar tus datos tu nombre de usuario sera tu nombre seguido de tu apellido.</p>
         <div class="d-flex">
@@ -313,8 +318,7 @@
             </div>
           </div>
           <div class="col-3 p-2 container">
-            <img alt="related product image" class="img-thumbnail profile-image"
-              id="profilePhoto">
+            <img alt="related product image" class="img-thumbnail profile-image" id="profilePhoto">
           </div>
         </div>
         <div class="col-12 mt-2">
@@ -360,6 +364,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

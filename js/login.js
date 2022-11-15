@@ -56,7 +56,7 @@ const parseJwt = (token) => {
     callback: handleCredentialResponse
     });
     google.accounts.id.renderButton(
-    document.getElementById("buttonDiv"),
+    document.getElementById("googlebtn"),
     { theme: "outline", size: "large" }
     );
     google.accounts.id.prompt();
