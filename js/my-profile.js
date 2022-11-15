@@ -95,7 +95,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
       })
       event.preventDefault()
       event.stopPropagation()
-    } else {
+    } else if (passForm.checkValidity()&& localStorage.getItem("password") == undefined){
+      localStorage.setItem("password", document.getElementById("newPassword").value);
+      Swal.fire({
+        title: 'Contraseña Creada',
+        text: 'La contraseña fue creada',
+        icon: 'info',
+        confirmButtonText: 'Aceptar'
+      })
+      event.preventDefault()
+      event.stopPropagation()
+    }else {
       Swal.fire({
         title: 'Contraseña Incorrecta',
         text: 'Verifique que los campos sean correctos.',
