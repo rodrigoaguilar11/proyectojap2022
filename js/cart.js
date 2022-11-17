@@ -1,7 +1,7 @@
 let cartURL = CART_INFO_URL + "25801" + EXT_TYPE;
 let cart = document.getElementById("cart");
 let cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
-
+let message;
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(cartURL).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -59,8 +59,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
 
     })
-
    
+    getJSONData(CART_BUY_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            message = resultObj.data.msg;
+        }
+    })
+
     //End of DOMContentLoaded
 });
 
@@ -145,12 +150,12 @@ function verifyCurrency(value) {
         .forEach(function (form) {
             //Evento para cada vez que se ejecuta submit
             form.addEventListener('submit', function (event) {
-                
-                if(!(document.getElementById("creditTarget").checkValidity() || document.getElementById("bankTransfer").checkValidity())){                    
+
+                if (!(document.getElementById("creditTarget").checkValidity() || document.getElementById("bankTransfer").checkValidity())) {
                     document.getElementById("metodError").innerHTML = "Debe seleccionar una forma de pago";
-                }else if (!document.getElementById("card-number").checkValidity() || !document.getElementById("card-secureCode").checkValidity() || !document.getElementById("card-expiration").checkValidity() || !document.getElementById("account-number").checkValidity()){
+                } else if (!document.getElementById("card-number").checkValidity() || !document.getElementById("card-secureCode").checkValidity() || !document.getElementById("card-expiration").checkValidity() || !document.getElementById("account-number").checkValidity()) {
                     document.getElementById("metodError").innerHTML = "Faltan rellenar campos";
-                }else{
+                } else {
                     document.getElementById("metodError").innerHTML = "";
                 }
                 //va a retornar true si el formulario esta incompleto
@@ -159,10 +164,10 @@ function verifyCurrency(value) {
                     event.preventDefault()
                     //evita una mayor propagacion del evento actual
                     event.stopPropagation()
-                }else{
-                    showAlertSuccess() 
+                } else {
+                    showAlertSuccess()
                     event.preventDefault()
-                    event.stopPropagation() 
+                    event.stopPropagation()
                 }
                 form.classList.add('was-validated')
             }, false)
@@ -170,5 +175,12 @@ function verifyCurrency(value) {
 })()
 
 function showAlertSuccess() {
-    document.getElementById("alert-success").classList.add("show");
+
+
+    Swal.fire({
+        title: message,
+        text: 'Su compra fue realizada con éxito.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+    })
 }
