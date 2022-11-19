@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     auth2.signOut().then(function () {
       location.reload();
     });
-
   })
 
   //Password Settings
